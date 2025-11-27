@@ -58,7 +58,7 @@ python /path/to/generate_lesson.py "/path/to/lesson/folder" 2025 1A t1 1
 
 授業フォルダには以下を含める必要があります：
 
-- **音声テキスト**: `.txt`ファイル（NotePin Proで生成された形式）
+- **音声テキスト**: `.txt`ファイル（PLAUD NotePinで生成された形式）
 - **板書画像**: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`ファイル
 - **プリントPDF**: `.pdf`ファイル
 
