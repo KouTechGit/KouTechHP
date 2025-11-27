@@ -9,6 +9,10 @@ Google Drive側の授業フォルダからデータを読み込み、HTML、TeX�
 - HTMLページを生成（授業内容のポイント＋復習問題）
 - TeXファイルを生成（B5判、二段組）
 - PDFを自動コンパイル（latexmk使用）
+- **PDF最適化機能**（Ghostscript使用）
+  - 自動的にPDFファイルサイズを削減（通常30-50%削減）
+  - GitHubリポジトリの容量制限対策
+  - 最適化に失敗した場合は元のPDFを使用（フォールバック機能）
 
 ## セットアップ
 
@@ -71,6 +75,10 @@ python /path/to/generate_lesson.py "/path/to/lesson/folder" 2025 1A t1 1
 - Python 3.6以上
 - LaTeX環境（uplatex、latexmk）
 - 必要なLaTeXパッケージ（jsarticlek、emath、tcolorboxなど）
+- **Ghostscript**（PDF最適化用、オプション）
+  - インストールされていない場合、最適化はスキップされ、元のPDFが使用されます
+  - macOS: `brew install ghostscript`
+  - Linux: `sudo apt-get install ghostscript` または `sudo yum install ghostscript`
 
 ## 注意事項
 
@@ -100,9 +108,33 @@ export KOUTECH_HP_BASE='/path/to/KouTechHP'
 
 → LaTeX環境をインストールしてください（MacTeX、TeX Liveなど）
 
+### Ghostscriptが見つからない（PDF最適化がスキップされる）
+
+```
+警告: Ghostscript (gs) が見つかりません
+  PDF最適化をスキップします（元のPDFを使用）
+```
+
+→ PDF最適化機能を使用する場合は、Ghostscriptをインストールしてください：
+- macOS: `brew install ghostscript`
+- Linux: `sudo apt-get install ghostscript` または `sudo yum install ghostscript`
+
+**注意**: GhostscriptがなくてもPDF生成は正常に動作します。最適化がスキップされるだけです。
+
+## PDF最適化について
+
+PDF最適化機能により、生成されたPDFファイルのサイズを自動的に削減します。
+
+- **削減率**: 通常30-50%のサイズ削減
+- **品質**: 電子書籍用設定（約150dpi）で、画質とファイルサイズのバランスを最適化
+- **互換性**: PDF 1.4形式で、広範な互換性を確保
+
+GitHubリポジトリの容量制限（推奨1GB未満）を守るため、この機能を推奨します。
+
 ## 今後の改善予定
 
 - 復習問題の自動生成機能の強化
 - 音声テキストからのより高度なポイント抽出
 - 画像の自動挿入機能
 - バッチ処理機能（複数授業の一括生成）
+- 画像の自動最適化機能
