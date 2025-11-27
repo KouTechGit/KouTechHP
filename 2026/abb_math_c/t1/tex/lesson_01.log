@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.5.29)  27 NOV 2025 18:00
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.5.29)  27 NOV 2025 18:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1657,18 +1657,82 @@ LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 16.41594pt on input line 90.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 16.41594pt on input line 90.
-! Missing $ inserted.
-<inserted text> 
-                $
-l.90 \maketitle
-                
-Here is how much of TeX's memory you used:
- 37809 strings out of 478716
- 671476 string characters out of 5858225
- 1238123 words of memory out of 5000000
- 55652 multiletter control sequences out of 15000+600000
- 479637 words of font info for 78 fonts, out of 8000000 for 9000
- 934 hyphenation exceptions out of 8191
- 123i,8n,122p,790b,163s stack positions out of 10000i,1000n,20000p,200000b,200000s
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 90.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 90.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 5.69998pt on input line 90.
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 9
+0.
+(/usr/local/texlive/texmf-local/tex/latex/jknappen/ubbold.fd
+File: ubbold.fd 1996/01/01 Blackboard Bold Font Definition File (jk)
+) [1
 
-No pages of output.
+]
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 95.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 95.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 95.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 95.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 114.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 114.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 115.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 115.
+LaTeX Font Info:    Font shape `JT2/gt/bx/n' in size <10> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 115.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 115.
+LaTeX Font Info:    Font shape `JY2/gt/bx/n' in size <10> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 115.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 115.
+
+
+Package tcolorbox Warning: Using nobreak failed. Try to enlarge `lines before b
+reak' or set page breaks manually on input line 132.
+
+LaTeX Font Info:    Font shape `JT2/mc/m/sl' in size <10> not available
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 134.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 134.
+LaTeX Font Info:    Font shape `JY2/mc/m/sl' in size <10> not available
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 134.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 134.
+
+LaTeX Font Warning: Font shape `OT1/ceo/m/sl' undefined
+(Font)              using `OT1/ceo/m/it' instead on input line 134.
+
+
+LaTeX Font Warning: Font shape `OT1/ceo/m/sl' undefined
+(Font)              using `OT1/ceo/m/it' instead on input line 134.
+
+[2] 
+AED: lastpage setting LastPage
+
+LaTeX Font Warning: Font shape `OT1/ceo/m/sl' undefined
+(Font)              using `OT1/ceo/m/it' instead on input line 135.
+
+
+LaTeX Font Warning: Font shape `OT1/ceo/m/sl' undefined
+(Font)              using `OT1/ceo/m/it' instead on input line 135.
+
+[3] (./lesson_01.aux) ) 
+Here is how much of TeX's memory you used:
+ 37967 strings out of 478716
+ 674443 string characters out of 5858225
+ 1259123 words of memory out of 5000000
+ 55794 multiletter control sequences out of 15000+600000
+ 490030 words of font info for 122 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 123i,13n,122p,790b,1054s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on lesson_01.dvi (3 pages, 16492 bytes).

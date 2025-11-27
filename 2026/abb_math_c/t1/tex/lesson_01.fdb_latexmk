@@ -1,10 +1,10 @@
 # Fdb version 3
-["dvipdf"] 0 "lesson_01.dvi" "lesson_01.pdf" "lesson_01" 0
-  "lesson_01.dvi" 0 -1 0 "latex"
+["dvipdf"] 1764234312 "lesson_01.dvi" "lesson_01.pdf" "lesson_01" 1764234312
+  "lesson_01.dvi" 1764234312 16492 004d2c5a664281f192c3cc52b85a8b26 "latex"
   (generated)
   "lesson_01.pdf"
-["latex"] 1764234038 "/Users/kou/Documents/GitHub/KouTechHP/2026/abb_math_c/t1/tex/lesson_01.tex" "lesson_01.dvi" "lesson_01" 1764234038
-  "/Users/kou/Documents/GitHub/KouTechHP/2026/abb_math_c/t1/tex/lesson_01.tex" 1764234038 4145 058e36d633d9b2f3c4ef045e9ed9aae7 ""
+["latex"] 1764234310 "/Users/kou/Documents/GitHub/KouTechHP/2026/abb_math_c/t1/tex/lesson_01.tex" "lesson_01.dvi" "lesson_01" 1764234312
+  "/Users/kou/Documents/GitHub/KouTechHP/2026/abb_math_c/t1/tex/lesson_01.tex" 1764234309 4064 6c94c3ea3bb9171e87ba3ac2fd42202d ""
   "/Users/kou/Library/texmf/tex/platex/misc/emath/EMceo.sty" 1517711034 1695 b7bc5ebff96150e311bde220803f9cfc ""
   "/Users/kou/Library/texmf/tex/platex/misc/emath/EMcolor.sty" 1445510536 13931 c1d27c4e78e10af20aeb6eb788c3071a ""
   "/Users/kou/Library/texmf/tex/platex/misc/emath/EMfbox.sty" 1610622178 76773 7698e3c5c80c5793e23113aee33ca238 ""
@@ -36,7 +36,18 @@
   "/Users/kou/Library/texmf/tex/platex/misc/emath/zougenhyou.sty" 1502169112 22970 ce3b01b7f5a137f0763c80ce636a8c1a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/ascmac/ascgrp.tfm" 1520635638 448 9a1f3a95c3a7e2681aa6eefcf410b7ac ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold10.tfm" 1266369035 788 aa2bfd021367054a224c4cf5a9967398 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold12.tfm" 1266369035 768 568afddd613f4818fa95373954d5df42 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold5.tfm" 1266369035 764 6e384685b780f01b6a1744eb2db32b69 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold6.tfm" 1266369035 764 bc340104b2499eb440977e2d302aad8b ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold7.tfm" 1266369035 788 cfc6f7349e03ca366560917be88c2027 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/bbold/bbold8.tfm" 1266369035 768 b3927d32cc38bf306f676b7e9ddf7414 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmss12.tfm" 1136768653 1324 37b971caf729d7edd9cbb9f9b0ea76eb ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm" 1522271273 812 52bd92aa20c58a398601cda6dd62c8d1 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm" 1522271273 536 5f2475e9deb198c23894800d3c5eed00 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-h.tfm" 1522271273 812 52bd92aa20c58a398601cda6dd62c8d1 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm" 1522271273 536 5f2475e9deb198c23894800d3c5eed00 ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
@@ -202,6 +213,7 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/ceoex.tfm" 1251596756 1420 3042f509ca21113821fbd1a4402de08b ""
   "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/ceoi.tfm" 1131851186 1448 5ee482c756f6188d4d479332addb0390 ""
+  "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/ceomi.tfm" 1254568536 1408 f23983437bfe1c34361e23d53573a57a ""
   "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/ceor.tfm" 1141998186 1316 969d17828fd178caf058ac217148eca8 ""
   "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/ceosy.tfm" 1284787064 1504 7463e157a8c09f8a84c3d2ad40034dc4 ""
   "/usr/local/texlive/texmf-local/fonts/tfm/local/ceo/cesq.tfm" 1284786676 608 e6b4c303b6f443a2713efea611293855 ""
@@ -215,6 +227,7 @@
   "/usr/local/texlive/texmf-local/tex/latex/BXbase/bxtoolbox.sty" 1601746587 700 d53804f5d8c2ee3e343e6c9ce05a6a19 ""
   "/usr/local/texlive/texmf-local/tex/latex/enumitem 2/enumitem.sty" 1561014620 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "/usr/local/texlive/texmf-local/tex/latex/jknappen/mathbbol.sty" 930739692 2195 a6c147c8620a492761ba9cd1bd10ff15 ""
+  "/usr/local/texlive/texmf-local/tex/latex/jknappen/ubbold.fd" 930739686 660 ec7e08b6ee0da34244167fa0530bf947 ""
   "/usr/local/texlive/texmf-local/tex/latex/local/ceo/Mwaku.sty" 1394089812 21300 1dee507381170503a1db8b9c962a8b01 ""
   "/usr/local/texlive/texmf-local/tex/latex/local/ceo/ceo.sty" 1704539734 85795 ead083fdd52a5e2322d44490019b8760 ""
   "/usr/local/texlive/texmf-local/tex/latex/local/ceo/gyoretuvec.sty" 1231770050 9976 1a4b7cc63fd6fed662d9a2fb8e12abe0 ""
@@ -230,8 +243,8 @@
   "/usr/local/texlive/texmf-local/tex/latex/local/ceo/waku.sty" 1218894586 28360 110cc9153bd4195268d7c9eae3999eeb ""
   "/usr/local/texlive/texmf-local/tex/latex/local/ceo/zogeny.sty" 1227886534 73463 8f04fe809f2ae8e06fb439c645bece31 ""
   "/usr/local/texlive/texmf-local/tex/latex/xhfill/xhfill.sty" 1305337198 1712 b4c067e9b422ce384922a5e2cf62db88 ""
-  "lesson_01.aux" 1764234038 32 3985256e7290058c681f74d7a3565a19 "latex"
-  "lesson_01.tex" 1764234038 4145 058e36d633d9b2f3c4ef045e9ed9aae7 ""
+  "lesson_01.aux" 1764234312 114 bbe9598ba3ff0763bbbeb217e824fed1 "latex"
+  "lesson_01.tex" 1764234309 4064 6c94c3ea3bb9171e87ba3ac2fd42202d ""
   (generated)
   "hoge--------.pl"
   "lesson_01.aux"
