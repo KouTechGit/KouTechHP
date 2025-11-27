@@ -3,25 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KouTechの授業ログ</title>
+  <title>KouTech - Mathematics & Education</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* トップページ独自のヒーローセクション */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>KouTechの授業ログ</h1>
+    <div class="header-inner">
+      <div class="logo">KouTech</div>
+      <!-- <nav>...</nav> 必要なら追加 -->
+    </div>
   </header>
   
+  <div class="hero">
+    <h1>Mathematics<br>& Education</h1>
+    <p>KouTechの授業ログ・アーカイブシステム。<br>数理的思考とテクノロジーの融合。</p>
+  </div>
+
   <div class="container">
     <section>
-      <h2>年度一覧</h2>
-      <ul>
-        <li><a href="2025/index.html">2025年度</a></li>
-      </ul>
+      <h2 style="text-align:center; border:none;">Archives</h2>
+      <div class="grid-cards">
+        
+        <!-- 2026年度カード (New) -->
+        <div class="card" style="border-color: var(--accent-primary);">
+          <span class="card-tag">Latest</span>
+          <div class="card-title">2026年度</div>
+          <p class="card-desc">共学高ABB 数学C / 共学高XYY 数学Z</p>
+          <a href="2026/index.html" class="btn" style="width:100%">Access Archive</a>
+        </div>
+
+        <!-- 2025年度カード -->
+        <div class="card">
+          <div class="card-title">2025年度</div>
+          <p class="card-desc">1A / 1B / 2A / 2B / 3A</p>
+          <a href="2025/index.html" class="btn btn-outline" style="width:100%">View Archive</a>
+        </div>
+
+      </div>
     </section>
   </div>
   
   <footer>
-    <p>© 2025 KouTech</p>
+    <p>&copy; 2026 KouTech. All rights reserved.</p>
   </footer>
 </body>
 </html>
