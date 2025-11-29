@@ -12,8 +12,9 @@
 <body>
   <header>
     <div class="header-inner">
-      <div class="logo">KouTech</div>
-      <a href="../index.html" class="btn-outline" style="padding:0.5rem 1rem; font-size:0.8rem;">Topへ戻る</a>
+      <a href="../index.html" class="logo">
+        <img src="../assets/img/logo.png" alt="KouTech">
+      </a>
     </div>
   </header>
 
@@ -57,39 +58,46 @@
           subjectTitle.style.marginBottom = '1.5rem';
           subjectSection.appendChild(subjectTitle);
 
-          const unitsGrid = document.createElement('div');
-          unitsGrid.className = 'grid-cards';
+          const unitsList = document.createElement('div');
+          unitsList.className = 'unit-cards-list';
           
           subject.units.forEach(unit => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'unit-card-horizontal';
 
+            // 科目タグ（光る効果）
             const tag = document.createElement('span');
-            tag.className = 'card-tag';
+            tag.className = 'unit-card-subject-tag';
             tag.textContent = subject.subject_name;
             card.appendChild(tag);
 
+            // コンテンツエリア
+            const content = document.createElement('div');
+            content.className = 'unit-card-content';
+
             const title = document.createElement('div');
-            title.className = 'card-title';
+            title.className = 'unit-card-title';
             title.textContent = unit.unit_name;
-            card.appendChild(title);
+            content.appendChild(title);
 
-            const desc = document.createElement('p');
-            desc.className = 'card-desc';
-            desc.textContent = `${unit.videos.length}本の動画`;
-            card.appendChild(desc);
+            const videoCount = document.createElement('p');
+            videoCount.className = 'unit-card-video-count';
+            videoCount.textContent = `${unit.videos.length}本の動画`;
+            content.appendChild(videoCount);
 
+            card.appendChild(content);
+
+            // 学習を開始するボタン（暗い→ホバーで光る）
             const link = document.createElement('a');
             link.href = `player.html?subject=${encodeURIComponent(subject.subject_name)}&unit=${encodeURIComponent(unit.unit_name)}`;
-            link.className = 'btn';
-            link.style.cssText = 'width:100%; margin-top:1rem;';
+            link.className = 'unit-card-button';
             link.textContent = '学習を開始する';
             card.appendChild(link);
 
-            unitsGrid.appendChild(card);
+            unitsList.appendChild(card);
           });
 
-          subjectSection.appendChild(unitsGrid);
+          subjectSection.appendChild(unitsList);
           container.appendChild(subjectSection);
         });
       })

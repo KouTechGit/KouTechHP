@@ -12,8 +12,9 @@
 <body>
   <header>
     <div class="header-inner">
-      <div class="logo">KouTech</div>
-      <a href="../index.html" class="btn-outline" style="padding:0.5rem 1rem; font-size:0.8rem;">Topへ戻る</a>
+      <a href="../index.html" class="logo">
+        <img src="../assets/img/logo.png" alt="KouTech">
+      </a>
     </div>
   </header>
 
@@ -24,10 +25,10 @@
     <!-- Left Sidebar: Curriculum -->
     <aside class="player-sidebar-left" id="sidebar-left">
       <div class="sidebar-header">
-        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="Toggle sidebar">
-          <span>◀</span>
-        </button>
         <h2 id="sidebar-title">Course Content</h2>
+        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="Toggle sidebar">
+          <span>−</span>
+        </button>
         <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
           <span>✕</span>
         </button>
@@ -56,15 +57,13 @@
         </button>
       </div>
       
-      <!-- Video Description: Collapsible -->
-      <details class="video-description">
-        <summary class="video-description-summary">
-          <h3>動画の概要</h3>
-        </summary>
+      <!-- Video Description -->
+      <div class="video-description">
+        <h3>動画の概要</h3>
         <div class="description-content">
           <p style="color: var(--text-sub);">準備中...</p>
         </div>
-      </details>
+      </div>
     </main>
 
     <!-- Right Sidebar: Resources -->
@@ -72,7 +71,7 @@
       <div class="sidebar-header">
         <h3>講義資料</h3>
         <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('right')" aria-label="Toggle sidebar">
-          <span>▶</span>
+          <span>−</span>
         </button>
         <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
           <span>✕</span>
@@ -112,11 +111,8 @@
       
       // Update toggle button icon
       const toggleBtn = sidebar.querySelector('.sidebar-toggle span');
-      if (side === 'left') {
-        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '▶' : '◀';
-      } else {
-        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '◀' : '▶';
-      }
+      // 開いている時は「−」、閉じている時は「+」
+      toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '+' : '−';
     }
     
     // Bottom Sheet functions (Mobile)
