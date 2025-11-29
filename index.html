@@ -3,73 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KouTech - Mathematics & Education</title>
+  <title>KouTech - Education & Technology</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* トップページ独自のヒーローセクション */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem;
-      position: relative;
-    }
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 4rem;
-      background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-    }
-  </style>
 </head>
 <body>
   <header>
     <div class="header-inner">
       <div class="logo">KouTech</div>
-      <!-- <nav>...</nav> 必要なら追加 -->
     </div>
   </header>
   
-  <div class="hero">
+  <div class="portal-hero">
     <h1>KouTech</h1>
-    <p>授業ログアーカイブシステム<br>数学教育とテクノロジーの融合</p>
-  </div>
-
-  <div class="container">
-    <section>
-      <h2 style="text-align:center; border:none;">Archives</h2>
-      <div class="grid-cards">
+    <p>教育とテクノロジーをつなぐ</p>
+    
+    <div class="container">
+      <div class="portal-grid">
         
-        <!-- 2026年度カード (New) -->
-        <div class="card" style="border-color: var(--accent-primary);">
-          <span class="card-tag">Latest</span>
-          <div class="card-title">2026年度</div>
-          <p class="card-desc">共学高ABB 数学C / 共学高XYY 数学Z</p>
-          <a href="2026/index.html" class="btn" style="width:100%">View Archive</a>
+        <!-- Video Learning Portal -->
+        <div class="portal-card">
+          <div class="portal-card-icon">▶</div>
+          <h3>授業動画</h3>
+          <p>授業動画を視聴しながら学習を進める動画プラットフォーム。</p>
+          <a href="videos/index.html" class="btn" style="width:100%">動画で学ぶ</a>
         </div>
 
-        <!-- 2025年度カード -->
-        <div class="card">
-          <div class="card-title">2025年度</div>
-          <p class="card-desc">共学高３理Ｐβ２_数学Ｐ / 共学高３理Ａα_数学Ｐ</p>
-          <a href="2025/index.html" class="btn btn-outline" style="width:100%">View Archive</a>
+        <!-- Lesson Archives Portal -->
+        <div class="portal-card">
+          <div class="portal-card-icon">📝</div>
+          <h3>授業ログ</h3>
+          <p>授業の内容、復習問題を確認できるアーカイブライブラリ。</p>
+          <a href="lessons/2026/index.html" class="btn" style="width:100%">授業ログを見る</a>
         </div>
 
       </div>
-    </section>
+    </div>
   </div>
   
   <footer>
-    <p>&copy; 2026 KouTech. All rights reserved.</p>
+    <p>&copy; 2026 KouTech</p>
   </footer>
 </body>
 </html>

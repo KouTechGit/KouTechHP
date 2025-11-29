@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>授業動画 | KouTech</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">KouTech</div>
+      <a href="../index.html" class="btn-outline" style="padding:0.5rem 1rem; font-size:0.8rem;">Topへ戻る</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a> &gt; 授業動画
+    </div>
+
+    <section>
+      <h1>授業動画</h1>
+      <p>数学の単元ごとに動画で学習を進められます。</p>
+
+      <div id="subjects-container">
+        <!-- JavaScript will populate this -->
+        <div style="padding:2rem; text-align:center; color:var(--text-sub);">Loading...</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 KouTech</p>
+  </footer>
+
+  <script>
+    // Load course data and render subjects/units
+    fetch('course_data.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('subjects-container');
+        container.innerHTML = '';
+
+        data.subjects.forEach(subject => {
+          // Create subject section
+          const subjectSection = document.createElement('div');
+          subjectSection.style.marginBottom = '3rem';
+
+          const subjectTitle = document.createElement('h2');
+          subjectTitle.textContent = subject.subject_name;
+          subjectTitle.style.borderLeft = '4px solid var(--accent-primary)';
+          subjectTitle.style.paddingLeft = '1rem';
+          subjectTitle.style.marginBottom = '1.5rem';
+          subjectSection.appendChild(subjectTitle);
+
+          const unitsGrid = document.createElement('div');
+          unitsGrid.className = 'grid-cards';
+          
+          subject.units.forEach(unit => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const tag = document.createElement('span');
+            tag.className = 'card-tag';
+            tag.textContent = subject.subject_name;
+            card.appendChild(tag);
+
+            const title = document.createElement('div');
+            title.className = 'card-title';
+            title.textContent = unit.unit_name;
+            card.appendChild(title);
+
+            const desc = document.createElement('p');
+            desc.className = 'card-desc';
+            desc.textContent = `${unit.videos.length}本の動画`;
+            card.appendChild(desc);
+
+            const link = document.createElement('a');
+            link.href = `player.html?subject=${encodeURIComponent(subject.subject_name)}&unit=${encodeURIComponent(unit.unit_name)}`;
+            link.className = 'btn';
+            link.style.cssText = 'width:100%; margin-top:1rem;';
+            link.textContent = '学習を開始する';
+            card.appendChild(link);
+
+            unitsGrid.appendChild(card);
+          });
+
+          subjectSection.appendChild(unitsGrid);
+          container.appendChild(subjectSection);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading course data:', error);
+        document.getElementById('subjects-container').innerHTML = '<p style="color:var(--text-sub);">データの読み込みに失敗しました。</p>';
+      });
+  </script>
+</body>
+</html>

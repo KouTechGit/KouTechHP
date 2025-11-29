@@ -1,0 +1,146 @@
+\documentclass[fleqn,b5j,titlepage,uplatex,twoside,dvipdfmx]{jsarticlek}
+\usepackage[top=20truemm,bottom=15truemm,left=13truemm,right=13truemm]{geometry}
+
+\usepackage{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{amsmath}
+\usepackage{multicol}%二段組み
+\setlength{\columnsep}{1zw}
+\setlength{\columnseprule}{0.4pt}
+\usepackage[inline]{enumitem}%箇条書きの調整
+\usepackage{okumacro}
+\usepackage[ceo]{emath}%ceosty呼び出し
+\usepackage{tcolorbox}%枠組み
+\tcbuselibrary{skins,breakable,theorems}
+\usepackage{ascmac}%枠組み
+\usepackage{tikz}%tikz
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{annotate-equations}
+\usepackage{multirow}%表の結合
+\usepackage{diagbox}%表のラベル斜線
+\usepackage{xhfill}%罫線
+\usepackage{bxbase}%unicode
+\usepackage[bbgreekl]{mathbbol}%黒板文字
+\usepackage{pgffor}%\foreachループ
+
+%emath
+\usepackage{emathPl}%emath perl
+\usepackage{emathT}%emath　表間隔
+\usepackage{emathPp}%emath perlを利用したグラフ描画
+\usepackage{emathPs}%emath　epsファイルの作成
+\usepackage{emathPh}%emath　塗り
+\usepackage{emathC}%emath　Ifor
+\usepackage{emathPxy}%emath　座標平面
+\usepackage{emathPk}%emath　空間平面
+\usepackage{emathMw}%emath　図版回り込み
+\usepackage{EMminipages}%emath　図版二段
+\usepackage{EMfbox}%emath　枠囲み
+
+%ヘッダー・フッター
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[R]{©\,2026\,$KouTech$}
+
+%定理枠
+\definecolor{theocolor}{rgb}{0.5, 0.5, 0.5}
+\newtcolorbox{theorembox}[2][]{
+enhanced,%tikzを用いた記法の処理
+breakable,%ページマタギOK
+fonttitle=\gtfamily,%タイトルのフォント指定
+coltitle=white,%タイトルの文字の色
+colbacktitle=theocolor!50!black,%タイトルの背景の色
+attach boxed title to top left={},%タイトルを左寄せに，少し微調整
+boxed title style={skin=enhancedfirst jigsaw,arc=1mm,bottom=0mm,boxrule=0mm},%タイトルボックスの装飾
+boxrule=0.5pt,%枠線の太さ
+colback=theocolor!5!,%本文の背景色
+colframe=theocolor,%本文の枠の色
+sharp corners=northwest,%左上の角の調整
+drop fuzzy shadow,%影をつける
+title=\vspace{3mm}#2,%タイトルは直接入力
+arc=1mm,%弧
+fontupper=\gtfamily,%本文のフォントを太く（数式は除く）
+#1}%
+
+%問題枠
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\newtcbtheorem[number within=section]{mondaibox}{問題}{
+enhanced,%tikzを用いた記法の処理
+breakable,%ページマタギOK
+skin=bicolor,%2色OK
+%本文
+left=1zw,right=1zw,
+colback=burgundy!5!white,
+colbacklower=burgundy!15!white,
+%枠
+colframe=burgundy,
+rightrule=0pt,leftrule=0pt,bottomrule=2pt,
+arc=0mm,
+%タイトル
+fonttitle=\gtfamily\sffamily\bfseries\upshape,
+coltitle=white,
+colbacktitle=burgundy
+}
+{mon}
+
+\begin{document}
+% 1. 表題（授業名、日付、クラス名）
+\title{2026年度 abb\_math\_c t1 授業1}
+\author{KouTech}
+\date{2025年11月27日}
+\maketitle
+
+\begin{multicols}{2}
+
+% 2. 本時のポイント（重要事項の要約）
+\section*{本時のポイント}
+\begin{description}[font=\mc,leftmargin=2zw,itemindent=1zw,labelsep=1zw,labelwidth=1zw,topsep=3mm]
+\item[1.] え、発散速度って動画でやったじゃないですか。今ちょっとこれ見せるけどさ。で、スモスある人はやってもいいよ。今、自分手元でも見せるけどさ、YイコールXってこういうのじゃないですか。まあ、比例ですよ、比例。じゃあ、yイコールログXってどうなんかっていうと。ログXログX。あ、ちょっと待ってね。ちょっと待ってね。ちょっと待ってね。
+\item[2.] もう1回やろう。X頭に出ているのは肩にきますよね。X乗になるよね。なので。logのxx乗が0ってこと。ってことは、ここの中身が1になるんじゃないですか。1に近づいていくんじゃないですか。だってlog1って0じゃん。だよね。なので、示したいこいつが示すかっていう話。別にこれはできなくてもいいですよ。できなくてもいい。せめてこのヒントがあった時にこういう変形計算はできてほしい。これは別に思いつかなくてもいいと思う。絶対に問題に与えられるはずだから、こんな。
+\item[3.] 問題がないと今日特攻があるとかでしたっけで特攻終わった後ちょっと面談でもいいですかじゃあ終わったらもう自分のタイミングでいいので上執務室に乗ってくださいはい。
+\item[4.] 積分ね。楽しいよね。わかるよ。今、面積とか体積ぐらいかな。そのぐらい回転したり、なんか交わる部分のなんか解析出したり。そんなんです。
+\item[5.] よし、じゃあ名前なんだけども、クラスのちゃんと書いといてもらっていいですかちょっとこの後仕分けする時にクラスあった方がありがたいので、クラス、番号、氏名忘れずに班長3、4枚あるいは3枚集めて前持ってきてください。じゃあ時間かな，時間だね。じゃあ机椅子を元に戻して解散にしましょう。明日小テストよろしくね。じゃあ解散。
+\item[6.] ああまあまあまあまあオッケー了解まあとりあえずまあ歩けるっちゃ歩けるの全然そこは日常生活の問題もオッケーじゃあ明日のレクはできないかもしれない止まってれば大丈夫やって，いきますお願いします。
+\item[7.] あ、いたいたいただいたはいはいはいあっち開いてるかなあそこでやりましょうえーうわそこそこちょっとピカチュウも入れてでは。相談したいことがあるそれともなんかこう質問していった方がいい感じ質問で質問でじゃあ今、数学に関してでどんな勉強しているかを聞きたいので、例えば参考書とか塾行ってるとか、そういった。
+\item[8.] れでしょだいぶあの暗算力というか展開とか因数分解とか最初のところだけでもだいぶね積分が受かる計算単。
+\item[9.] 伸びないおそらくチャートとかそういう解放のパターンが網羅されてるやつは身についたけど模試とかで、なるほどね，えさっきさ、受かる計算やってたから数3の積分ってことじゃあ全範囲はもう終わってるみたいな感じ買ったけど、じゃあある意味独学で進めていたってこと。
+\item[10.] なるほどねじゃあ数3の積分まで終わってるってことだよね一応。了解ちなみに話どんどん飛ぶけどさ共通の模試こないだ学校で受けたああいうのはどうだったってい。
+\end{description}
+
+
+% 3. 板書内容（可能な場合は図・式を再現する）
+\section*{板書内容}
+板書の内容は準備中です。
+
+% 4. 例題・解説（必要に応じて整形）
+\section*{例題・解説}
+例題と解説は準備中です。
+
+% 5. まとめ（生徒へのメッセージ・学習ポイント）
+\section*{まとめ}
+本時の学習ポイントを振り返り、次回の授業に備えましょう。
+
+% 6. 復習問題（HTMLと同じ4種類）
+\section*{復習問題}
+
+\subsection*{用語の確認}
+\begin{mondaibox}{}{}
+基本語句の穴埋め形式の問題です。
+\end{mondaibox}
+
+\subsection*{公式の確認}
+\begin{mondaibox}{}{}
+数式の穴埋め形式の問題です。
+\end{mondaibox}
+
+\subsection*{基本計算問題}
+\begin{mondaibox}{}{}
+例題的な計算練習です。
+\end{mondaibox}
+
+\subsection*{共通テスト形式問題}
+\begin{mondaibox}{}{}
+穴埋めや選択肢形式の問題です。
+\end{mondaibox}
+
+\end{multicols}
+\end{document}

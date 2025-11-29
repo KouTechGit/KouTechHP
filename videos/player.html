@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動画で学ぶ | KouTech</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">KouTech</div>
+      <a href="../index.html" class="btn-outline" style="padding:0.5rem 1rem; font-size:0.8rem;">Topへ戻る</a>
+    </div>
+  </header>
+
+  <!-- Overlay for Bottom Sheet -->
+  <div class="bottom-sheet-overlay" id="bottom-sheet-overlay" onclick="closeBottomSheet()"></div>
+
+  <div class="player-layout">
+    <!-- Left Sidebar: Curriculum -->
+    <aside class="player-sidebar-left" id="sidebar-left">
+      <div class="sidebar-header">
+        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="Toggle sidebar">
+          <span>◀</span>
+        </button>
+        <h2 id="sidebar-title">Course Content</h2>
+        <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
+          <span>✕</span>
+        </button>
+      </div>
+      <div id="lesson-list" class="lesson-list">
+        <!-- JavaScript will populate this -->
+        <div style="padding:2rem; text-align:center; color:var(--text-sub);">Loading...</div>
+      </div>
+    </aside>
+
+    <!-- Main Content: Video Player -->
+    <main class="player-main">
+      <div class="video-container">
+        <div id="player"></div>
+      </div>
+      
+      <!-- Mobile: Action Buttons -->
+      <div class="mobile-actions">
+        <button class="mobile-action-btn" onclick="openBottomSheet('lesson-list')" aria-label="動画一覧を開く">
+          <span class="mobile-action-icon">📋</span>
+          <span>動画一覧</span>
+        </button>
+        <button class="mobile-action-btn" onclick="openBottomSheet('resources')" aria-label="講義資料を開く">
+          <span class="mobile-action-icon">📁</span>
+          <span>講義資料</span>
+        </button>
+      </div>
+      
+      <!-- Video Description: Collapsible -->
+      <details class="video-description">
+        <summary class="video-description-summary">
+          <h3>動画の概要</h3>
+        </summary>
+        <div class="description-content">
+          <p style="color: var(--text-sub);">準備中...</p>
+        </div>
+      </details>
+    </main>
+
+    <!-- Right Sidebar: Resources -->
+    <aside class="player-sidebar-right" id="sidebar-right">
+      <div class="sidebar-header">
+        <h3>講義資料</h3>
+        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('right')" aria-label="Toggle sidebar">
+          <span>▶</span>
+        </button>
+        <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
+          <span>✕</span>
+        </button>
+      </div>
+      <div id="resources-list" class="resources-list">
+        <!-- JavaScript will populate this -->
+      </div>
+    </aside>
+  </div>
+
+  <script src="../assets/js/player.js"></script>
+  <script>
+    // Sidebar toggle function (Desktop)
+    function toggleSidebar(side) {
+      // Only work on desktop
+      if (window.innerWidth <= 768) return;
+      
+      const layout = document.querySelector('.player-layout');
+      const sidebar = document.getElementById(`sidebar-${side}`);
+      
+      sidebar.classList.toggle('collapsed');
+      
+      // Update layout classes
+      layout.classList.remove('left-collapsed', 'right-collapsed', 'both-collapsed');
+      
+      const leftCollapsed = document.getElementById('sidebar-left').classList.contains('collapsed');
+      const rightCollapsed = document.getElementById('sidebar-right').classList.contains('collapsed');
+      
+      if (leftCollapsed && rightCollapsed) {
+        layout.classList.add('both-collapsed');
+      } else if (leftCollapsed) {
+        layout.classList.add('left-collapsed');
+      } else if (rightCollapsed) {
+        layout.classList.add('right-collapsed');
+      }
+      
+      // Update toggle button icon
+      const toggleBtn = sidebar.querySelector('.sidebar-toggle span');
+      if (side === 'left') {
+        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '▶' : '◀';
+      } else {
+        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '◀' : '▶';
+      }
+    }
+    
+    // Bottom Sheet functions (Mobile)
+    function openBottomSheet(type) {
+      const overlay = document.getElementById('bottom-sheet-overlay');
+      let sidebar;
+      
+      if (type === 'lesson-list') {
+        sidebar = document.getElementById('sidebar-left');
+      } else if (type === 'resources') {
+        sidebar = document.getElementById('sidebar-right');
+      }
+      
+      if (!sidebar) return;
+      
+      // Remove closing class if exists
+      sidebar.classList.remove('bottom-sheet-closing');
+      
+      // Show overlay
+      overlay.classList.add('active');
+      
+      // Show bottom sheet
+      sidebar.classList.add('bottom-sheet-active');
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeBottomSheet() {
+      const overlay = document.getElementById('bottom-sheet-overlay');
+      const sidebars = document.querySelectorAll('.player-sidebar-left, .player-sidebar-right');
+      
+      // Remove active class and add closing class
+      sidebars.forEach(sidebar => {
+        if (sidebar.classList.contains('bottom-sheet-active')) {
+          sidebar.classList.remove('bottom-sheet-active');
+          sidebar.classList.add('bottom-sheet-closing');
+          
+          // Remove closing class after animation
+          setTimeout(() => {
+            sidebar.classList.remove('bottom-sheet-closing');
+          }, 300);
+        }
+      });
+      
+      // Hide overlay
+      overlay.classList.remove('active');
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+    }
+    
+    // Close bottom sheet on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeBottomSheet();
+      }
+    });
+    
+    // Prevent body scroll when bottom sheet is open
+    const observer = new MutationObserver(() => {
+      const overlay = document.getElementById('bottom-sheet-overlay');
+      if (overlay && overlay.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+    
+    observer.observe(document.getElementById('bottom-sheet-overlay'), {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  </script>
+</body>
+</html>
+
