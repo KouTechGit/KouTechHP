@@ -1055,6 +1055,32 @@ footer {
   display: block;
   margin: 0 auto;
   background-color: #fff;
+  /* 縦横比を維持するため、最大幅・最大高さ制限を削除 */
+  max-width: none;
+  max-height: none;
+  /* サイズはJavaScriptで設定された値を尊重 */
+}
+
+/* モバイル版: PDFの中央配置を確実にする */
+@media (max-width: 768px) {
+  .pdf-viewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .pdf-viewer .canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .pdf-viewer canvas {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* 外部リンクアイコン（新しいタブで開く） */
@@ -1527,6 +1553,18 @@ footer {
     
     .materials-container iframe {
       height: 400px;
+    }
+    
+    /* モバイル版: PDFビューアを中央配置 */
+    .pdf-viewer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    .pdf-viewer .canvas-wrapper,
+    .pdf-viewer canvas {
+      max-width: 100%;
     }
   }
 }

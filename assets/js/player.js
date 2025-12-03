@@ -367,11 +367,23 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             // 初期スケールを計算
             const pdfWrapperWidth = pdfWrapper.offsetWidth || 400;
-            const padding = 16;
+            const isMobile = window.innerWidth <= 768;
+            
+            let padding, scaleFactor;
+            if (isMobile) {
+              // モバイル版: 左右に同じ余白を持たせて中央に配置
+              padding = 16; // 左右の余白（合計32px）
+              scaleFactor = 0.98; // 少し小さめにして余白を確保
+            } else {
+              // デスクトップ版: 従来通りの計算
+              padding = 16;
+              scaleFactor = 0.95;
+            }
+            
             const availableWidth = pdfWrapperWidth - padding;
             const defaultViewport = currentPage.getViewport({ scale: 1.0 });
             const pageWidth = defaultViewport.width;
-            scale = (availableWidth * 0.95) / pageWidth;
+            scale = (availableWidth * scaleFactor) / pageWidth;
             scale = Math.min(scale, 3.0);
             scale = Math.max(scale, 0.8);
             currentScale = scale;
@@ -379,17 +391,22 @@ document.addEventListener('DOMContentLoaded', () => {
           
           const viewport = currentPage.getViewport({ scale: scale });
           
-          // CanvasのCSSサイズ（表示サイズ）
+          // CanvasのCSSサイズ（表示サイズ）を設定（縦横比を維持）
           const outputScale = dpr;
-          canvas.style.width = viewport.width + 'px';
-          canvas.style.height = viewport.height + 'px';
           
-          // Canvasの内部解像度（物理ピクセル）を高解像度に設定
+          // Canvasの内部解像度（物理ピクセル）を先に設定（重要: 順序が重要）
           canvas.width = Math.floor(viewport.width * outputScale);
           canvas.height = Math.floor(viewport.height * outputScale);
           
-          // コンテキストをスケールして高解像度でレンダリング
+          // CanvasのCSSサイズを設定（縦横比を維持）
+          canvas.style.width = viewport.width + 'px';
+          canvas.style.height = viewport.height + 'px';
+          canvas.style.maxWidth = 'none'; // 最大幅制限を削除
+          canvas.style.maxHeight = 'none'; // 最大高さ制限を削除
+          
+          // コンテキストをクリアしてからスケールを設定
           const context = canvas.getContext('2d');
+          context.clearRect(0, 0, canvas.width, canvas.height);
           context.scale(outputScale, outputScale);
           
           const renderContext = {
@@ -549,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
           canvas.style.transition = 'transform 0.1s ease-out'; // トランジションを復元
         });
         
-        // マウスホイールで拡大縮小
+        // マウスホイールで拡大縮小（カーソル位置を中心に）
         pdfViewer.addEventListener('wheel', function(e) {
           // Ctrlキー（MacではCmdキー）が押されている場合のみ拡大縮小
           if (e.ctrlKey || e.metaKey) {
@@ -557,11 +574,43 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!currentPdf || !currentPage) return;
             
+            // カーソル位置（ビューア内の相対座標）を取得
+            const pdfViewerRect = pdfViewer.getBoundingClientRect();
+            const mouseX = e.clientX - pdfViewerRect.left + pdfViewer.scrollLeft;
+            const mouseY = e.clientY - pdfViewerRect.top + pdfViewer.scrollTop;
+            
             // ホイールの方向に応じてスケールを変更
             const delta = e.deltaY > 0 ? -0.1 : 0.1;
-            const newScale = Math.max(0.5, Math.min(5.0, (currentScale || 1.0) + delta));
+            const oldScale = currentScale || 1.0;
+            const newScale = Math.max(0.5, Math.min(5.0, oldScale + delta));
             
+            // カーソル位置がPDF座標系のどこに対応するかを計算
+            const canvasRect = canvas.getBoundingClientRect();
+            const canvasCenterX = canvasRect.left - pdfViewerRect.left + canvasRect.width / 2 + pdfViewer.scrollLeft;
+            const canvasCenterY = canvasRect.top - pdfViewerRect.top + canvasRect.height / 2 + pdfViewer.scrollTop;
+            
+            // カーソル位置からCanvas中心への相対位置（PDF座標系）
+            const pdfX = (mouseX - canvasCenterX - currentTranslateX) / oldScale;
+            const pdfY = (mouseY - canvasCenterY - currentTranslateY) / oldScale;
+            
+            // 新しいスケールでPDFをレンダリング
+            currentScale = newScale;
             renderPdf(newScale);
+            
+            // スケール変更後のCanvas位置を取得
+            const canvasRectAfter = canvas.getBoundingClientRect();
+            const canvasCenterXAfter = canvasRectAfter.left - pdfViewerRect.left + canvasRectAfter.width / 2 + pdfViewer.scrollLeft;
+            const canvasCenterYAfter = canvasRectAfter.top - pdfViewerRect.top + canvasRectAfter.height / 2 + pdfViewer.scrollTop;
+            
+            // カーソル位置が同じ位置に残るように位置を調整
+            const newPdfXScreen = pdfX * newScale;
+            const newPdfYScreen = pdfY * newScale;
+            
+            currentTranslateX = mouseX - canvasCenterXAfter - newPdfXScreen;
+            currentTranslateY = mouseY - canvasCenterYAfter - newPdfYScreen;
+            
+            updateCanvasPosition();
+            updateZoomLevel();
           }
         }, { passive: false });
         
