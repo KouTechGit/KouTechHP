@@ -15,18 +15,25 @@
       <a href="../index.html" class="logo">
         <img src="../assets/img/logo.png" alt="KouTech">
       </a>
+      <div id="header-title" class="header-title" style="flex: 1; text-align: center; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">
+        <!-- JavaScript で動的に生成される -->
+      </div>
+      <a href="index.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+        一覧に戻る
+      </a>
     </div>
   </header>
 
-  <!-- Overlay for Bottom Sheet -->
+  <!-- ボトムシート用オーバーレイ -->
   <div class="bottom-sheet-overlay" id="bottom-sheet-overlay" onclick="closeBottomSheet()"></div>
 
   <div class="player-layout">
-    <!-- Left Sidebar: Curriculum -->
+    <!-- 左サイドバー: カリキュラム -->
     <aside class="player-sidebar-left" id="sidebar-left">
       <div class="sidebar-header">
-        <h2 id="sidebar-title">Course Content</h2>
-        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="Toggle sidebar">
+        <div class="drag-handle mobile-only"></div>
+        <h2 id="sidebar-title">動画一覧</h2>
+        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
         <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
@@ -34,30 +41,28 @@
         </button>
       </div>
       <div id="lesson-list" class="lesson-list">
-        <!-- JavaScript will populate this -->
-        <div style="padding:2rem; text-align:center; color:var(--text-sub);">Loading...</div>
+        <!-- JavaScript で動的に生成される -->
+        <div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>
       </div>
     </aside>
 
-    <!-- Main Content: Video Player -->
+    <!-- メインコンテンツ: 動画プレーヤー -->
     <main class="player-main">
       <div class="video-container">
         <div id="player"></div>
       </div>
       
-      <!-- Mobile: Action Buttons -->
+      <!-- モバイル: アクションボタン -->
       <div class="mobile-actions">
         <button class="mobile-action-btn" onclick="openBottomSheet('lesson-list')" aria-label="動画一覧を開く">
-          <span class="mobile-action-icon">📋</span>
           <span>動画一覧</span>
         </button>
         <button class="mobile-action-btn" onclick="openBottomSheet('resources')" aria-label="講義資料を開く">
-          <span class="mobile-action-icon">📁</span>
           <span>講義資料</span>
         </button>
       </div>
       
-      <!-- Video Description -->
+      <!-- 動画の説明 -->
       <div class="video-description">
         <h3>動画の概要</h3>
         <div class="description-content">
@@ -66,10 +71,10 @@
       </div>
     </main>
 
-    <!-- Right Sidebar: Resources -->
+    <!-- 右サイドバー: 講義資料 -->
     <aside class="player-sidebar-right" id="sidebar-right">
       <div class="sidebar-header">
-        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('right')" aria-label="Toggle sidebar">
+        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('right')" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
         <h3>講義資料</h3>
@@ -78,24 +83,46 @@
         </button>
       </div>
       <div id="resources-list" class="resources-list">
-        <!-- JavaScript will populate this -->
+        <!-- JavaScript で動的に生成される -->
       </div>
     </aside>
   </div>
 
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="../assets/js/player.js"></script>
   <script>
-    // Sidebar toggle function (Desktop)
+    // ============================================================================
+    // 定数定義
+    // ============================================================================
+    const MOBILE_BREAKPOINT = 768; // モバイル/デスクトップの切り替えポイント（px）
+    const SWIPE_CLOSE_THRESHOLD = 100; // スワイプで閉じるための最小ドラッグ距離（px）
+    const BOTTOM_SHEET_CLOSE_ANIMATION_DURATION = 300; // ボトムシート閉じるアニメーション時間（ms）
+
+    // DOM要素の取得
+    const overlay = document.getElementById('bottom-sheet-overlay');
+    const sidebars = document.querySelectorAll('.player-sidebar-left, .player-sidebar-right');
+    const layout = document.querySelector('.player-layout');
+
+    // ============================================================================
+    // デスクトップ用: サイドバー開閉機能
+    // ============================================================================
+    
+    /**
+     * サイドバーを開閉する（デスクトップ版のみ）
+     * @param {string} side - 'left' または 'right'
+     */
     function toggleSidebar(side) {
-      // Only work on desktop
-      if (window.innerWidth <= 768) return;
+      // モバイルでは動作しない
+      if (window.innerWidth <= MOBILE_BREAKPOINT) return;
       
-      const layout = document.querySelector('.player-layout');
       const sidebar = document.getElementById(`sidebar-${side}`);
+      if (!sidebar) return;
       
+      // サイドバーの開閉状態を切り替え
       sidebar.classList.toggle('collapsed');
       
-      // Update layout classes
+      // レイアウトクラスの更新（両方閉じている、左のみ閉じている、右のみ閉じている）
       layout.classList.remove('left-collapsed', 'right-collapsed', 'both-collapsed');
       
       const leftCollapsed = document.getElementById('sidebar-left').classList.contains('collapsed');
@@ -109,17 +136,24 @@
         layout.classList.add('right-collapsed');
       }
       
-      // Update toggle button icon
+      // トグルボタンのアイコンを更新（開: 「−」、閉: 「+」）
       const toggleBtn = sidebar.querySelector('.sidebar-toggle span');
-      // 開いている時は「−」、閉じている時は「+」
-      toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '+' : '−';
+      if (toggleBtn) {
+        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '+' : '−';
+      }
     }
+
+    // ============================================================================
+    // モバイル用: ボトムシート開閉機能
+    // ============================================================================
     
-    // Bottom Sheet functions (Mobile)
+    /**
+     * ボトムシートを開く（モバイル版）
+     * @param {string} type - 'lesson-list'（動画一覧）または 'resources'（講義資料）
+     */
     function openBottomSheet(type) {
-      const overlay = document.getElementById('bottom-sheet-overlay');
-      let sidebar;
-      
+      // 対象のサイドバーを取得
+      let sidebar = null;
       if (type === 'lesson-list') {
         sidebar = document.getElementById('sidebar-left');
       } else if (type === 'resources') {
@@ -128,64 +162,302 @@
       
       if (!sidebar) return;
       
-      // Remove closing class if exists
+      // 閉じるアニメーション中であればクラスを削除
       sidebar.classList.remove('bottom-sheet-closing');
       
-      // Show overlay
-      overlay.classList.add('active');
+      // モバイル版: ボトムシートの位置調整（動画コンテナの真下からスライドアップしてボタンを隠す）
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        const header = document.querySelector('header');
+        const videoContainer = document.querySelector('.video-container');
+        
+        if (header && videoContainer) {
+          const headerHeight = header.offsetHeight;
+          const videoHeight = videoContainer.offsetHeight;
+          
+          // 動画コンテナの真下から開始 = ヘッダー高さ + 動画コンテナ高さ
+          const topPosition = headerHeight + videoHeight;
+          
+          // 初期位置を設定（動画コンテナの真下に配置）
+          sidebar.style.top = `${topPosition}px`;
+          sidebar.style.bottom = '0';
+          sidebar.style.height = `calc(100vh - ${topPosition}px)`;
+          sidebar.style.transform = 'translateY(100%)'; // 最初は画面外（下）に配置
+          
+          // 強制的にリフローを発生させてスタイルを適用
+          void sidebar.offsetWidth;
+        }
+        // モバイル版ではオーバーレイを表示しない（画面が暗くならない）
+      } else {
+        // デスクトップ版ではオーバーレイを表示
+        if (overlay) {
+          overlay.classList.add('active');
+        }
+      }
       
-      // Show bottom sheet
+      // ボトムシートを表示（アニメーションが開始される）
       sidebar.classList.add('bottom-sheet-active');
       
-      // Prevent body scroll
+      // アニメーション完了後にtransformを0に設定（開いた状態を維持）
+      setTimeout(() => {
+        if (window.innerWidth <= MOBILE_BREAKPOINT && sidebar.classList.contains('bottom-sheet-active')) {
+          sidebar.style.transform = 'translateY(0)'; // 開いた位置で固定
+        }
+      }, BOTTOM_SHEET_CLOSE_ANIMATION_DURATION); // アニメーション完了後
+      
+      // 背景のスクロールを無効化
       document.body.style.overflow = 'hidden';
     }
     
+    /**
+     * ボトムシートを閉じる
+     */
     function closeBottomSheet() {
-      const overlay = document.getElementById('bottom-sheet-overlay');
-      const sidebars = document.querySelectorAll('.player-sidebar-left, .player-sidebar-right');
-      
-      // Remove active class and add closing class
+      // 開いているボトムシートをすべて閉じる
       sidebars.forEach(sidebar => {
         if (sidebar.classList.contains('bottom-sheet-active')) {
+          // アクティブクラスを削除し、閉じるアニメーション用のクラスを追加
           sidebar.classList.remove('bottom-sheet-active');
           sidebar.classList.add('bottom-sheet-closing');
           
-          // Remove closing class after animation
+          // 閉じるアニメーションを開始（下にスライドダウン）
+          sidebar.style.transform = 'translateY(100%)';
+          
+          // アニメーション完了後に閉じるクラスとスタイルを削除
           setTimeout(() => {
             sidebar.classList.remove('bottom-sheet-closing');
-          }, 300);
+            sidebar.style.top = '';
+            sidebar.style.bottom = '';
+            sidebar.style.height = '';
+            sidebar.style.transform = '';
+          }, BOTTOM_SHEET_CLOSE_ANIMATION_DURATION);
         }
       });
       
-      // Hide overlay
-      overlay.classList.remove('active');
+      // デスクトップ版のみオーバーレイを非表示
+      if (window.innerWidth > MOBILE_BREAKPOINT && overlay) {
+        overlay.classList.remove('active');
+      }
       
-      // Restore body scroll
+      // 背景のスクロールを復元
       document.body.style.overflow = '';
     }
+
+    // ============================================================================
+    // リサイズ時のレイアウト調整
+    // ============================================================================
     
-    // Close bottom sheet on ESC key
+    let lastWindowWidth = window.innerWidth;
+
+    window.addEventListener('resize', () => {
+      const currentWidth = window.innerWidth;
+      
+      // モバイル <-> デスクトップの境界をまたいだ場合、または大幅なリサイズ時
+      if ((lastWindowWidth <= MOBILE_BREAKPOINT && currentWidth > MOBILE_BREAKPOINT) ||
+          (lastWindowWidth > MOBILE_BREAKPOINT && currentWidth <= MOBILE_BREAKPOINT)) {
+        
+        // ボトムシートの状態を完全リセット
+        sidebars.forEach(sidebar => {
+          // クラス削除
+          sidebar.classList.remove('bottom-sheet-active');
+          sidebar.classList.remove('bottom-sheet-closing');
+          
+          // インラインスタイル削除（重要）
+          sidebar.style.top = '';
+          sidebar.style.bottom = '';
+          sidebar.style.height = '';
+          sidebar.style.transform = '';
+          sidebar.style.transition = 'none';
+          
+          // 強制リフロー
+          void sidebar.offsetWidth;
+          
+          sidebar.style.transition = '';
+        });
+        
+        // オーバーレイ非表示
+        if (overlay) overlay.classList.remove('active');
+        
+        // スクロールロック解除
+        document.body.style.overflow = '';
+      } else if (currentWidth <= MOBILE_BREAKPOINT) {
+        // モバイル内でのリサイズ時、開いているボトムシートの位置を再計算
+        sidebars.forEach(sidebar => {
+          if (sidebar.classList.contains('bottom-sheet-active')) {
+            const header = document.querySelector('header');
+            const videoContainer = document.querySelector('.video-container');
+            const mobileActions = document.querySelector('.mobile-actions');
+            
+            if (header && videoContainer) {
+              const headerHeight = header.offsetHeight;
+              const videoHeight = videoContainer.offsetHeight;
+              // 動画コンテナの真下 = ヘッダー高さ + 動画コンテナ高さ
+              const topPosition = headerHeight + videoHeight;
+              
+              sidebar.style.top = `${topPosition}px`;
+              sidebar.style.bottom = '0';
+              sidebar.style.height = `calc(100vh - ${topPosition}px)`;
+              sidebar.style.transform = 'translateY(0)'; // 開いた状態を維持
+            }
+          }
+        });
+      }
+      
+      lastWindowWidth = currentWidth;
+    });
+
+    // ============================================================================
+    // キーボードショートカット
+    // ============================================================================
+    
+    /**
+     * ESCキーでボトムシートを閉じる
+     */
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeBottomSheet();
       }
     });
+
+    // ============================================================================
+    // スクロール制御: ボトムシートが開いている時は背景スクロールを無効化
+    // ============================================================================
     
-    // Prevent body scroll when bottom sheet is open
-    const observer = new MutationObserver(() => {
-      const overlay = document.getElementById('bottom-sheet-overlay');
-      if (overlay && overlay.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
+    /**
+     * ボトムシートの開閉状態をチェックしてスクロールを制御
+     */
+    const checkBottomSheetState = () => {
+      const isOpen = Array.from(sidebars).some(sidebar => 
+        sidebar.classList.contains('bottom-sheet-active')
+      );
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+    
+    // デスクトップ版: オーバーレイの状態を監視
+    if (overlay) {
+      const overlayObserver = new MutationObserver(() => {
+        if (window.innerWidth > MOBILE_BREAKPOINT) {
+          // デスクトップ版ではオーバーレイの状態でスクロールを制御
+          if (overlay.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = '';
+          }
+        } else {
+          // モバイル版ではボトムシートの状態を直接チェック
+          checkBottomSheetState();
+        }
+      });
+      
+      overlayObserver.observe(overlay, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
+    
+    // モバイル版: ボトムシートの状態を監視
+    sidebars.forEach(sidebar => {
+      const sidebarObserver = new MutationObserver(() => {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) {
+          checkBottomSheetState();
+        }
+      });
+      
+      sidebarObserver.observe(sidebar, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    });
+
+    // ============================================================================
+    // スワイプで閉じる機能（モバイル版のみ）
+    // ============================================================================
+    
+    // ドラッグ状態の管理
+    let dragState = {
+      startY: 0,
+      currentY: 0,
+      isDragging: false,
+      sidebar: null
+    };
+    
+    /**
+     * ドラッグ開始時の処理
+     * @param {Event} e - タッチ/マウスイベント
+     */
+    function handleDragStart(e) {
+      // デスクトップでは無効
+      if (window.innerWidth > MOBILE_BREAKPOINT) return;
+      
+      // ドラッグハンドルからのドラッグのみ有効
+      const dragHandle = e.target.closest('.drag-handle');
+      if (!dragHandle) return;
+      
+      // ボトムシートが開いているか確認
+      const sidebar = dragHandle.closest('.player-sidebar-left, .player-sidebar-right');
+      if (!sidebar || !sidebar.classList.contains('bottom-sheet-active')) return;
+      
+      // ドラッグ状態を初期化
+      dragState.isDragging = true;
+      dragState.sidebar = sidebar;
+      dragState.startY = e.touches ? e.touches[0].clientY : e.clientY;
+      dragState.currentY = dragState.startY;
+      
+      e.preventDefault();
+    }
+    
+    /**
+     * ドラッグ中の処理
+     * @param {Event} e - タッチ/マウスイベント
+     */
+    function handleDragMove(e) {
+      if (!dragState.isDragging || !dragState.sidebar) return;
+      
+      dragState.currentY = e.touches ? e.touches[0].clientY : e.clientY;
+      const deltaY = dragState.currentY - dragState.startY;
+      
+      // 下方向へのドラッグのみ許可（上方向は無視）
+      if (deltaY > 0) {
+        dragState.sidebar.style.transform = `translateY(${deltaY}px)`;
+        dragState.sidebar.style.transition = 'none'; // ドラッグ中はアニメーションを無効化
       }
-    });
+      
+      e.preventDefault();
+    }
     
-    observer.observe(document.getElementById('bottom-sheet-overlay'), {
-      attributes: true,
-      attributeFilter: ['class']
-    });
+    /**
+     * ドラッグ終了時の処理
+     * @param {Event} e - タッチ/マウスイベント
+     */
+    function handleDragEnd(e) {
+      if (!dragState.isDragging || !dragState.sidebar) return;
+      
+      const deltaY = dragState.currentY - dragState.startY;
+      
+      // 閾値以上ドラッグしたら閉じる、それ以下なら元の位置に戻す
+      if (deltaY > SWIPE_CLOSE_THRESHOLD) {
+        closeBottomSheet();
+      } else {
+        // 元の位置に戻す
+        dragState.sidebar.style.transform = '';
+        dragState.sidebar.style.transition = '';
+      }
+      
+      // ドラッグ状態をリセット
+      dragState.isDragging = false;
+      dragState.sidebar = null;
+      dragState.startY = 0;
+      dragState.currentY = 0;
+    }
+    
+    // タッチイベントの登録（モバイル用）
+    document.addEventListener('touchstart', handleDragStart, { passive: false });
+    document.addEventListener('touchmove', handleDragMove, { passive: false });
+    document.addEventListener('touchend', handleDragEnd, { passive: false });
+    
+    // マウスイベントの登録（デバッグ/開発用）
+    document.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
   </script>
 </body>
 </html>
