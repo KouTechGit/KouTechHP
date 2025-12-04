@@ -66,7 +66,12 @@
       <div class="video-description">
         <h3>動画の概要</h3>
         <div class="description-content">
-          <p style="color: var(--text-sub);">準備中...</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">この動画では、数学の基礎概念について詳しく解説します。まず、基本的な定義から始めて、段階的に理解を深めていきます。</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">最初のセクションでは、重要な公式や定理について説明します。これらの概念は、後の問題解決において非常に重要な役割を果たします。</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">次に、具体的な例題を通じて、理論的な知識を実践的なスキルに変換する方法を学びます。各例題は、段階的に難易度が上がるように構成されています。</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">さらに、よくある間違いや注意点についても詳しく解説します。これにより、学習者が同じ間違いを繰り返さないようにすることができます。</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">最後に、復習問題を解くことで、学習内容の定着を図ります。これらの問題は、実際の試験で出題される可能性が高い形式で作成されています。</p>
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">この動画を視聴することで、数学の基礎をしっかりと理解し、応用力を身につけることができます。繰り返し視聴することで、より深い理解が得られるでしょう。</p>
         </div>
       </div>
     </main>
@@ -103,6 +108,9 @@
     const overlay = document.getElementById('bottom-sheet-overlay');
     const sidebars = document.querySelectorAll('.player-sidebar-left, .player-sidebar-right');
     const layout = document.querySelector('.player-layout');
+    
+    // ボトムシートを開いた直後の短い時間は外側タップを無視するフラグ
+    let justOpenedBottomSheet = false;
 
     // ============================================================================
     // デスクトップ用: サイドバー開閉機能
@@ -177,14 +185,35 @@
           // 動画コンテナの真下から開始 = ヘッダー高さ + 動画コンテナ高さ
           const topPosition = headerHeight + videoHeight;
           
-          // 初期位置を設定（動画コンテナの真下に配置）
+          // 位置を設定（動画コンテナの真下に配置）
           sidebar.style.top = `${topPosition}px`;
           sidebar.style.bottom = '0';
           sidebar.style.height = `calc(100vh - ${topPosition}px)`;
-          sidebar.style.transform = 'translateY(100%)'; // 最初は画面外（下）に配置
+          
+          // トランジションを一時的に無効化して初期位置を設定
+          sidebar.style.transition = 'none';
+          sidebar.style.transform = 'translateY(100%)';
           
           // 強制的にリフローを発生させてスタイルを適用
           void sidebar.offsetWidth;
+          
+          // ボトムシートを表示
+          sidebar.classList.add('bottom-sheet-active');
+          
+          // トランジションを有効化してアニメーションを開始
+          // 二重のrequestAnimationFrameでブラウザのレンダリングを確実に待つ
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              sidebar.style.transition = 'transform 0.3s ease';
+              sidebar.style.transform = 'translateY(0)';
+              
+              // ボトムシートを開いた直後は外側タップを無視するフラグを設定
+              justOpenedBottomSheet = true;
+              setTimeout(() => {
+                justOpenedBottomSheet = false;
+              }, 400); // アニメーション時間（300ms）+ 余裕（100ms）
+            });
+          });
         }
         // モバイル版ではオーバーレイを表示しない（画面が暗くならない）
       } else {
@@ -192,20 +221,14 @@
         if (overlay) {
           overlay.classList.add('active');
         }
+        // デスクトップ版でもボトムシートを表示
+        sidebar.classList.add('bottom-sheet-active');
       }
       
-      // ボトムシートを表示（アニメーションが開始される）
-      sidebar.classList.add('bottom-sheet-active');
-      
-      // アニメーション完了後にtransformを0に設定（開いた状態を維持）
-      setTimeout(() => {
-        if (window.innerWidth <= MOBILE_BREAKPOINT && sidebar.classList.contains('bottom-sheet-active')) {
-          sidebar.style.transform = 'translateY(0)'; // 開いた位置で固定
-        }
-      }, BOTTOM_SHEET_CLOSE_ANIMATION_DURATION); // アニメーション完了後
-      
-      // 背景のスクロールを無効化
-      document.body.style.overflow = 'hidden';
+      // 背景のスクロールを無効化（モバイル版では既にCSSでoverflow: hiddenが設定されているが、念のため）
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        document.body.style.overflow = 'hidden';
+      }
     }
     
     /**
@@ -215,20 +238,18 @@
       // 開いているボトムシートをすべて閉じる
       sidebars.forEach(sidebar => {
         if (sidebar.classList.contains('bottom-sheet-active')) {
-          // アクティブクラスを削除し、閉じるアニメーション用のクラスを追加
-          sidebar.classList.remove('bottom-sheet-active');
-          sidebar.classList.add('bottom-sheet-closing');
-          
           // 閉じるアニメーションを開始（下にスライドダウン）
           sidebar.style.transform = 'translateY(100%)';
           
-          // アニメーション完了後に閉じるクラスとスタイルを削除
+          // アニメーション完了後にクラスとスタイルを削除
           setTimeout(() => {
+            sidebar.classList.remove('bottom-sheet-active');
             sidebar.classList.remove('bottom-sheet-closing');
             sidebar.style.top = '';
             sidebar.style.bottom = '';
             sidebar.style.height = '';
             sidebar.style.transform = '';
+            sidebar.style.transition = '';
           }, BOTTOM_SHEET_CLOSE_ANIMATION_DURATION);
         }
       });
@@ -238,8 +259,12 @@
         overlay.classList.remove('active');
       }
       
-      // 背景のスクロールを復元
-      document.body.style.overflow = '';
+      // 背景のスクロールを復元（モバイル版ではCSSでoverflow: hiddenが設定されているが、念のため）
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        document.body.style.overflow = 'hidden'; // モバイル版では常にhidden
+      } else {
+        document.body.style.overflow = '';
+      }
     }
 
     // ============================================================================
@@ -326,10 +351,15 @@
      * ボトムシートの開閉状態をチェックしてスクロールを制御
      */
     const checkBottomSheetState = () => {
-      const isOpen = Array.from(sidebars).some(sidebar => 
-        sidebar.classList.contains('bottom-sheet-active')
-      );
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      // モバイル版ではCSSでoverflow: hiddenが設定されているため、常にhiddenを維持
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        const isOpen = Array.from(sidebars).some(sidebar => 
+          sidebar.classList.contains('bottom-sheet-active')
+        );
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
     };
     
     // デスクトップ版: オーバーレイの状態を監視
@@ -458,6 +488,63 @@
     document.addEventListener('mousedown', handleDragStart);
     document.addEventListener('mousemove', handleDragMove);
     document.addEventListener('mouseup', handleDragEnd);
+
+    // ============================================================================
+    // ボトムシート以外の領域をタップして閉じる機能（モバイル版のみ）
+    // ============================================================================
+    
+    /**
+     * ボトムシート以外の領域をタップした時にボトムシートを閉じる
+     * @param {Event} e - タッチ/マウスイベント
+     */
+    function handleOutsideTap(e) {
+      // デスクトップでは無効
+      if (window.innerWidth > MOBILE_BREAKPOINT) return;
+      
+      // ボトムシートを開いた直後（300ms以内）は無視
+      if (justOpenedBottomSheet) return;
+      
+      // ボトムシートが開いていない場合は何もしない
+      const isBottomSheetOpen = Array.from(sidebars).some(sidebar => 
+        sidebar.classList.contains('bottom-sheet-active')
+      );
+      if (!isBottomSheetOpen) return;
+      
+      // タップされた要素を取得
+      const target = e.target;
+      
+      // ボトムシート内の要素をタップした場合は閉じない
+      const isInsideBottomSheet = target.closest('.player-sidebar-left.bottom-sheet-active') ||
+                                   target.closest('.player-sidebar-right.bottom-sheet-active');
+      if (isInsideBottomSheet) return;
+      
+      // ボタン自体やボタン内の要素をタップした場合は閉じない
+      const isButton = target.closest('.mobile-action-btn') ||
+                       target.closest('.mobile-actions');
+      if (isButton) return;
+      
+      // ボトムシート以外の領域（player-main、header、video-container、video-descriptionなど）をタップした場合
+      const isOutsideArea = target.closest('.player-main') ||
+                            target.closest('header') ||
+                            target.closest('.video-container') ||
+                            target.closest('.video-description');
+      
+      if (isOutsideArea) {
+        // YouTubeプレーヤーの操作（再生/一時停止など）には影響しないようにする
+        // video-container内のiframeやYouTubeプレーヤー要素をタップした場合は閉じない
+        const isPlayerElement = target.closest('#player') ||
+                                target.closest('iframe') ||
+                                target.tagName === 'IFRAME';
+        
+        if (!isPlayerElement) {
+          closeBottomSheet();
+        }
+      }
+    }
+    
+    // タッチイベントとマウスイベントの登録
+    document.addEventListener('touchstart', handleOutsideTap, { passive: true });
+    document.addEventListener('click', handleOutsideTap);
   </script>
 </body>
 </html>

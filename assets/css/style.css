@@ -1292,11 +1292,17 @@ footer {
 
 /* Mobile Styles (768px and below) */
 @media (max-width: 768px) {
+  /* 画面全体のスクロールをなくし、ぴったり収まるようにする */
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  
   /* Layout: Single Column */
   .player-layout {
     grid-template-columns: 1fr;
-    height: auto;
-    overflow: visible;
+    height: 100vh;
+    overflow: hidden;
     position: relative;
   }
   
@@ -1321,8 +1327,8 @@ footer {
     border-top: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5);
     /* top, bottom, height はJavaScriptで動的に設定される */
-    /* transform はJavaScriptで初期状態（translateY(100%)）を設定後、アニメーションでtranslateY(0)に */
-    animation: slideUp 0.3s ease forwards;
+    /* transformはJavaScriptで制御される */
+    transition: transform 0.3s ease;
   }
   
   .player-sidebar-left.bottom-sheet-active::before,
@@ -1330,6 +1336,7 @@ footer {
     display: none;
   }
   
+  /* アニメーション用のキーフレーム（必要に応じて使用） */
   @keyframes slideUp {
     from {
       transform: translateY(100%);
@@ -1350,7 +1357,7 @@ footer {
   
   .player-sidebar-left.bottom-sheet-closing,
   .player-sidebar-right.bottom-sheet-closing {
-    animation: slideDown 0.3s ease forwards;
+    transition: transform 0.3s ease;
   }
   
   /* Overlay */
@@ -1412,6 +1419,7 @@ footer {
     position: relative;
     background: #000;
     box-shadow: none;
+    flex-shrink: 0;
   }
   
   .video-container::after {
@@ -1428,8 +1436,16 @@ footer {
   
   /* Player Main */
   .player-main {
-    height: auto;
-    min-height: calc(100vh - 80px);
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* モバイルアクションボタンもflex-shrink: 0にする */
+  .mobile-actions {
+    flex-shrink: 0;
   }
   
   /* Video Description */
@@ -1440,6 +1456,14 @@ footer {
     background: var(--bg-surface);
     border: var(--border-glass);
     border-radius: var(--radius-lg);
+    flex-shrink: 0;
+  }
+  
+  /* 動画概要のスクロール機能 */
+  .description-content {
+    max-height: 200px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   /* Header adjustments */
@@ -1452,6 +1476,15 @@ footer {
   }
   
   .logo {
+    font-size: 1.2rem;
+  }
+  
+  /* フォントサイズ統一 */
+  .header-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .video-description h3 {
     font-size: 1.2rem;
   }
   

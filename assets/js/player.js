@@ -339,6 +339,10 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.style.margin = '0 auto';
         canvas.style.position = 'relative';
         canvas.style.transition = 'transform 0.1s ease-out';
+        // 縦横比を維持するための設定
+        canvas.style.maxWidth = 'none';
+        canvas.style.maxHeight = 'none';
+        canvas.style.boxSizing = 'content-box';
         canvasWrapper.appendChild(canvas);
         pdfViewer.appendChild(canvasWrapper);
         
@@ -391,22 +395,36 @@ document.addEventListener('DOMContentLoaded', () => {
           
           const viewport = currentPage.getViewport({ scale: scale });
           
-          // CanvasのCSSサイズ（表示サイズ）を設定（縦横比を維持）
+          // Canvasのサイズ設定（縦横比を確実に維持）
           const outputScale = dpr;
           
-          // Canvasの内部解像度（物理ピクセル）を先に設定（重要: 順序が重要）
-          canvas.width = Math.floor(viewport.width * outputScale);
-          canvas.height = Math.floor(viewport.height * outputScale);
+          // 内部解像度（物理ピクセル）を先に設定
+          const canvasWidth = Math.floor(viewport.width * outputScale);
+          const canvasHeight = Math.floor(viewport.height * outputScale);
+          canvas.width = canvasWidth;
+          canvas.height = canvasHeight;
           
-          // CanvasのCSSサイズを設定（縦横比を維持）
+          // CSSサイズ（表示サイズ）を設定 - viewportのサイズをそのまま使用して縦横比を維持
+          // 重要: viewport.widthとviewport.heightはPDFページの縦横比を維持している
+          // 縦横比を確実に維持するため、一度すべてのサイズ関連スタイルをリセット
+          canvas.style.removeProperty('width');
+          canvas.style.removeProperty('height');
+          canvas.style.removeProperty('max-width');
+          canvas.style.removeProperty('max-height');
+          canvas.style.removeProperty('min-width');
+          canvas.style.removeProperty('min-height');
+          
+          // 新しいサイズを設定（viewportから取得した値をそのまま使用）
           canvas.style.width = viewport.width + 'px';
           canvas.style.height = viewport.height + 'px';
-          canvas.style.maxWidth = 'none'; // 最大幅制限を削除
-          canvas.style.maxHeight = 'none'; // 最大高さ制限を削除
+          canvas.style.maxWidth = 'none';
+          canvas.style.maxHeight = 'none';
+          canvas.style.boxSizing = 'content-box';
+          canvas.style.flexShrink = '0';
           
           // コンテキストをクリアしてからスケールを設定
           const context = canvas.getContext('2d');
-          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.clearRect(0, 0, canvasWidth, canvasHeight);
           context.scale(outputScale, outputScale);
           
           const renderContext = {
