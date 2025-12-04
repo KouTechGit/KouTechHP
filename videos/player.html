@@ -204,7 +204,8 @@
           // 二重のrequestAnimationFrameでブラウザのレンダリングを確実に待つ
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-              sidebar.style.transition = 'transform 0.3s ease';
+              // iOS Chrome風の滑らかなイージング
+              sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
               sidebar.style.transform = 'translateY(0)';
               
               // ボトムシートを開いた直後は外側タップを無視するフラグを設定
@@ -239,6 +240,8 @@
       sidebars.forEach(sidebar => {
         if (sidebar.classList.contains('bottom-sheet-active')) {
           // 閉じるアニメーションを開始（下にスライドダウン）
+          // iOS Chrome風の滑らかなイージング
+          sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
           sidebar.style.transform = 'translateY(100%)';
           
           // アニメーション完了後にクラスとスタイルを削除
@@ -407,7 +410,12 @@
       startY: 0,
       currentY: 0,
       isDragging: false,
-      sidebar: null
+      sidebar: null,
+      startTime: 0,
+      lastY: 0,
+      lastTime: 0,
+      velocity: 0,
+      initialScrollTop: 0
     };
     
     /**
@@ -418,19 +426,58 @@
       // デスクトップでは無効
       if (window.innerWidth > MOBILE_BREAKPOINT) return;
       
-      // ドラッグハンドルからのドラッグのみ有効
-      const dragHandle = e.target.closest('.drag-handle');
-      if (!dragHandle) return;
-      
       // ボトムシートが開いているか確認
-      const sidebar = dragHandle.closest('.player-sidebar-left, .player-sidebar-right');
-      if (!sidebar || !sidebar.classList.contains('bottom-sheet-active')) return;
+      const sidebar = e.target.closest('.player-sidebar-left.bottom-sheet-active, .player-sidebar-right.bottom-sheet-active');
+      if (!sidebar) return;
+      
+      // スクロール可能な要素内でのタッチをチェック
+      const scrollableElement = e.target.closest('.lesson-list, .resources-list');
+      if (scrollableElement) {
+        // スクロール位置をチェック
+        const scrollTop = scrollableElement.scrollTop;
+        const scrollHeight = scrollableElement.scrollHeight;
+        const clientHeight = scrollableElement.clientHeight;
+        const isScrollable = scrollHeight > clientHeight;
+        
+        dragState.initialScrollTop = scrollTop;
+        
+        // スクロール可能な要素がスクロールされている場合は、ドラッグを無効化
+        // ただし、最上部（scrollTop === 0）で下方向へのドラッグの場合は許可
+        if (scrollTop > 0 && isScrollable) {
+          // スクロール中はドラッグを無効化
+          return;
+        }
+        
+        // 最下部に到達している場合も、上方向へのドラッグはスクロールを優先
+        if (scrollTop + clientHeight >= scrollHeight - 1 && isScrollable) {
+          // 最下部に到達している場合は、上方向へのドラッグはスクロールを優先
+          // 下方向へのドラッグのみ許可
+        }
+      }
+      
+      // ボタンやリンクなどのインタラクティブ要素は除外
+      if (e.target.closest('button, a, input, select, textarea')) {
+        return;
+      }
       
       // ドラッグ状態を初期化
+      const touchY = e.touches ? e.touches[0].clientY : e.clientY;
       dragState.isDragging = true;
       dragState.sidebar = sidebar;
-      dragState.startY = e.touches ? e.touches[0].clientY : e.clientY;
-      dragState.currentY = dragState.startY;
+      dragState.startY = touchY;
+      dragState.currentY = touchY;
+      dragState.lastY = touchY;
+      dragState.startTime = Date.now();
+      dragState.lastTime = dragState.startTime;
+      dragState.velocity = 0;
+      
+      // 現在のtransform値を取得して初期位置を保持
+      const currentTransform = sidebar.style.transform || 'translateY(0)';
+      const match = currentTransform.match(/translateY\(([^)]+)\)/);
+      if (match) {
+        const currentY = parseFloat(match[1]) || 0;
+        dragState.startY -= currentY; // 現在の位置を考慮
+      }
       
       e.preventDefault();
     }
@@ -442,14 +489,61 @@
     function handleDragMove(e) {
       if (!dragState.isDragging || !dragState.sidebar) return;
       
-      dragState.currentY = e.touches ? e.touches[0].clientY : e.clientY;
-      const deltaY = dragState.currentY - dragState.startY;
+      const currentTime = Date.now();
+      const touchY = e.touches ? e.touches[0].clientY : e.clientY;
+      dragState.currentY = touchY;
       
-      // 下方向へのドラッグのみ許可（上方向は無視）
-      if (deltaY > 0) {
-        dragState.sidebar.style.transform = `translateY(${deltaY}px)`;
-        dragState.sidebar.style.transition = 'none'; // ドラッグ中はアニメーションを無効化
+      // スクロール可能な要素をチェック
+      const scrollableElement = dragState.sidebar.querySelector('.lesson-list, .resources-list');
+      if (scrollableElement) {
+        const currentScrollTop = scrollableElement.scrollTop;
+        const scrollHeight = scrollableElement.scrollHeight;
+        const clientHeight = scrollableElement.clientHeight;
+        const isScrollable = scrollHeight > clientHeight;
+        const deltaY = touchY - dragState.startY;
+        
+        // スクロールが最上部でない場合、または上方向へのドラッグでスクロールが可能な場合はドラッグを無効化
+        if (isScrollable) {
+          // スクロールが最上部でない場合
+          if (currentScrollTop > 0) {
+            // 下方向へのドラッグのみ許可（ボトムシートを閉じる）
+            if (deltaY <= 0) {
+              dragState.isDragging = false;
+              return;
+            }
+          }
+          
+          // スクロールが最下部に到達している場合
+          if (currentScrollTop + clientHeight >= scrollHeight - 1) {
+            // 上方向へのドラッグはスクロールを優先（ただし、既に最下部なので無効）
+            if (deltaY < 0) {
+              dragState.isDragging = false;
+              return;
+            }
+          }
+        }
       }
+      
+      const deltaY = touchY - dragState.startY;
+      
+      // 上方向へのドラッグは上限を設定（-50pxまで）
+      // 下方向へのドラッグは制限なし
+      const maxUpward = -50;
+      const finalDeltaY = Math.max(maxUpward, deltaY);
+      
+      // 指の位置に正確に追従
+      dragState.sidebar.style.transform = `translateY(${finalDeltaY}px)`;
+      dragState.sidebar.style.transition = 'none'; // ドラッグ中はアニメーションを無効化
+      
+      // 速度を計算（最後の100ms間の移動距離）
+      const timeDelta = currentTime - dragState.lastTime;
+      if (timeDelta > 0) {
+        const distanceDelta = touchY - dragState.lastY;
+        dragState.velocity = distanceDelta / timeDelta; // px/ms
+      }
+      
+      dragState.lastY = touchY;
+      dragState.lastTime = currentTime;
       
       e.preventDefault();
     }
@@ -462,14 +556,36 @@
       if (!dragState.isDragging || !dragState.sidebar) return;
       
       const deltaY = dragState.currentY - dragState.startY;
+      const timeDelta = Date.now() - dragState.startTime;
       
-      // 閾値以上ドラッグしたら閉じる、それ以下なら元の位置に戻す
-      if (deltaY > SWIPE_CLOSE_THRESHOLD) {
-        closeBottomSheet();
+      // 速度を考慮した判定（px/ms）
+      // 速度が速い場合（例：0.5px/ms以上）は、閾値より小さくても閉じる
+      const velocityThreshold = 0.5; // px/ms
+      const shouldCloseByVelocity = Math.abs(dragState.velocity) > velocityThreshold && dragState.velocity > 0;
+      
+      // 距離と速度の両方を考慮
+      const shouldClose = deltaY > SWIPE_CLOSE_THRESHOLD || (deltaY > 50 && shouldCloseByVelocity);
+      
+      if (shouldClose) {
+        // 閉じるアニメーション
+        dragState.sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
+        dragState.sidebar.style.transform = 'translateY(100%)';
+        
+        // アニメーション完了後に閉じる
+        setTimeout(() => {
+          closeBottomSheet();
+        }, 300);
       } else {
-        // 元の位置に戻す
-        dragState.sidebar.style.transform = '';
-        dragState.sidebar.style.transition = '';
+        // 元の位置に戻す（スムーズなアニメーション）
+        dragState.sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
+        dragState.sidebar.style.transform = 'translateY(0)';
+        
+        // アニメーション完了後にtransitionをリセット
+        setTimeout(() => {
+          if (dragState.sidebar) {
+            dragState.sidebar.style.transition = '';
+          }
+        }, 300);
       }
       
       // ドラッグ状態をリセット
@@ -477,6 +593,11 @@
       dragState.sidebar = null;
       dragState.startY = 0;
       dragState.currentY = 0;
+      dragState.startTime = 0;
+      dragState.lastY = 0;
+      dragState.lastTime = 0;
+      dragState.velocity = 0;
+      dragState.initialScrollTop = 0;
     }
     
     // タッチイベントの登録（モバイル用）
@@ -531,12 +652,12 @@
       
       if (isOutsideArea) {
         // YouTubeプレーヤーの操作（再生/一時停止など）には影響しないようにする
-        // video-container内のiframeやYouTubeプレーヤー要素をタップした場合は閉じない
-        const isPlayerElement = target.closest('#player') ||
-                                target.closest('iframe') ||
-                                target.tagName === 'IFRAME';
+        // iframe内をタップした場合は閉じない（YouTubeプレーヤーの操作を優先）
+        const isInsideIframe = target.closest('iframe') || target.tagName === 'IFRAME';
         
-        if (!isPlayerElement) {
+        // #player要素自体やvideo-containerをタップした場合は閉じる
+        // ただし、iframe内をタップした場合は閉じない（YouTubeプレーヤーの操作を優先）
+        if (!isInsideIframe) {
           closeBottomSheet();
         }
       }

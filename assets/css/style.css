@@ -1328,7 +1328,8 @@ footer {
     box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5);
     /* top, bottom, height はJavaScriptで動的に設定される */
     /* transformはJavaScriptで制御される */
-    transition: transform 0.3s ease;
+    /* iOS Chrome風の滑らかなイージング */
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
   }
   
   .player-sidebar-left.bottom-sheet-active::before,
