@@ -2,12 +2,22 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>授業動画 | KouTech</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- MathJax for LaTeX math rendering -->
+  <script id="MathJax-script" async src="../assets/lib/mathjax/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
 </head>
 <body>
   <header>
@@ -39,6 +49,47 @@
   </footer>
 
   <script>
+    /**
+     * 科目名から色のCSS変数名を取得する
+     * @param {string} subjectName - 科目名
+     * @returns {Object} 色のCSS変数名
+     */
+    function getSubjectColors(subjectName) {
+      let baseColor, lightColor;
+      
+      switch(subjectName) {
+        case '数Ⅰ':
+          baseColor = 'var(--subject-math1-base)';
+          lightColor = 'var(--subject-math1-light)';
+          break;
+        case '数Ⅱ':
+          baseColor = 'var(--subject-math2-base)';
+          lightColor = 'var(--subject-math2-light)';
+          break;
+        case '数Ⅲ':
+          baseColor = 'var(--subject-math3-base)';
+          lightColor = 'var(--subject-math3-light)';
+          break;
+        case '数A':
+          baseColor = 'var(--subject-mathA-base)';
+          lightColor = 'var(--subject-mathA-light)';
+          break;
+        case '数B':
+          baseColor = 'var(--subject-mathB-base)';
+          lightColor = 'var(--subject-mathB-light)';
+          break;
+        case '数C':
+          baseColor = 'var(--subject-mathC-base)';
+          lightColor = 'var(--subject-mathC-light)';
+          break;
+        default:
+          baseColor = 'var(--subject-math1-base)';
+          lightColor = 'var(--subject-math1-light)';
+      }
+      
+      return { baseColor, lightColor };
+    }
+
     // Load course data and render subjects/units
     fetch('course_data.json')
       .then(response => response.json())
@@ -47,13 +98,16 @@
         container.innerHTML = '';
 
         data.subjects.forEach(subject => {
+          // 科目の色を取得
+          const colors = getSubjectColors(subject.subject_name);
+          
           // Create subject section
           const subjectSection = document.createElement('div');
           subjectSection.style.marginBottom = '3rem';
 
           const subjectTitle = document.createElement('h2');
           subjectTitle.textContent = subject.subject_name;
-          subjectTitle.style.borderLeft = '4px solid var(--accent-primary)';
+          subjectTitle.style.borderLeft = `4px solid ${colors.baseColor}`;
           subjectTitle.style.paddingLeft = '1rem';
           subjectTitle.style.marginBottom = '1.5rem';
           subjectSection.appendChild(subjectTitle);
@@ -65,10 +119,11 @@
             const card = document.createElement('div');
             card.className = 'unit-card-horizontal';
 
-            // 科目タグ（光る効果）
+            // 科目タグ（光る効果）- 基本色（濃い）を背景に適用
             const tag = document.createElement('span');
             tag.className = 'unit-card-subject-tag';
             tag.textContent = subject.subject_name;
+            tag.style.background = colors.baseColor;
             card.appendChild(tag);
 
             // コンテンツエリア
@@ -87,11 +142,25 @@
 
             card.appendChild(content);
 
-            // 学習を開始するボタン（暗い→ホバーで光る）
+            // 学習を開始するボタン（暗い→ホバーで光る）- ホバー時に基本色（薄い透過）を適用
             const link = document.createElement('a');
             link.href = `player.html?subject=${encodeURIComponent(subject.subject_name)}&unit=${encodeURIComponent(unit.unit_name)}`;
             link.className = 'unit-card-button';
             link.textContent = '学習を開始する';
+            // データ属性に色を保存してCSS変数で使用
+            link.dataset.subjectBaseColor = colors.baseColor;
+            link.dataset.subjectLightColor = colors.lightColor;
+            // ホバー時のスタイルを設定（インラインスタイルで確実に適用）
+            link.addEventListener('mouseenter', function() {
+              this.style.background = colors.lightColor;
+              this.style.borderColor = colors.baseColor;
+              this.style.color = '#fff';
+            });
+            link.addEventListener('mouseleave', function() {
+              this.style.background = '';
+              this.style.borderColor = '';
+              this.style.color = '';
+            });
             card.appendChild(link);
 
             unitsList.appendChild(card);

@@ -2,12 +2,22 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>動画で学ぶ | KouTech</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- MathJax for LaTeX math rendering -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="../assets/lib/mathjax/tex-mml-chtml.js"></script>
 </head>
 <body>
   <header>
@@ -25,7 +35,7 @@
   </header>
 
   <!-- ボトムシート用オーバーレイ -->
-  <div class="bottom-sheet-overlay" id="bottom-sheet-overlay" onclick="closeBottomSheet()"></div>
+  <div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
 
   <div class="player-layout">
     <!-- 左サイドバー: カリキュラム -->
@@ -33,10 +43,10 @@
       <div class="sidebar-header">
         <div class="drag-handle mobile-only"></div>
         <h2 id="sidebar-title">動画一覧</h2>
-        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('left')" aria-label="サイドバーを開閉">
+        <button class="sidebar-toggle desktop-only" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
-        <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
+        <button class="bottom-sheet-close mobile-only" aria-label="閉じる">
           <span>✕</span>
         </button>
       </div>
@@ -54,6 +64,7 @@
       
       <!-- モバイル: アクションボタン -->
       <div class="mobile-actions">
+        <!-- onclick属性は後方互換性のため残すが、PlayerUIで別途ハンドリングも可能 -->
         <button class="mobile-action-btn" onclick="openBottomSheet('lesson-list')" aria-label="動画一覧を開く">
           <span>動画一覧</span>
         </button>
@@ -66,12 +77,8 @@
       <div class="video-description">
         <h3>動画の概要</h3>
         <div class="description-content">
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">この動画では、数学の基礎概念について詳しく解説します。まず、基本的な定義から始めて、段階的に理解を深めていきます。</p>
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">最初のセクションでは、重要な公式や定理について説明します。これらの概念は、後の問題解決において非常に重要な役割を果たします。</p>
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">次に、具体的な例題を通じて、理論的な知識を実践的なスキルに変換する方法を学びます。各例題は、段階的に難易度が上がるように構成されています。</p>
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">さらに、よくある間違いや注意点についても詳しく解説します。これにより、学習者が同じ間違いを繰り返さないようにすることができます。</p>
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">最後に、復習問題を解くことで、学習内容の定着を図ります。これらの問題は、実際の試験で出題される可能性が高い形式で作成されています。</p>
-          <p style="color: var(--text-sub); margin-bottom: 1rem;">この動画を視聴することで、数学の基礎をしっかりと理解し、応用力を身につけることができます。繰り返し視聴することで、より深い理解が得られるでしょう。</p>
+          <!-- JavaScript で動的に生成される -->
+          <p style="color: var(--text-sub); margin-bottom: 1rem;">読み込み中...</p>
         </div>
       </div>
     </main>
@@ -79,11 +86,11 @@
     <!-- 右サイドバー: 講義資料 -->
     <aside class="player-sidebar-right" id="sidebar-right">
       <div class="sidebar-header">
-        <button class="sidebar-toggle desktop-only" onclick="toggleSidebar('right')" aria-label="サイドバーを開閉">
+        <button class="sidebar-toggle desktop-only" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
         <h3>講義資料</h3>
-        <button class="bottom-sheet-close mobile-only" onclick="closeBottomSheet()" aria-label="閉じる">
+        <button class="bottom-sheet-close mobile-only" aria-label="閉じる">
           <span>✕</span>
         </button>
       </div>
@@ -95,578 +102,10 @@
 
   <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
+  <!-- KouTech Player Scripts -->
+  <script src="../assets/js/pdf-viewer.js"></script>
+  <script src="../assets/js/player-ui.js"></script>
   <script src="../assets/js/player.js"></script>
-  <script>
-    // ============================================================================
-    // 定数定義
-    // ============================================================================
-    const MOBILE_BREAKPOINT = 768; // モバイル/デスクトップの切り替えポイント（px）
-    const SWIPE_CLOSE_THRESHOLD = 100; // スワイプで閉じるための最小ドラッグ距離（px）
-    const BOTTOM_SHEET_CLOSE_ANIMATION_DURATION = 300; // ボトムシート閉じるアニメーション時間（ms）
-
-    // DOM要素の取得
-    const overlay = document.getElementById('bottom-sheet-overlay');
-    const sidebars = document.querySelectorAll('.player-sidebar-left, .player-sidebar-right');
-    const layout = document.querySelector('.player-layout');
-    
-    // ボトムシートを開いた直後の短い時間は外側タップを無視するフラグ
-    let justOpenedBottomSheet = false;
-
-    // ============================================================================
-    // デスクトップ用: サイドバー開閉機能
-    // ============================================================================
-    
-    /**
-     * サイドバーを開閉する（デスクトップ版のみ）
-     * @param {string} side - 'left' または 'right'
-     */
-    function toggleSidebar(side) {
-      // モバイルでは動作しない
-      if (window.innerWidth <= MOBILE_BREAKPOINT) return;
-      
-      const sidebar = document.getElementById(`sidebar-${side}`);
-      if (!sidebar) return;
-      
-      // サイドバーの開閉状態を切り替え
-      sidebar.classList.toggle('collapsed');
-      
-      // レイアウトクラスの更新（両方閉じている、左のみ閉じている、右のみ閉じている）
-      layout.classList.remove('left-collapsed', 'right-collapsed', 'both-collapsed');
-      
-      const leftCollapsed = document.getElementById('sidebar-left').classList.contains('collapsed');
-      const rightCollapsed = document.getElementById('sidebar-right').classList.contains('collapsed');
-      
-      if (leftCollapsed && rightCollapsed) {
-        layout.classList.add('both-collapsed');
-      } else if (leftCollapsed) {
-        layout.classList.add('left-collapsed');
-      } else if (rightCollapsed) {
-        layout.classList.add('right-collapsed');
-      }
-      
-      // トグルボタンのアイコンを更新（開: 「−」、閉: 「+」）
-      const toggleBtn = sidebar.querySelector('.sidebar-toggle span');
-      if (toggleBtn) {
-        toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '+' : '−';
-      }
-    }
-
-    // ============================================================================
-    // モバイル用: ボトムシート開閉機能
-    // ============================================================================
-    
-    /**
-     * ボトムシートを開く（モバイル版）
-     * @param {string} type - 'lesson-list'（動画一覧）または 'resources'（講義資料）
-     */
-    function openBottomSheet(type) {
-      // 対象のサイドバーを取得
-      let sidebar = null;
-      if (type === 'lesson-list') {
-        sidebar = document.getElementById('sidebar-left');
-      } else if (type === 'resources') {
-        sidebar = document.getElementById('sidebar-right');
-      }
-      
-      if (!sidebar) return;
-      
-      // 閉じるアニメーション中であればクラスを削除
-      sidebar.classList.remove('bottom-sheet-closing');
-      
-      // モバイル版: ボトムシートの位置調整（動画コンテナの真下からスライドアップしてボタンを隠す）
-      if (window.innerWidth <= MOBILE_BREAKPOINT) {
-        const header = document.querySelector('header');
-        const videoContainer = document.querySelector('.video-container');
-        
-        if (header && videoContainer) {
-          const headerHeight = header.offsetHeight;
-          const videoHeight = videoContainer.offsetHeight;
-          
-          // 動画コンテナの真下から開始 = ヘッダー高さ + 動画コンテナ高さ
-          const topPosition = headerHeight + videoHeight;
-          
-          // 位置を設定（動画コンテナの真下に配置）
-          sidebar.style.top = `${topPosition}px`;
-          sidebar.style.bottom = '0';
-          sidebar.style.height = `calc(100vh - ${topPosition}px)`;
-          
-          // トランジションを一時的に無効化して初期位置を設定
-          sidebar.style.transition = 'none';
-          sidebar.style.transform = 'translateY(100%)';
-          
-          // 強制的にリフローを発生させてスタイルを適用
-          void sidebar.offsetWidth;
-          
-          // ボトムシートを表示
-          sidebar.classList.add('bottom-sheet-active');
-          
-          // トランジションを有効化してアニメーションを開始
-          // 二重のrequestAnimationFrameでブラウザのレンダリングを確実に待つ
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              // iOS Chrome風の滑らかなイージング
-              sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
-              sidebar.style.transform = 'translateY(0)';
-              
-              // ボトムシートを開いた直後は外側タップを無視するフラグを設定
-              justOpenedBottomSheet = true;
-              setTimeout(() => {
-                justOpenedBottomSheet = false;
-              }, 400); // アニメーション時間（300ms）+ 余裕（100ms）
-            });
-          });
-        }
-        // モバイル版ではオーバーレイを表示しない（画面が暗くならない）
-      } else {
-        // デスクトップ版ではオーバーレイを表示
-        if (overlay) {
-          overlay.classList.add('active');
-        }
-        // デスクトップ版でもボトムシートを表示
-        sidebar.classList.add('bottom-sheet-active');
-      }
-      
-      // 背景のスクロールを無効化（モバイル版では既にCSSでoverflow: hiddenが設定されているが、念のため）
-      if (window.innerWidth <= MOBILE_BREAKPOINT) {
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    
-    /**
-     * ボトムシートを閉じる
-     */
-    function closeBottomSheet() {
-      // 開いているボトムシートをすべて閉じる
-      sidebars.forEach(sidebar => {
-        if (sidebar.classList.contains('bottom-sheet-active')) {
-          // 閉じるアニメーションを開始（下にスライドダウン）
-          // iOS Chrome風の滑らかなイージング
-          sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
-          sidebar.style.transform = 'translateY(100%)';
-          
-          // アニメーション完了後にクラスとスタイルを削除
-          setTimeout(() => {
-            sidebar.classList.remove('bottom-sheet-active');
-            sidebar.classList.remove('bottom-sheet-closing');
-            sidebar.style.top = '';
-            sidebar.style.bottom = '';
-            sidebar.style.height = '';
-            sidebar.style.transform = '';
-            sidebar.style.transition = '';
-          }, BOTTOM_SHEET_CLOSE_ANIMATION_DURATION);
-        }
-      });
-      
-      // デスクトップ版のみオーバーレイを非表示
-      if (window.innerWidth > MOBILE_BREAKPOINT && overlay) {
-        overlay.classList.remove('active');
-      }
-      
-      // 背景のスクロールを復元（モバイル版ではCSSでoverflow: hiddenが設定されているが、念のため）
-      if (window.innerWidth <= MOBILE_BREAKPOINT) {
-        document.body.style.overflow = 'hidden'; // モバイル版では常にhidden
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
-
-    // ============================================================================
-    // リサイズ時のレイアウト調整
-    // ============================================================================
-    
-    let lastWindowWidth = window.innerWidth;
-
-    window.addEventListener('resize', () => {
-      const currentWidth = window.innerWidth;
-      
-      // モバイル <-> デスクトップの境界をまたいだ場合、または大幅なリサイズ時
-      if ((lastWindowWidth <= MOBILE_BREAKPOINT && currentWidth > MOBILE_BREAKPOINT) ||
-          (lastWindowWidth > MOBILE_BREAKPOINT && currentWidth <= MOBILE_BREAKPOINT)) {
-        
-        // ボトムシートの状態を完全リセット
-        sidebars.forEach(sidebar => {
-          // クラス削除
-          sidebar.classList.remove('bottom-sheet-active');
-          sidebar.classList.remove('bottom-sheet-closing');
-          
-          // インラインスタイル削除（重要）
-          sidebar.style.top = '';
-          sidebar.style.bottom = '';
-          sidebar.style.height = '';
-          sidebar.style.transform = '';
-          sidebar.style.transition = 'none';
-          
-          // 強制リフロー
-          void sidebar.offsetWidth;
-          
-          sidebar.style.transition = '';
-        });
-        
-        // オーバーレイ非表示
-        if (overlay) overlay.classList.remove('active');
-        
-        // スクロールロック解除
-        document.body.style.overflow = '';
-      } else if (currentWidth <= MOBILE_BREAKPOINT) {
-        // モバイル内でのリサイズ時、開いているボトムシートの位置を再計算
-        sidebars.forEach(sidebar => {
-          if (sidebar.classList.contains('bottom-sheet-active')) {
-            const header = document.querySelector('header');
-            const videoContainer = document.querySelector('.video-container');
-            const mobileActions = document.querySelector('.mobile-actions');
-            
-            if (header && videoContainer) {
-              const headerHeight = header.offsetHeight;
-              const videoHeight = videoContainer.offsetHeight;
-              // 動画コンテナの真下 = ヘッダー高さ + 動画コンテナ高さ
-              const topPosition = headerHeight + videoHeight;
-              
-              sidebar.style.top = `${topPosition}px`;
-              sidebar.style.bottom = '0';
-              sidebar.style.height = `calc(100vh - ${topPosition}px)`;
-              sidebar.style.transform = 'translateY(0)'; // 開いた状態を維持
-            }
-          }
-        });
-      }
-      
-      lastWindowWidth = currentWidth;
-    });
-
-    // ============================================================================
-    // キーボードショートカット
-    // ============================================================================
-    
-    /**
-     * ESCキーでボトムシートを閉じる
-     */
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeBottomSheet();
-      }
-    });
-
-    // ============================================================================
-    // スクロール制御: ボトムシートが開いている時は背景スクロールを無効化
-    // ============================================================================
-    
-    /**
-     * ボトムシートの開閉状態をチェックしてスクロールを制御
-     */
-    const checkBottomSheetState = () => {
-      // モバイル版ではCSSでoverflow: hiddenが設定されているため、常にhiddenを維持
-      if (window.innerWidth <= MOBILE_BREAKPOINT) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        const isOpen = Array.from(sidebars).some(sidebar => 
-          sidebar.classList.contains('bottom-sheet-active')
-        );
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-    };
-    
-    // デスクトップ版: オーバーレイの状態を監視
-    if (overlay) {
-      const overlayObserver = new MutationObserver(() => {
-        if (window.innerWidth > MOBILE_BREAKPOINT) {
-          // デスクトップ版ではオーバーレイの状態でスクロールを制御
-          if (overlay.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-          } else {
-            document.body.style.overflow = '';
-          }
-        } else {
-          // モバイル版ではボトムシートの状態を直接チェック
-          checkBottomSheetState();
-        }
-      });
-      
-      overlayObserver.observe(overlay, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
-    }
-    
-    // モバイル版: ボトムシートの状態を監視
-    sidebars.forEach(sidebar => {
-      const sidebarObserver = new MutationObserver(() => {
-        if (window.innerWidth <= MOBILE_BREAKPOINT) {
-          checkBottomSheetState();
-        }
-      });
-      
-      sidebarObserver.observe(sidebar, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
-    });
-
-    // ============================================================================
-    // スワイプで閉じる機能（モバイル版のみ）
-    // ============================================================================
-    
-    // ドラッグ状態の管理
-    let dragState = {
-      startY: 0,
-      currentY: 0,
-      isDragging: false,
-      sidebar: null,
-      startTime: 0,
-      lastY: 0,
-      lastTime: 0,
-      velocity: 0,
-      initialScrollTop: 0
-    };
-    
-    /**
-     * ドラッグ開始時の処理
-     * @param {Event} e - タッチ/マウスイベント
-     */
-    function handleDragStart(e) {
-      // デスクトップでは無効
-      if (window.innerWidth > MOBILE_BREAKPOINT) return;
-      
-      // ボトムシートが開いているか確認
-      const sidebar = e.target.closest('.player-sidebar-left.bottom-sheet-active, .player-sidebar-right.bottom-sheet-active');
-      if (!sidebar) return;
-      
-      // スクロール可能な要素内でのタッチをチェック
-      const scrollableElement = e.target.closest('.lesson-list, .resources-list');
-      if (scrollableElement) {
-        // スクロール位置をチェック
-        const scrollTop = scrollableElement.scrollTop;
-        const scrollHeight = scrollableElement.scrollHeight;
-        const clientHeight = scrollableElement.clientHeight;
-        const isScrollable = scrollHeight > clientHeight;
-        
-        dragState.initialScrollTop = scrollTop;
-        
-        // スクロール可能な要素がスクロールされている場合は、ドラッグを無効化
-        // ただし、最上部（scrollTop === 0）で下方向へのドラッグの場合は許可
-        if (scrollTop > 0 && isScrollable) {
-          // スクロール中はドラッグを無効化
-          return;
-        }
-        
-        // 最下部に到達している場合も、上方向へのドラッグはスクロールを優先
-        if (scrollTop + clientHeight >= scrollHeight - 1 && isScrollable) {
-          // 最下部に到達している場合は、上方向へのドラッグはスクロールを優先
-          // 下方向へのドラッグのみ許可
-        }
-      }
-      
-      // ボタンやリンクなどのインタラクティブ要素は除外
-      if (e.target.closest('button, a, input, select, textarea')) {
-        return;
-      }
-      
-      // ドラッグ状態を初期化
-      const touchY = e.touches ? e.touches[0].clientY : e.clientY;
-      dragState.isDragging = true;
-      dragState.sidebar = sidebar;
-      dragState.startY = touchY;
-      dragState.currentY = touchY;
-      dragState.lastY = touchY;
-      dragState.startTime = Date.now();
-      dragState.lastTime = dragState.startTime;
-      dragState.velocity = 0;
-      
-      // 現在のtransform値を取得して初期位置を保持
-      const currentTransform = sidebar.style.transform || 'translateY(0)';
-      const match = currentTransform.match(/translateY\(([^)]+)\)/);
-      if (match) {
-        const currentY = parseFloat(match[1]) || 0;
-        dragState.startY -= currentY; // 現在の位置を考慮
-      }
-      
-      e.preventDefault();
-    }
-    
-    /**
-     * ドラッグ中の処理
-     * @param {Event} e - タッチ/マウスイベント
-     */
-    function handleDragMove(e) {
-      if (!dragState.isDragging || !dragState.sidebar) return;
-      
-      const currentTime = Date.now();
-      const touchY = e.touches ? e.touches[0].clientY : e.clientY;
-      dragState.currentY = touchY;
-      
-      // スクロール可能な要素をチェック
-      const scrollableElement = dragState.sidebar.querySelector('.lesson-list, .resources-list');
-      if (scrollableElement) {
-        const currentScrollTop = scrollableElement.scrollTop;
-        const scrollHeight = scrollableElement.scrollHeight;
-        const clientHeight = scrollableElement.clientHeight;
-        const isScrollable = scrollHeight > clientHeight;
-        const deltaY = touchY - dragState.startY;
-        
-        // スクロールが最上部でない場合、または上方向へのドラッグでスクロールが可能な場合はドラッグを無効化
-        if (isScrollable) {
-          // スクロールが最上部でない場合
-          if (currentScrollTop > 0) {
-            // 下方向へのドラッグのみ許可（ボトムシートを閉じる）
-            if (deltaY <= 0) {
-              dragState.isDragging = false;
-              return;
-            }
-          }
-          
-          // スクロールが最下部に到達している場合
-          if (currentScrollTop + clientHeight >= scrollHeight - 1) {
-            // 上方向へのドラッグはスクロールを優先（ただし、既に最下部なので無効）
-            if (deltaY < 0) {
-              dragState.isDragging = false;
-              return;
-            }
-          }
-        }
-      }
-      
-      const deltaY = touchY - dragState.startY;
-      
-      // 上方向へのドラッグは上限を設定（-50pxまで）
-      // 下方向へのドラッグは制限なし
-      const maxUpward = -50;
-      const finalDeltaY = Math.max(maxUpward, deltaY);
-      
-      // 指の位置に正確に追従
-      dragState.sidebar.style.transform = `translateY(${finalDeltaY}px)`;
-      dragState.sidebar.style.transition = 'none'; // ドラッグ中はアニメーションを無効化
-      
-      // 速度を計算（最後の100ms間の移動距離）
-      const timeDelta = currentTime - dragState.lastTime;
-      if (timeDelta > 0) {
-        const distanceDelta = touchY - dragState.lastY;
-        dragState.velocity = distanceDelta / timeDelta; // px/ms
-      }
-      
-      dragState.lastY = touchY;
-      dragState.lastTime = currentTime;
-      
-      e.preventDefault();
-    }
-    
-    /**
-     * ドラッグ終了時の処理
-     * @param {Event} e - タッチ/マウスイベント
-     */
-    function handleDragEnd(e) {
-      if (!dragState.isDragging || !dragState.sidebar) return;
-      
-      const deltaY = dragState.currentY - dragState.startY;
-      const timeDelta = Date.now() - dragState.startTime;
-      
-      // 速度を考慮した判定（px/ms）
-      // 速度が速い場合（例：0.5px/ms以上）は、閾値より小さくても閉じる
-      const velocityThreshold = 0.5; // px/ms
-      const shouldCloseByVelocity = Math.abs(dragState.velocity) > velocityThreshold && dragState.velocity > 0;
-      
-      // 距離と速度の両方を考慮
-      const shouldClose = deltaY > SWIPE_CLOSE_THRESHOLD || (deltaY > 50 && shouldCloseByVelocity);
-      
-      if (shouldClose) {
-        // 閉じるアニメーション
-        dragState.sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
-        dragState.sidebar.style.transform = 'translateY(100%)';
-        
-        // アニメーション完了後に閉じる
-        setTimeout(() => {
-          closeBottomSheet();
-        }, 300);
-      } else {
-        // 元の位置に戻す（スムーズなアニメーション）
-        dragState.sidebar.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
-        dragState.sidebar.style.transform = 'translateY(0)';
-        
-        // アニメーション完了後にtransitionをリセット
-        setTimeout(() => {
-          if (dragState.sidebar) {
-            dragState.sidebar.style.transition = '';
-          }
-        }, 300);
-      }
-      
-      // ドラッグ状態をリセット
-      dragState.isDragging = false;
-      dragState.sidebar = null;
-      dragState.startY = 0;
-      dragState.currentY = 0;
-      dragState.startTime = 0;
-      dragState.lastY = 0;
-      dragState.lastTime = 0;
-      dragState.velocity = 0;
-      dragState.initialScrollTop = 0;
-    }
-    
-    // タッチイベントの登録（モバイル用）
-    document.addEventListener('touchstart', handleDragStart, { passive: false });
-    document.addEventListener('touchmove', handleDragMove, { passive: false });
-    document.addEventListener('touchend', handleDragEnd, { passive: false });
-    
-    // マウスイベントの登録（デバッグ/開発用）
-    document.addEventListener('mousedown', handleDragStart);
-    document.addEventListener('mousemove', handleDragMove);
-    document.addEventListener('mouseup', handleDragEnd);
-
-    // ============================================================================
-    // ボトムシート以外の領域をタップして閉じる機能（モバイル版のみ）
-    // ============================================================================
-    
-    /**
-     * ボトムシート以外の領域をタップした時にボトムシートを閉じる
-     * @param {Event} e - タッチ/マウスイベント
-     */
-    function handleOutsideTap(e) {
-      // デスクトップでは無効
-      if (window.innerWidth > MOBILE_BREAKPOINT) return;
-      
-      // ボトムシートを開いた直後（300ms以内）は無視
-      if (justOpenedBottomSheet) return;
-      
-      // ボトムシートが開いていない場合は何もしない
-      const isBottomSheetOpen = Array.from(sidebars).some(sidebar => 
-        sidebar.classList.contains('bottom-sheet-active')
-      );
-      if (!isBottomSheetOpen) return;
-      
-      // タップされた要素を取得
-      const target = e.target;
-      
-      // ボトムシート内の要素をタップした場合は閉じない
-      const isInsideBottomSheet = target.closest('.player-sidebar-left.bottom-sheet-active') ||
-                                   target.closest('.player-sidebar-right.bottom-sheet-active');
-      if (isInsideBottomSheet) return;
-      
-      // ボタン自体やボタン内の要素をタップした場合は閉じない
-      const isButton = target.closest('.mobile-action-btn') ||
-                       target.closest('.mobile-actions');
-      if (isButton) return;
-      
-      // ボトムシート以外の領域（player-main、header、video-container、video-descriptionなど）をタップした場合
-      const isOutsideArea = target.closest('.player-main') ||
-                            target.closest('header') ||
-                            target.closest('.video-container') ||
-                            target.closest('.video-description');
-      
-      if (isOutsideArea) {
-        // YouTubeプレーヤーの操作（再生/一時停止など）には影響しないようにする
-        // iframe内をタップした場合は閉じない（YouTubeプレーヤーの操作を優先）
-        const isInsideIframe = target.closest('iframe') || target.tagName === 'IFRAME';
-        
-        // #player要素自体やvideo-containerをタップした場合は閉じる
-        // ただし、iframe内をタップした場合は閉じない（YouTubeプレーヤーの操作を優先）
-        if (!isInsideIframe) {
-          closeBottomSheet();
-        }
-      }
-    }
-    
-    // タッチイベントとマウスイベントの登録
-    document.addEventListener('touchstart', handleOutsideTap, { passive: true });
-    document.addEventListener('click', handleOutsideTap);
-  </script>
 </body>
 </html>
-

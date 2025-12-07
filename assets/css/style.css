@@ -16,6 +16,43 @@
   --text-sub: #aaaaaa;
   --text-accent: #3ea6ff;
 
+  /* --- 科目別テーマカラー定義 --- */
+  /* 数Ⅰ */
+  --subject-math1-base: #3c78d8;
+  --subject-math1-dark: #2d5ba3;
+  --subject-math1-light: rgba(60, 120, 216, 0.15);
+  --subject-math1-gradient: rgba(60, 120, 216, 0.4);
+
+  /* 数Ⅱ */
+  --subject-math2-base: #674ea7;
+  --subject-math2-dark: #4d3a7d;
+  --subject-math2-light: rgba(103, 78, 167, 0.15);
+  --subject-math2-gradient: rgba(103, 78, 167, 0.4);
+
+  /* 数Ⅲ */
+  --subject-math3-base: #a61c00;
+  --subject-math3-dark: #7d1500;
+  --subject-math3-light: rgba(166, 28, 0, 0.15);
+  --subject-math3-gradient: rgba(166, 28, 0, 0.4);
+
+  /* 数A */
+  --subject-mathA-base: #a64d79;
+  --subject-mathA-dark: #7d3a5b;
+  --subject-mathA-light: rgba(166, 77, 121, 0.15);
+  --subject-mathA-gradient: rgba(166, 77, 121, 0.4);
+
+  /* 数B */
+  --subject-mathB-base: #6aa84f;
+  --subject-mathB-dark: #507d3b;
+  --subject-mathB-light: rgba(106, 168, 79, 0.15);
+  --subject-mathB-gradient: rgba(106, 168, 79, 0.4);
+
+  /* 数C */
+  --subject-mathC-base: #e69138;
+  --subject-mathC-dark: #ad6d2a;
+  --subject-mathC-light: rgba(230, 145, 56, 0.15);
+  --subject-mathC-gradient: rgba(230, 145, 56, 0.4);
+
   /* UI Elements */
   --border-glass: 1px solid rgba(255, 255, 255, 0.1);
   --radius-lg: 12px;
@@ -656,12 +693,12 @@ footer {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-sub);
-  background: rgba(62, 166, 255, 0.1);
+  background: var(--accent-primary-light);
   border-radius: var(--radius-md);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
-  border: 1px solid rgba(62, 166, 255, 0.2);
+  border: 1px solid var(--accent-primary-light);
 }
 
 .lesson-item {
@@ -683,7 +720,7 @@ footer {
 }
 
 .lesson-item.active {
-  background: rgba(62, 166, 255, 0.1);
+  background: var(--accent-primary-light);
 }
 
 .lesson-item.not-ready {
@@ -830,7 +867,7 @@ footer {
   height: 4px;
   background: linear-gradient(90deg, 
     transparent 0%,
-    rgba(56, 189, 248, 0.5) 50%,
+    var(--accent-primary-gradient) 50%,
     transparent 100%
   );
   pointer-events: none;
@@ -875,6 +912,18 @@ footer {
   line-height: 1.8;
   background: rgba(0, 0, 0, 0.2);
   border-radius: var(--radius-md);
+}
+
+.description-content b {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* MathJaxの\mathbfを黄色にする */
+.description-content .MathJax mtext[mathvariant="bold"],
+.description-content .MathJax .MathJax-Bold {
+  color: #ffd700 !important;
+  fill: #ffd700 !important;
 }
 
 .video-controls-bar {
@@ -1293,7 +1342,9 @@ footer {
 /* Mobile Styles (768px and below) */
 @media (max-width: 768px) {
   /* 画面全体のスクロールをなくし、ぴったり収まるようにする */
-  html, body {
+  /* .player-layoutが存在する場合のみ適用（プレーヤーページ専用） */
+  html:has(.player-layout),
+  body:has(.player-layout) {
     height: 100%;
     overflow: hidden;
   }
@@ -1438,8 +1489,7 @@ footer {
   /* Player Main */
   .player-main {
     height: calc(100vh - 80px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
   }
