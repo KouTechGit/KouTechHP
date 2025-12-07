@@ -402,7 +402,7 @@ class PlayerUI {
     // 位置とサイズを設定
     sidebar.style.top = `${topPosition}px`;
     sidebar.style.bottom = '0';
-    sidebar.style.height = `calc(100vh - ${topPosition}px)`;
+    sidebar.style.height = `calc(100dvh - ${topPosition}px)`;
     
     // アニメーション用の初期状態: トランジションなしで画面外に配置
     sidebar.style.transition = 'none';
@@ -484,7 +484,7 @@ class PlayerUI {
           const topPosition = headerHeight + videoHeight;
           
           sidebar.style.top = `${topPosition}px`;
-          sidebar.style.height = `calc(100vh - ${topPosition}px)`;
+          sidebar.style.height = `calc(100dvh - ${topPosition}px)`;
         }
       });
     }
