@@ -92,9 +92,24 @@
 
     // Load course data and render subjects/units
     fetch('course_data.json')
-      .then(response => response.json())
+      .then(response => {
+        // HTTPエラーステータスをチェック
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
+        // データの構造をチェック
+        if (!data || !data.subjects || !Array.isArray(data.subjects)) {
+          throw new Error('Invalid course data format');
+        }
+        
         const container = document.getElementById('subjects-container');
+        if (!container) {
+          console.error('subjects-container element not found');
+          return;
+        }
         container.innerHTML = '';
 
         data.subjects.forEach(subject => {
@@ -172,7 +187,16 @@
       })
       .catch(error => {
         console.error('Error loading course data:', error);
-        document.getElementById('subjects-container').innerHTML = '<p style="color:var(--text-sub);">データの読み込みに失敗しました。</p>';
+        // エラーの詳細をログに出力（デバッグ用）
+        if (error.message) {
+          console.error('Error message:', error.message);
+        }
+        // エラーメッセージを表示しない（ユーザー体験を優先）
+        // 代わりに、読み込み中の表示を維持する
+        const container = document.getElementById('subjects-container');
+        if (container) {
+          container.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>';
+        }
       });
   </script>
 </body>

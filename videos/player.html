@@ -1,14 +1,65 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  KouTech 授業動画プレーヤーページ
+  
+  【ページの概要】
+  このページは，KouTech の授業動画を視聴するためのプレーヤーページです。
+  YouTube 動画の再生，講義資料（PDF）の表示，動画一覧の閲覧ができます。
+  
+  【URLパラメータ】
+  - subject: 科目名（例: '数Ⅰ', '数Ⅱ', '数A'など）
+  - unit: 単元名（例: '数と式', '2次関数'など）
+  - video: 動画番号（例: 1, 2, 3...）
+  
+  例: player.html?subject=数Ⅰ&unit=数と式&video=1
+  
+  【ページ構成】
+  1. ヘッダー: ロゴ，科目・単元名表示，一覧への戻るリンク
+  2. 左サイドバー（デスクトップ）/ ボトムシート（モバイル）: 動画一覧
+  3. メインコンテンツ: YouTube動画プレーヤー，動画の概要説明
+  4. 右サイドバー（デスクトップ）/ ボトムシート（モバイル）: 講義資料（PDF）
+  
+  【レスポンシブ対応】
+  - デスクトップ版（画面幅 > 768px）: 3カラムレイアウト（サイドバー2つ + メイン）
+  - モバイル版（画面幅 ≤ 768px）: 1カラムレイアウト + ボトムシート
+  
+  【動作仕様】
+  詳細は各JavaScriptファイル（player.js, player-ui.js, pdf-viewer.js）を参照してください。
+  ============================================================================
+-->
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  
+  <!--
+    ビューポート設定
+    - width=device-width: デバイスの画面幅に合わせる
+    - initial-scale=1.0: 初期ズーム倍率を1.0に設定
+    - maximum-scale=1.0: 最大ズーム倍率を1.0に制限（ピンチズームを無効化）
+    - user-scalable=no: ユーザーのズーム操作を無効化
+    モバイルでのUI操作性向上のため，ズームを無効化しています。
+  -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
   <title>動画で学ぶ | KouTech</title>
+  
+  <!-- スタイルシート: 共通のCSSファイルを読み込み -->
   <link rel="stylesheet" href="../assets/css/style.css">
+  
+  <!-- Google Fonts のプリコネクト（パフォーマンス最適化） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts: Montserrat（英語フォント）と Noto Sans JP（日本語フォント） -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <!-- MathJax for LaTeX math rendering -->
+  
+  <!--
+    MathJax の設定: LaTeX形式の数式をレンダリングするためのライブラリ
+    - inlineMath: インライン数式のデリミタ（$...$ または \(...\)）
+    - displayMath: ディスプレイ数式のデリミタ（$$...$$ または \[...\]）
+    動画のタイトルや説明文に含まれる数式を表示するために使用します。
+  -->
   <script>
     window.MathJax = {
       tex: {
@@ -17,93 +68,203 @@
       }
     };
   </script>
+  <!-- MathJax のスクリプトを非同期で読み込み（ページ読み込みをブロックしない） -->
   <script id="MathJax-script" async src="../assets/lib/mathjax/tex-mml-chtml.js"></script>
 </head>
 <body>
+  <!-- ============================================================================
+       ヘッダー: ページの上部に固定表示されるナビゲーションバー
+       ============================================================================ -->
   <header>
     <div class="header-inner">
+      <!-- ロゴ: トップページへのリンク -->
       <a href="../index.html" class="logo">
         <img src="../assets/img/logo.png" alt="KouTech">
       </a>
+      
+      <!--
+        科目・単元名の表示エリア
+        JavaScript（player.js）で URLパラメータから取得した科目名と単元名が
+        動的に表示されます（例: "数Ⅰ 数と式"）
+      -->
       <div id="header-title" class="header-title" style="flex: 1; text-align: center; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">
         <!-- JavaScript で動的に生成される -->
       </div>
+      
+      <!-- 一覧ページへの戻るボタン -->
       <a href="index.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
         一覧に戻る
       </a>
     </div>
   </header>
 
-  <!-- ボトムシート用オーバーレイ -->
+  <!--
+    ボトムシート用オーバーレイ（デスクトップ版のみ）
+    モバイル版では表示されません。ボトムシートが開いている時に
+    背景を暗くして，オーバーレイをクリックするとボトムシートが閉じます。
+  -->
   <div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
 
+  <!-- ============================================================================
+       プレーヤーレイアウト: 3カラムレイアウト（デスクトップ）または1カラム+ボトムシート（モバイル）
+       ============================================================================ -->
   <div class="player-layout">
-    <!-- 左サイドバー: カリキュラム -->
+    
+    <!-- ========================================================================
+         左サイドバー: 動画一覧
+         ======================================================================== -->
     <aside class="player-sidebar-left" id="sidebar-left">
+      <!-- サイドバーヘッダー -->
       <div class="sidebar-header">
+        <!-- ドラッグハンドル（モバイル版のみ表示）: ボトムシートをドラッグするための視覚的指標 -->
         <div class="drag-handle mobile-only"></div>
+        
+        <!-- サイドバータイトル -->
         <h2 id="sidebar-title">動画一覧</h2>
+        
+        <!--
+          折りたたみボタン（デスクトップ版のみ表示）
+          クリックするとサイドバーが折りたたまれて，メインコンテンツエリアが広がります。
+          開閉状態に応じてアイコンが「−」（開）と「+」（閉）に変化します。
+        -->
         <button class="sidebar-toggle desktop-only" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
+        
+        <!--
+          閉じるボタン（モバイル版のみ表示）
+          ボトムシートとして表示されている時に，このボタンで閉じることができます。
+        -->
         <button class="bottom-sheet-close mobile-only" aria-label="閉じる">
           <span>✕</span>
         </button>
       </div>
+      
+      <!--
+        動画一覧コンテンツエリア
+        JavaScript（player.js）で course_data.json から取得した動画リストが
+        動的に生成されます。各動画アイテムにはサムネイル，タイトル，再生時間が表示されます。
+        動画をクリックすると，その動画が再生されます。
+      -->
       <div id="lesson-list" class="lesson-list">
         <!-- JavaScript で動的に生成される -->
+        <!-- 初期状態: 読み込み中の表示 -->
         <div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>
       </div>
     </aside>
 
-    <!-- メインコンテンツ: 動画プレーヤー -->
+    <!-- ========================================================================
+         メインコンテンツ: 動画プレーヤーと説明
+         ======================================================================== -->
     <main class="player-main">
+      <!--
+        YouTube動画プレーヤーコンテナ
+        YouTube IFrame API を使用して，JavaScript（player.js）で
+        YouTubeプレーヤーが動的に生成・埋め込まれます。
+        videoId は course_data.json から取得されます。
+      -->
       <div class="video-container">
+        <!-- YouTubeプレーヤーがここに動的に生成されます -->
         <div id="player"></div>
       </div>
       
-      <!-- モバイル: アクションボタン -->
+      <!--
+        モバイル版アクションボタン（モバイル版のみ表示）
+        動画の下に表示される2つのボタンで，ボトムシートを開くことができます。
+      -->
       <div class="mobile-actions">
-        <!-- onclick属性は後方互換性のため残すが、PlayerUIで別途ハンドリングも可能 -->
+        <!--
+          動画一覧ボタン: 左サイドバーをボトムシートとして開きます
+          onclick属性は後方互換性のため残していますが，player-ui.js でも
+          イベントリスナーが設定されています（二重に動作しますが問題ありません）。
+        -->
         <button class="mobile-action-btn" onclick="openBottomSheet('lesson-list')" aria-label="動画一覧を開く">
           <span>動画一覧</span>
         </button>
+        
+        <!--
+          講義資料ボタン: 右サイドバーをボトムシートとして開きます
+        -->
         <button class="mobile-action-btn" onclick="openBottomSheet('resources')" aria-label="講義資料を開く">
           <span>講義資料</span>
         </button>
       </div>
       
-      <!-- 動画の説明 -->
+      <!--
+        動画の概要説明エリア
+        JavaScript（player.js）で course_data.json から取得した
+        動画の説明（description フィールド）が表示されます。
+        MathJax を使用して数式がレンダリングされる場合があります。
+      -->
       <div class="video-description">
         <h3>動画の概要</h3>
         <div class="description-content">
           <!-- JavaScript で動的に生成される -->
+          <!-- 初期状態: 読み込み中の表示 -->
           <p style="color: var(--text-sub); margin-bottom: 1rem;">読み込み中...</p>
         </div>
       </div>
     </main>
 
-    <!-- 右サイドバー: 講義資料 -->
+    <!-- ========================================================================
+         右サイドバー: 講義資料（PDF）
+         ======================================================================== -->
     <aside class="player-sidebar-right" id="sidebar-right">
+      <!-- サイドバーヘッダー -->
       <div class="sidebar-header">
+        <!--
+          折りたたみボタン（デスクトップ版のみ表示）
+          左サイドバーと同じく，クリックで折りたたみが可能です。
+        -->
         <button class="sidebar-toggle desktop-only" aria-label="サイドバーを開閉">
           <span>−</span>
         </button>
+        
+        <!-- サイドバータイトル -->
         <h3>講義資料</h3>
+        
+        <!--
+          閉じるボタン（モバイル版のみ表示）
+          ボトムシートとして表示されている時に，このボタンで閉じることができます。
+        -->
         <button class="bottom-sheet-close mobile-only" aria-label="閉じる">
           <span>✕</span>
         </button>
       </div>
+      
+      <!--
+        講義資料コンテンツエリア
+        JavaScript（player.js）で course_data.json から取得した
+        material_file_id に基づいて，PDFが表示されます。
+        PDF.js を使用してPDFがレンダリングされ，モバイルではピンチズームが可能です。
+      -->
       <div id="resources-list" class="resources-list">
         <!-- JavaScript で動的に生成される -->
       </div>
     </aside>
   </div>
 
-  <!-- PDF.js -->
+  <!-- ============================================================================
+       スクリプトの読み込み
+       ============================================================================ -->
+  
+  <!--
+    PDF.js ライブラリ（CDN経由）
+    PDFファイルを表示するために使用します。
+    バージョン: 3.11.174
+  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   
-  <!-- KouTech Player Scripts -->
+  <!--
+    KouTech プレーヤー関連のスクリプト
+    
+    読み込み順序が重要です:
+    1. pdf-viewer.js: PDFビューアコンポーネント（PdfViewer クラス）
+    2. player-ui.js: UI制御コンポーネント（PlayerUI クラス）
+    3. player.js: メインロジック（動画データ取得，動画再生制御など）
+    
+    各スクリプトは依存関係があるため，この順序で読み込む必要があります。
+  -->
   <script src="../assets/js/pdf-viewer.js"></script>
   <script src="../assets/js/player-ui.js"></script>
   <script src="../assets/js/player.js"></script>

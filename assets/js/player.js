@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let allCourseData = null;
   let currentUnitData = null;
   let player = null;
+  let youtubeAPIReady = false;
+  let pendingVideoLoad = null; // YouTube APIが読み込まれる前に動画を読み込もうとした場合の待機キュー
   // let pdfViewer = null; // Store reference if needed
 
   // Attach event listeners for mobile action buttons manually here if not done in UI class
@@ -56,8 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Data
   fetch('course_data.json')
-    .then(response => response.json())
+    .then(response => {
+      // HTTPエラーステータスをチェック
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
+      // データの構造をチェック
+      if (!data || !data.subjects || !Array.isArray(data.subjects)) {
+        throw new Error('Invalid course data format');
+      }
+      
       allCourseData = data;
       const subject = data.subjects.find(s => s.subject_name === subjectParam);
       if (subject) {
@@ -84,16 +97,34 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => {
       console.error('Error loading course data:', error);
-      showError('データの読み込みに失敗しました');
+      // エラーの詳細をログに出力（デバッグ用）
+      if (error.message) {
+        console.error('Error message:', error.message);
+      }
+      // エラーメッセージを表示しない（ユーザー体験を優先）
+      // 代わりに、読み込み中の表示を維持するか、静かに失敗する
+      if (elements.videoContainer) {
+        elements.videoContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;">読み込み中...</div>';
+      }
     });
 
   function showError(msg) {
-    elements.videoContainer.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;">${msg}</div>`;
+    if (elements.videoContainer) {
+      elements.videoContainer.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;">${msg}</div>`;
+    } else {
+      console.error('Error message (videoContainer not found):', msg);
+    }
   }
 
   // YouTube API Setup
   window.onYouTubeIframeAPIReady = function() {
-    // API is ready
+    youtubeAPIReady = true;
+    // 待機中の動画読み込みがあれば実行
+    if (pendingVideoLoad) {
+      const { video } = pendingVideoLoad;
+      pendingVideoLoad = null;
+      setupYouTubePlayer(video);
+    }
   };
 
   // Load YouTube API Script
@@ -140,6 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Setup YouTube Player
+    // 動画コンテナの「読み込み中...」を削除（既に動画が読み込まれている場合は不要）
+    if (elements.videoContainer) {
+      const loadingMessage = elements.videoContainer.querySelector('div:not(#player)');
+      if (loadingMessage && loadingMessage.textContent.includes('読み込み中')) {
+        loadingMessage.remove();
+      }
+    }
     setupYouTubePlayer(video);
   }
 
@@ -151,6 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
         player = null;
       }
     } else {
+      // YouTube APIが読み込まれていない場合は待機
+      if (!youtubeAPIReady || typeof YT === 'undefined' || !YT.Player) {
+        pendingVideoLoad = { video };
+        // APIが読み込まれるまで待つ（onYouTubeIframeAPIReadyで処理される）
+        return;
+      }
+      
       if (!elements.videoContainer.querySelector('#player')) {
         elements.videoContainer.innerHTML = '<div id="player"></div>';
       }
@@ -163,7 +208,15 @@ document.addEventListener('DOMContentLoaded', () => {
           width: '100%',
           videoId: video.youtube_id,
           playerVars: { 'playsinline': 1, 'rel': 0 },
-          events: {}
+          events: {
+            onReady: function(event) {
+              // 動画の読み込みが完了したことを確認
+              // 「読み込み中...」は既に削除されているはず
+            },
+            onStateChange: function(event) {
+              // 動画の状態が変化したときの処理（必要に応じて）
+            }
+          }
         });
       }
     }
@@ -176,7 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderSidebar() {
-    elements.lessonList.innerHTML = '';
+    // 「読み込み中...」を削除
+    if (elements.lessonList) {
+      elements.lessonList.innerHTML = '';
+    }
 
     currentUnitData.videos.forEach(video => {
       const isNotReady = !video.youtube_id;
@@ -213,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const descriptionContent = document.querySelector('.description-content');
     if (!descriptionContent) return;
 
+    // 「読み込み中...」を削除
     const description = video.description || '';
     
     if (description) {

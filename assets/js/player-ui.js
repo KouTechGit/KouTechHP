@@ -551,6 +551,25 @@ class PlayerUI {
     const sidebar = e.target.closest('.player-sidebar-left.bottom-sheet-active, .player-sidebar-right.bottom-sheet-active');
     if (!sidebar) return;
 
+    // PDFビューアのcanvas要素やその親要素を除外（PDFの操作を優先）
+    if (e.target.closest('canvas, .pdf-viewer, .pdf-viewer-container')) {
+      return;
+    }
+
+    // サイドバーヘッダーのタイトル要素（<h2>動画一覧</h2>または<h3>講義資料</h3>）を触れているときだけ許可
+    const sidebarHeader = e.target.closest('.sidebar-header');
+    if (sidebarHeader) {
+      const titleElement = sidebarHeader.querySelector('h2, h3');
+      // タイトル要素を直接触れているか、その親要素（.sidebar-header）を触れている場合のみ許可
+      if (!titleElement || (e.target !== titleElement && !titleElement.contains(e.target) && e.target !== sidebarHeader)) {
+        // タイトル要素以外の要素を触れている場合は除外
+        return;
+      }
+    } else {
+      // サイドバーヘッダー以外の要素を触れている場合は除外
+      return;
+    }
+
     // スクロール可能なコンテンツ（動画一覧・講義資料リスト）内でのタッチをチェック
     const scrollable = e.target.closest('.lesson-list, .resources-list');
     if (scrollable) {
@@ -607,6 +626,12 @@ class PlayerUI {
    */
   handleDragMove(e) {
     if (!this.state.drag.isDragging || !this.state.drag.sidebar) return;
+
+    // PDFビューアのcanvas要素やその親要素を除外（PDFの操作を優先）
+    if (e.target && e.target.closest('canvas, .pdf-viewer, .pdf-viewer-container, .canvas-wrapper')) {
+      this.state.drag.isDragging = false;
+      return;
+    }
 
     const touchY = e.touches ? e.touches[0].clientY : e.clientY;
     this.state.drag.currentY = touchY;
