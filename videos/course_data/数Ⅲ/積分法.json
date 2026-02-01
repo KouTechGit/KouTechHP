@@ -1,0 +1,302 @@
+{
+  "subject_name": "数Ⅲ",
+  "unit_name": "積分法",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "積分法の前に",
+      "youtube_id": "Zwxva1bDMyk",
+      "duration": "03:52",
+      "material_file_id": "積分法_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "いろいろな関数の不定積分",
+      "youtube_id": "RNoJ0KT3_Ok",
+      "duration": "13:30",
+      "material_file_id": "積分法_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "不定積分の基本性質",
+      "youtube_id": "VKYwYs2XLjo",
+      "duration": "11:12",
+      "material_file_id": "積分法_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "f(ax+b)の不定積分",
+      "youtube_id": "crxvav9UgmU",
+      "duration": "10:25",
+      "material_file_id": "積分法_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "不定積分の接触形〜累乗型〜",
+      "youtube_id": "uxnzVzR0FA0",
+      "duration": "16:13",
+      "material_file_id": "積分法_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "不定積分の接触形〜分数型〜",
+      "youtube_id": "6cSOcipT73Q",
+      "duration": "16:24",
+      "material_file_id": "積分法_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "不定積分の置換積分法",
+      "youtube_id": "59q8D-bKQ6I",
+      "duration": "18:53",
+      "material_file_id": "積分法_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "不定積分の部分積分法～１回利用～",
+      "youtube_id": "wAi5jEWJBJg",
+      "duration": "18:53",
+      "material_file_id": "積分法_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "不定積分の部分積分法～２回利用～",
+      "youtube_id": "UbVlffuTcKs",
+      "duration": "09:57",
+      "material_file_id": "積分法_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "不定積分の部分積分法～同形出現～",
+      "youtube_id": "XxS0XsX9QQY",
+      "duration": "12:10",
+      "material_file_id": "積分法_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "分数関数の不定積分〜次数下げ〜",
+      "youtube_id": "_ptSADj4_fg",
+      "duration": "06:23",
+      "material_file_id": "積分法_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "分数関数の不定積分〜部分分数分解〜",
+      "youtube_id": "5La8vyqCBVo",
+      "duration": "21:10",
+      "material_file_id": "積分法_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "無理関数の不定積分〜有理化・まるごと置換〜",
+      "youtube_id": "pLPNBl3cPzo",
+      "duration": "10:11",
+      "material_file_id": "積分法_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "三角関数の不定積分〜倍角の公式〜",
+      "youtube_id": "CQ9LBdyqs5Q",
+      "duration": "12:23",
+      "material_file_id": "積分法_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "三角関数の不定積分〜積和の公式〜",
+      "youtube_id": "kFKOM7385v4",
+      "duration": "10:30",
+      "material_file_id": "積分法_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "三角関数の不定積分～分数型～",
+      "youtube_id": "YoGdCJKdOoE",
+      "duration": "10:22",
+      "material_file_id": "積分法_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "指数関数の不定積分",
+      "youtube_id": "S3MqSm95_lo",
+      "duration": "09:30",
+      "material_file_id": "積分法_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "三角関数の不定積分～tanx/2=tと置換～",
+      "youtube_id": "vQVwDwKyXYo",
+      "duration": "09:58",
+      "material_file_id": "積分法_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "無理関数の不定積分〜特殊な置換〜",
+      "youtube_id": "nQu7Udtht3Y",
+      "duration": "22:22",
+      "material_file_id": "積分法_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "定積分",
+      "youtube_id": "kV84bm90ZLM",
+      "duration": "15:23",
+      "material_file_id": "積分法_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "絶対値のついた関数の定積分",
+      "youtube_id": "xKWk3SHIN2I",
+      "duration": "18:17",
+      "material_file_id": "積分法_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "積和の公式を利用した定積分",
+      "youtube_id": "UZQD7JoHnVw",
+      "duration": "20:49",
+      "material_file_id": "積分法_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "定積分の置換積分法",
+      "youtube_id": "ONwZDWAfmX8",
+      "duration": "14:11",
+      "material_file_id": "積分法_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "定積分の置換積分法〜x=asinθと置換〜",
+      "youtube_id": "u_utS06S7rE",
+      "duration": "20:09",
+      "material_file_id": "積分法_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "定積分の置換積分法〜x=atanθと置換〜",
+      "youtube_id": "_caKlcnOQkE",
+      "duration": "11:22",
+      "material_file_id": "積分法_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "偶関数・奇関数の定積分",
+      "youtube_id": "frmCaDR9_YI",
+      "duration": "18:25",
+      "material_file_id": "積分法_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "定積分の部分積分法",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "定積分の部分積分法〜同型出現〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "sin^nx，cos^nxの定積分",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "定積分を最小にする定数の決定",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "定積分と微分",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "定積分を含む等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "区分求積法",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part33.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 34,
+      "title": "区分求積法と極限①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part34.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 35,
+      "title": "区分求積法と極限②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part35.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 36,
+      "title": "定積分と不等式の証明",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part36.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 37,
+      "title": "数列の和と不等式の証明",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "積分法_Part37.pdf",
+      "description": ""
+    }
+  ]
+}

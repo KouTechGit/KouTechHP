@@ -1,0 +1,230 @@
+{
+  "subject_name": "数B",
+  "unit_name": "統計的な推測",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "統計的な推測の前に",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "確率変数と確率分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "確率変数の期待値",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "確率変数の分散と標準偏差",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "期待値と分散の計算",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "確率変数の変換",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "同時分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "確率変数の和の期待値",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "確率変数の独立",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "事象の独立と従属",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "独立な確率変数の積の期待値",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "独立な確率変数の和の分散",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "二項分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "二項分布の期待値と分散",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "連続型確率変数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "連続型確率変数の期待値と分散",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "正規分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "標準正規分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "正規分布の応用",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "二項分布の正規分布による近似",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "全数調査と標本調査",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "母集団分布",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "復元抽出と非復元抽出",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "標本平均と標本標準偏差",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "標本平均の期待値と標準偏差",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "標本平均の分布の正規分布による近似",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "母比率と標本比率",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "大数の法則",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "統計的な推測_Part28.pdf",
+      "description": ""
+    }
+  ]
+}

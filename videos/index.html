@@ -90,8 +90,8 @@
       return { baseColor, lightColor };
     }
 
-    // Load course data and render subjects/units
-    fetch('course_data.json')
+    // Load course data index and render subjects/units
+    fetch('course_data_index.json')
       .then(response => {
         // HTTPエラーステータスをチェック
         if (!response.ok) {
@@ -152,7 +152,7 @@
 
             const videoCount = document.createElement('p');
             videoCount.className = 'unit-card-video-count';
-            videoCount.textContent = `${unit.videos.length}本の動画`;
+            videoCount.textContent = `${unit.video_count}本の動画`;
             content.appendChild(videoCount);
 
             card.appendChild(content);

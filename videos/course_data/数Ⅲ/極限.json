@@ -1,0 +1,422 @@
+{
+  "subject_name": "数Ⅲ",
+  "unit_name": "極限",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "極限の前に",
+      "youtube_id": "bsrGWTFKcmc",
+      "duration": "04:38",
+      "material_file_id": "極限_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "極限の感覚を掴む",
+      "youtube_id": "1PVNs9HRJMw",
+      "duration": "07:32",
+      "material_file_id": "極限_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "数列の収束",
+      "youtube_id": "cnJsAWwHYvY",
+      "duration": "07:39",
+      "material_file_id": "極限_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "数列の発散",
+      "youtube_id": "YT7meZqg774",
+      "duration": "07:23",
+      "material_file_id": "極限_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "数列の収束と発散",
+      "youtube_id": "IR5ywoqFj9I",
+      "duration": "09:47",
+      "material_file_id": "極限_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "数列の極限の性質",
+      "youtube_id": "GcyHcvbxk_c",
+      "duration": "03:23",
+      "material_file_id": "極限_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "整式で表された数列の極限",
+      "youtube_id": "_oH6XEb9VPw",
+      "duration": "05:52",
+      "material_file_id": "極限_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "分数式で表された数列の極限",
+      "youtube_id": "g0d3Vh7fJLY",
+      "duration": "06:39",
+      "material_file_id": "極限_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "根号を含む数列の極限",
+      "youtube_id": "YpmSmlY8qAI",
+      "duration": "12:30",
+      "material_file_id": "極限_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "和を含む数列の極限",
+      "youtube_id": "V1Vy2-jVuRg",
+      "duration": "05:35",
+      "material_file_id": "極限_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "はさみうちの原理",
+      "youtube_id": "YucsGtOHojU",
+      "duration": "15:56",
+      "material_file_id": "極限_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "追い出しの原理",
+      "youtube_id": "CUSm3y31res",
+      "duration": "05:56",
+      "material_file_id": "極限_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "数列の極限の性質の応用",
+      "youtube_id": "Uf3zUC3BNKs",
+      "duration": "08:24",
+      "material_file_id": "極限_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "無限等比数列の極限",
+      "youtube_id": "ZPIsKlC3kQo",
+      "duration": "16:19",
+      "material_file_id": "極限_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "r^nを含む数列の極限",
+      "youtube_id": "bSRfggFCYD4",
+      "duration": "08:57",
+      "material_file_id": "極限_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "場合分けが必要なr^nを含む数列の極限",
+      "youtube_id": "_N3VwzwW2wQ",
+      "duration": "08:50",
+      "material_file_id": "極限_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "無限等比数列が収束する条件",
+      "youtube_id": "BZKxZ9JmWRg",
+      "duration": "07:03",
+      "material_file_id": "極限_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "二項定理を利用する極限",
+      "youtube_id": "z_m6MASOvcM",
+      "duration": "11:27",
+      "material_file_id": "極限_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "極限の感覚を磨く",
+      "youtube_id": "6PoVLbcJYFI",
+      "duration": "11:24",
+      "material_file_id": "極限_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "漸化式で定められる数列の極限",
+      "youtube_id": "elOcsQgUAOw",
+      "duration": "13:13",
+      "material_file_id": "極限_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "解けない漸化式で定められる数列の極限",
+      "youtube_id": "XkXyO_g-CxQ",
+      "duration": "14:32",
+      "material_file_id": "極限_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "無限級数の収束と発散",
+      "youtube_id": "1V3NiYhhEH0",
+      "duration": "09:06",
+      "material_file_id": "極限_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "無限等比級数の収束と発散",
+      "youtube_id": "GoBqJ6iA3YQ",
+      "duration": "11:47",
+      "material_file_id": "極限_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "循環小数と無限等比級数",
+      "youtube_id": "R09-CSunJ5M",
+      "duration": "04:21",
+      "material_file_id": "極限_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "無限級数の性質",
+      "youtube_id": "_z1nWCpYCIU",
+      "duration": "11:43",
+      "material_file_id": "極限_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "無限級数の収束・発散と項の極限",
+      "youtube_id": "A82ld-CYj64",
+      "duration": "11:46",
+      "material_file_id": "極限_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "x→aのときの関数の極限",
+      "youtube_id": "BqrvREjWuqY",
+      "duration": "11:00",
+      "material_file_id": "極限_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "x→a+0，x→a-0のときの関数の極限",
+      "youtube_id": "wYuAo4GsqfQ",
+      "duration": "12:59",
+      "material_file_id": "極限_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "x→∞，x→-∞のときの関数の極限",
+      "youtube_id": "RQZ2PbkY_jk",
+      "duration": "05:37",
+      "material_file_id": "極限_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "簡単な関数の極限",
+      "youtube_id": "geYVEDove7s",
+      "duration": "05:17",
+      "material_file_id": "極限_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "整式で表された関数の極限",
+      "youtube_id": "Qk5vVBm6U8k",
+      "duration": "06:34",
+      "material_file_id": "極限_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "分数式で表された関数の極限",
+      "youtube_id": "vVZfkQq-iLI",
+      "duration": "23:13",
+      "material_file_id": "極限_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "根号を含む関数の極限",
+      "youtube_id": "8cFCzhAxE5k",
+      "duration": "19:19",
+      "material_file_id": "極限_Part33.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 34,
+      "title": "極限値から関数の決定①",
+      "youtube_id": "J70dzLNPEwE",
+      "duration": "06:32",
+      "material_file_id": "極限_Part34.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 35,
+      "title": "極限値から関数の決定②",
+      "youtube_id": "vEvYGKDu3Rw",
+      "duration": "18:00",
+      "material_file_id": "極限_Part35.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 36,
+      "title": "絶対値を含む関数の極限",
+      "youtube_id": "Q4Oh8EmX-TE",
+      "duration": "05:52",
+      "material_file_id": "極限_Part36.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 37,
+      "title": "ガウス記号を含む関数の極限",
+      "youtube_id": "AkNHlzir2dI",
+      "duration": "16:30",
+      "material_file_id": "極限_Part37.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 38,
+      "title": "指数関数・対数関数の極限",
+      "youtube_id": "r-LaRvQqHlY",
+      "duration": "20:06",
+      "material_file_id": "極限_Part38.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 39,
+      "title": "極限の感覚を鋭く",
+      "youtube_id": "lgzcA_6r8q8",
+      "duration": "13:20",
+      "material_file_id": "極限_Part39.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 40,
+      "title": "三角関数の極限",
+      "youtube_id": "RygKHS_fXPU",
+      "duration": "17:30",
+      "material_file_id": "極限_Part40.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 41,
+      "title": "sinx/x，(1-cosx)/x^2，tanx/xの極限",
+      "youtube_id": "5buKE7yO_uc",
+      "duration": "12:14",
+      "material_file_id": "極限_Part41.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 42,
+      "title": "sin，cos，tanを含む関数の極限",
+      "youtube_id": "aLiKkbkOs6w",
+      "duration": "22:21",
+      "material_file_id": "極限_Part42.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 43,
+      "title": "極限の感覚を極める",
+      "youtube_id": "4IRmk-NPIHI",
+      "duration": "06:08",
+      "material_file_id": "極限_Part43.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 44,
+      "title": "関数の点連続性",
+      "youtube_id": "7Ixse8NSe-I",
+      "duration": "10:08",
+      "material_file_id": "極限_Part44.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 45,
+      "title": "関数の区間連続性",
+      "youtube_id": "PMETT8fAkbs",
+      "duration": "17:58",
+      "material_file_id": "極限_Part45.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 46,
+      "title": "連続になるような関数の決定",
+      "youtube_id": "OczDesuCxCc",
+      "duration": "14:05",
+      "material_file_id": "極限_Part46.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 47,
+      "title": "最大値・最小値の定理",
+      "youtube_id": "8oOGpmqp6oE",
+      "duration": "04:33",
+      "material_file_id": "極限_Part47.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 48,
+      "title": "中間値の定理",
+      "youtube_id": "bL-zS29haHQ",
+      "duration": "08:20",
+      "material_file_id": "極限_Part48.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 49,
+      "title": "微分係数の定義を利用した関数の極限",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "極限_Part49.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 50,
+      "title": "ネイピア数の定義を利用した関数の極限",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "極限_Part50.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 51,
+      "title": "平均値の定理を利用した関数の極限",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "極限_Part51.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 52,
+      "title": "ロピタルの定理を利用した関数の極限",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "極限_Part52.pdf",
+      "description": ""
+    }
+  ]
+}

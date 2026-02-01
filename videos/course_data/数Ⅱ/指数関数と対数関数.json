@@ -1,0 +1,230 @@
+{
+  "subject_name": "数Ⅱ",
+  "unit_name": "指数関数と対数関数",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "指数関数と対数関数の前に",
+      "youtube_id": "6Bz2qR_z2rQ",
+      "duration": "01:23",
+      "material_file_id": "指数関数と対数関数_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "整数の指数",
+      "youtube_id": "sfwBxKl9Hd4",
+      "duration": "03:38",
+      "material_file_id": "指数関数と対数関数_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "指数が整数の指数法則",
+      "youtube_id": "Lzb8GOBTG3k",
+      "duration": "08:13",
+      "material_file_id": "指数関数と対数関数_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "累乗根",
+      "youtube_id": "xy0Qy4Nk75w",
+      "duration": "06:28",
+      "material_file_id": "指数関数と対数関数_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "累乗根の性質",
+      "youtube_id": "0JTIu2nVP3M",
+      "duration": "04:25",
+      "material_file_id": "指数関数と対数関数_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "有理数の指数",
+      "youtube_id": "V4SgQez8If4",
+      "duration": "03:15",
+      "material_file_id": "指数関数と対数関数_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "指数が有理数の指数法則",
+      "youtube_id": "_HWpZr51zR0",
+      "duration": "05:28",
+      "material_file_id": "指数関数と対数関数_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "指数計算",
+      "youtube_id": "JhgXl6i-9bQ",
+      "duration": "09:36",
+      "material_file_id": "指数関数と対数関数_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "指数の拡張",
+      "youtube_id": "xNw9H2_J7rk",
+      "duration": "08:41",
+      "material_file_id": "指数関数と対数関数_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "指数関数のグラフ",
+      "youtube_id": "rja61oTx2y8",
+      "duration": "12:52",
+      "material_file_id": "指数関数と対数関数_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "累乗の大小比較",
+      "youtube_id": "kQX2kOQ0s8E",
+      "duration": "09:26",
+      "material_file_id": "指数関数と対数関数_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "指数関数を含む方程式",
+      "youtube_id": "M_m4KVZkSBE",
+      "duration": "04:30",
+      "material_file_id": "指数関数と対数関数_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "指数関数を含む不等式",
+      "youtube_id": "6Jhr8ZX3MBY",
+      "duration": "08:30",
+      "material_file_id": "指数関数と対数関数_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "指数関数を含む関数の最大・最小",
+      "youtube_id": "G_6qrwNQ05o",
+      "duration": "10:12",
+      "material_file_id": "指数関数と対数関数_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "対数",
+      "youtube_id": "5jx5_tRChHY",
+      "duration": "05:11",
+      "material_file_id": "指数関数と対数関数_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "対数の性質",
+      "youtube_id": "nL1VidHUlsg",
+      "duration": "08:36",
+      "material_file_id": "指数関数と対数関数_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "底の変換公式",
+      "youtube_id": "85F0R9ZRpU4",
+      "duration": "09:24",
+      "material_file_id": "指数関数と対数関数_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "指数に対数を含む式の値",
+      "youtube_id": "RdruW2-qjVU",
+      "duration": "10:56",
+      "material_file_id": "指数関数と対数関数_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "対数関数のグラフ",
+      "youtube_id": "8qfry8b28CM",
+      "duration": "17:06",
+      "material_file_id": "指数関数と対数関数_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "対数の大小比較",
+      "youtube_id": "qKroB2YavQk",
+      "duration": "10:13",
+      "material_file_id": "指数関数と対数関数_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "対数関数を含む方程式",
+      "youtube_id": "FdiDYWU4NZ8",
+      "duration": "16:13",
+      "material_file_id": "指数関数と対数関数_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "対数関数を含む不等式①",
+      "youtube_id": "B5ASbSEDl4w",
+      "duration": "11:51",
+      "material_file_id": "指数関数と対数関数_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "対数関数を含む不等式②",
+      "youtube_id": "b0IujJg6zyI",
+      "duration": "11:23",
+      "material_file_id": "指数関数と対数関数_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "対数関数を含む関数の最大・最小",
+      "youtube_id": "T7id880uRvs",
+      "duration": "11:14",
+      "material_file_id": "指数関数と対数関数_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "常用対数",
+      "youtube_id": "Z6pGQLkk17I",
+      "duration": "05:15",
+      "material_file_id": "指数関数と対数関数_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "桁数と小数首位",
+      "youtube_id": "j9iMrcSbaSg",
+      "duration": "08:03",
+      "material_file_id": "指数関数と対数関数_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "最高位の値と小数首位の値",
+      "youtube_id": "TG9aX6PIBjo",
+      "duration": "14:42",
+      "material_file_id": "指数関数と対数関数_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "対数と無理数",
+      "youtube_id": "qoFl2WkRxB4",
+      "duration": "03:09",
+      "material_file_id": "指数関数と対数関数_Part28.pdf",
+      "description": ""
+    }
+  ]
+}

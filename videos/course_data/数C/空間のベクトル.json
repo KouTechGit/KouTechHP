@@ -1,0 +1,198 @@
+{
+  "subject_name": "数C",
+  "unit_name": "空間のベクトル",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "空間のベクトルの前に",
+      "youtube_id": "f8ZpB9qVYA0",
+      "duration": "01:02",
+      "material_file_id": "空間のベクトル_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "座標空間",
+      "youtube_id": "IU5B5kfNzmo",
+      "duration": "03:47",
+      "material_file_id": "空間のベクトル_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "空間の２点間の距離",
+      "youtube_id": "xaLprCQLtzA",
+      "duration": "03:16",
+      "material_file_id": "空間のベクトル_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "ベクトルの演算",
+      "youtube_id": "YrdPYOsDStQ",
+      "duration": "02:07",
+      "material_file_id": "空間のベクトル_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "ベクトルの分解",
+      "youtube_id": "Bgt-3EbjMKY",
+      "duration": "09:14",
+      "material_file_id": "空間のベクトル_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "成分によるベクトルの演算",
+      "youtube_id": "CK8tmz8Sd18",
+      "duration": "05:07",
+      "material_file_id": "空間のベクトル_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "点の座標とベクトルの成分",
+      "youtube_id": "wuSvV1iDZow",
+      "duration": "03:04",
+      "material_file_id": "空間のベクトル_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "内積",
+      "youtube_id": "gJ9huTuxCnQ",
+      "duration": "11:39",
+      "material_file_id": "空間のベクトル_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "外積",
+      "youtube_id": "DrTEPeNsCF0",
+      "duration": "19:26",
+      "material_file_id": "空間のベクトル_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "内分点・外分点・重心の位置ベクトル",
+      "youtube_id": "vz9wtT3yPDc",
+      "duration": "04:40",
+      "material_file_id": "空間のベクトル_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "点の位置決定",
+      "youtube_id": "yWc3dKyQZ8w",
+      "duration": "14:40",
+      "material_file_id": "空間のベクトル_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "一直線上にある条件",
+      "youtube_id": "Hs_hP7pbqWU",
+      "duration": "04:35",
+      "material_file_id": "空間のベクトル_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "同一平面上にある条件",
+      "youtube_id": "B-xYsE9kHsU",
+      "duration": "07:55",
+      "material_file_id": "空間のベクトル_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "直線と平面の交点の位置ベクトル",
+      "youtube_id": "m-99l3N-b9A",
+      "duration": "18:25",
+      "material_file_id": "空間のベクトル_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "四面体の性質",
+      "youtube_id": "hZuMyWEjlfk",
+      "duration": "14:44",
+      "material_file_id": "空間のベクトル_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "直線や平面に下ろした垂線の足の座標",
+      "youtube_id": "p7NiVrL32u8",
+      "duration": "09:50",
+      "material_file_id": "空間のベクトル_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "空間の内分点・外分点・重心",
+      "youtube_id": "3S_wgl7YIpY",
+      "duration": "02:10",
+      "material_file_id": "空間のベクトル_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "座標軸に垂直な平面・直線の方程式",
+      "youtube_id": "jIvd5ph6vQs",
+      "duration": "07:45",
+      "material_file_id": "空間のベクトル_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "直線の方程式",
+      "youtube_id": "rtVPRkpEROM",
+      "duration": "12:19",
+      "material_file_id": "空間のベクトル_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "平面の方程式",
+      "youtube_id": "j4Xl-Y6EJdc",
+      "duration": "13:51",
+      "material_file_id": "空間のベクトル_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "点と平面の距離",
+      "youtube_id": "-Pq1bezBB4c",
+      "duration": "05:52",
+      "material_file_id": "空間のベクトル_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "球面の方程式",
+      "youtube_id": "6Z2qdt3RbSw",
+      "duration": "14:16",
+      "material_file_id": "空間のベクトル_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "球の接平面の方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "空間のベクトル_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "四面体の体積",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "空間のベクトル_Part24.pdf",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "subject_name": "数A",
+  "unit_name": "整数の性質",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "整数の性質の前に",
+      "youtube_id": "ycDKlAKkjrw",
+      "duration": "08:07",
+      "material_file_id": "整数の性質_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "約数と倍数",
+      "youtube_id": "1eWFA0VFu1E",
+      "duration": "10:46",
+      "material_file_id": "整数の性質_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "倍数の判定法",
+      "youtube_id": "A-Fx8gwucvY",
+      "duration": "14:53",
+      "material_file_id": "整数の性質_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "素数と素因数分解",
+      "youtube_id": "GIfyLUyiDZk",
+      "duration": "08:29",
+      "material_file_id": "整数の性質_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "整数の積で表される方程式",
+      "youtube_id": "ST4EGCJOews",
+      "duration": "08:45",
+      "material_file_id": "整数の性質_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "最大公約数と最小公倍数",
+      "youtube_id": "BUOasDPJC6I",
+      "duration": "12:06",
+      "material_file_id": "整数の性質_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "互いに素",
+      "youtube_id": "KJMysD9PxT0",
+      "duration": "03:46",
+      "material_file_id": "整数の性質_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "最大公約数と最小公倍数の性質",
+      "youtube_id": "ZJwFf0R6-nY",
+      "duration": "10:56",
+      "material_file_id": "整数の性質_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "商と余り",
+      "youtube_id": "8PrEEJM5F0Y",
+      "duration": "15:53",
+      "material_file_id": "整数の性質_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "余りによる分類",
+      "youtube_id": "TXl6upPL8Mc",
+      "duration": "18:06",
+      "material_file_id": "整数の性質_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "合同式",
+      "youtube_id": "4mxX8FrtlcY",
+      "duration": "19:22",
+      "material_file_id": "整数の性質_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "割り算と最大公約数",
+      "youtube_id": "DEEhG6sJYHM",
+      "duration": "07:42",
+      "material_file_id": "整数の性質_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "ユークリッドの互除法",
+      "youtube_id": "PhEbBbpTcX0",
+      "duration": "20:51",
+      "material_file_id": "整数の性質_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "一次不定方程式",
+      "youtube_id": "tagx3tyySVE",
+      "duration": "22:02",
+      "material_file_id": "整数の性質_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "一次不定方程式の特殊解",
+      "youtube_id": "nZTNeKk1vtQ",
+      "duration": "11:16",
+      "material_file_id": "整数の性質_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "ax+byで表せる整数",
+      "youtube_id": "wDRvumGCjOE",
+      "duration": "18:10",
+      "material_file_id": "整数の性質_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "分数と有限小数・循環小数",
+      "youtube_id": "NogUFYyM8FI",
+      "duration": "11:37",
+      "material_file_id": "整数の性質_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "n進法から10進法への変換",
+      "youtube_id": "-fr4LLgZdAE",
+      "duration": "07:41",
+      "material_file_id": "整数の性質_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "10進法からn進法への変換",
+      "youtube_id": "xtmiqPXJyKA",
+      "duration": "15:43",
+      "material_file_id": "整数の性質_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "２進法の四則計算",
+      "youtube_id": "Fwc-wnX3Ot8",
+      "duration": "11:48",
+      "material_file_id": "整数の性質_Part20.pdf",
+      "description": ""
+    }
+  ]
+}

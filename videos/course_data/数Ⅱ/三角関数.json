@@ -1,0 +1,270 @@
+{
+  "subject_name": "数Ⅱ",
+  "unit_name": "三角関数",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "三角関数の前に",
+      "youtube_id": "dA6jYgP1__M",
+      "duration": "02:08",
+      "material_file_id": "三角関数_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "一般角",
+      "youtube_id": "RcKXzeyF_J0",
+      "duration": "09:45",
+      "material_file_id": "三角関数_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "弧度法",
+      "youtube_id": "rJ5i9cH6t8A",
+      "duration": "09:42",
+      "material_file_id": "三角関数_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "おうぎ形の弧の長さと面積",
+      "youtube_id": "Yjb3_BuR_F4",
+      "duration": "04:02",
+      "material_file_id": "三角関数_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "三角関数の定義",
+      "youtube_id": "ut8IzeHWCBM",
+      "duration": "12:29",
+      "material_file_id": "三角関数_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "三角関数の符号と取りうる値の範囲",
+      "youtube_id": "7ZyguFkFy3s",
+      "duration": "05:18",
+      "material_file_id": "三角関数_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "三角関数の相互関係",
+      "youtube_id": "GDdH8g_2VMQ",
+      "duration": "10:06",
+      "material_file_id": "三角関数_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "sinθ，cosθの対称式・交代式の値",
+      "youtube_id": "ZQ0RmdyQ8Jg",
+      "duration": "09:50",
+      "material_file_id": "三角関数_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "θ＋2nπの三角関数",
+      "youtube_id": "GysperLkqP4",
+      "duration": "02:28",
+      "material_file_id": "三角関数_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "ーθの三角関数",
+      "youtube_id": "LjetOTB_SBw",
+      "duration": "02:32",
+      "material_file_id": "三角関数_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "θ＋πの三角関数",
+      "youtube_id": "bd7UpJWwEm8",
+      "duration": "02:23",
+      "material_file_id": "三角関数_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "θ＋π/2の三角関数",
+      "youtube_id": "9F4oOJO9NB0",
+      "duration": "05:19",
+      "material_file_id": "三角関数_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "一般角の三角関数",
+      "youtube_id": "56itXlPjfj8",
+      "duration": "06:36",
+      "material_file_id": "三角関数_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "y=sinθ，y=cosθのグラフ",
+      "youtube_id": "LilLNsqVKcM",
+      "duration": "15:33",
+      "material_file_id": "三角関数_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "y=tanθのグラフ",
+      "youtube_id": "bHNLTBxg-60",
+      "duration": "09:15",
+      "material_file_id": "三角関数_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "いろいろな三角関数のグラフ",
+      "youtube_id": "M7UPluqHFMM",
+      "duration": "14:32",
+      "material_file_id": "三角関数_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "三角関数を含む方程式・不等式①",
+      "youtube_id": "XhFoNSLb2Fg",
+      "duration": "15:06",
+      "material_file_id": "三角関数_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "三角関数を含む方程式・不等式②",
+      "youtube_id": "_XetfEjaaJY",
+      "duration": "14:42",
+      "material_file_id": "三角関数_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "三角関数を含む方程式・不等式③",
+      "youtube_id": "n6bqpPtC5yU",
+      "duration": "07:03",
+      "material_file_id": "三角関数_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "三角関数を含む関数の最大・最小①",
+      "youtube_id": "OVLSsxD3BzY",
+      "duration": "09:05",
+      "material_file_id": "三角関数_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "三角関数を含む関数の最大・最小②",
+      "youtube_id": "BU1SNvLwQVE",
+      "duration": "06:39",
+      "material_file_id": "三角関数_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "正弦・余弦の加法定理",
+      "youtube_id": "G3UKvlU28Dk",
+      "duration": "25:46",
+      "material_file_id": "三角関数_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "正接の加法定理",
+      "youtube_id": "znNCyeKHJi8",
+      "duration": "07:17",
+      "material_file_id": "三角関数_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "２直線のなす角",
+      "youtube_id": "x1F8KeyOEDo",
+      "duration": "11:44",
+      "material_file_id": "三角関数_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "点の回転",
+      "youtube_id": "yP46KyyROr0",
+      "duration": "11:16",
+      "material_file_id": "三角関数_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "２倍角の公式",
+      "youtube_id": "lIKIawqg4XU",
+      "duration": "07:14",
+      "material_file_id": "三角関数_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "３倍角の公式",
+      "youtube_id": "yROg58LsRtU",
+      "duration": "04:41",
+      "material_file_id": "三角関数_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "三角関数を含む方程式・不等式④",
+      "youtube_id": "9CiatTWTwAo",
+      "duration": "06:52",
+      "material_file_id": "三角関数_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "半角の公式",
+      "youtube_id": "upTHADw1Nvc",
+      "duration": "13:14",
+      "material_file_id": "三角関数_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "積和・和積の公式",
+      "youtube_id": "Ub75lXkNHqQ",
+      "duration": "13:28",
+      "material_file_id": "三角関数_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "三角関数の合成",
+      "youtube_id": "fnFUeKoJUyU",
+      "duration": "09:42",
+      "material_file_id": "三角関数_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "三角関数を含む方程式・不等式⑤",
+      "youtube_id": "WbpAjyuaCko",
+      "duration": "09:28",
+      "material_file_id": "三角関数_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "三角関数を含む関数の最大・最小③",
+      "youtube_id": "Mjji4npYP0s",
+      "duration": "12:12",
+      "material_file_id": "三角関数_Part33.pdf",
+      "description": ""
+    }
+  ]
+}

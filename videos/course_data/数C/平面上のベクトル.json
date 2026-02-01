@@ -1,0 +1,286 @@
+{
+  "subject_name": "数C",
+  "unit_name": "平面上のベクトル",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "平面上のベクトルの前に",
+      "youtube_id": "tI4I4p7ZXV0",
+      "duration": "03:48",
+      "material_file_id": "平面上のベクトル_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "ベクトルの加法と減法",
+      "youtube_id": "BzeK5AS6LmA",
+      "duration": "13:00",
+      "material_file_id": "平面上のベクトル_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "ベクトルの実数倍",
+      "youtube_id": "-dll3ndvs4s",
+      "duration": "04:04",
+      "material_file_id": "平面上のベクトル_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "ベクトルの演算",
+      "youtube_id": "zZtJRtU4CjY",
+      "duration": "04:44",
+      "material_file_id": "平面上のベクトル_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "ベクトルの平行",
+      "youtube_id": "JaiDNv9Zuzk",
+      "duration": "06:12",
+      "material_file_id": "平面上のベクトル_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "ベクトルの分解",
+      "youtube_id": "bI-Xdliy82g",
+      "duration": "06:31",
+      "material_file_id": "平面上のベクトル_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "ベクトルの成分",
+      "youtube_id": "tihz_ZaN5sc",
+      "duration": "04:27",
+      "material_file_id": "平面上のベクトル_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "成分によるベクトルの演算",
+      "youtube_id": "bXIcz0CHLtg",
+      "duration": "07:01",
+      "material_file_id": "平面上のベクトル_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "点の座標とベクトルの成分",
+      "youtube_id": "A0fhwg0vO8A",
+      "duration": "05:43",
+      "material_file_id": "平面上のベクトル_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "内積",
+      "youtube_id": "aYWqLBqWBJ8",
+      "duration": "11:57",
+      "material_file_id": "平面上のベクトル_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "内積と成分",
+      "youtube_id": "PZiIb4bEFHg",
+      "duration": "09:55",
+      "material_file_id": "平面上のベクトル_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "ベクトルの垂直条件",
+      "youtube_id": "1FvXMuhrGEo",
+      "duration": "05:41",
+      "material_file_id": "平面上のベクトル_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "内積の性質",
+      "youtube_id": "uloswjToHck",
+      "duration": "06:42",
+      "material_file_id": "平面上のベクトル_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "内積による演算",
+      "youtube_id": "xow7poov7xM",
+      "duration": "08:05",
+      "material_file_id": "平面上のベクトル_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "ベクトルの大きさの最小値",
+      "youtube_id": "iEN-Yo2j6BU",
+      "duration": "07:47",
+      "material_file_id": "平面上のベクトル_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "ベクトルと三角形の面積",
+      "youtube_id": "hh3Lq7OhBww",
+      "duration": "08:42",
+      "material_file_id": "平面上のベクトル_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "位置ベクトル",
+      "youtube_id": "7WxyVrUs0Qw",
+      "duration": "03:51",
+      "material_file_id": "平面上のベクトル_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "内分点・外分点の位置ベクトル",
+      "youtube_id": "DFc_zd_oIBc",
+      "duration": "09:36",
+      "material_file_id": "平面上のベクトル_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "重心の位置ベクトル",
+      "youtube_id": "sorEmFcpTSU",
+      "duration": "07:43",
+      "material_file_id": "平面上のベクトル_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "点の位置決定",
+      "youtube_id": "xEQrx66yUJk",
+      "duration": "08:50",
+      "material_file_id": "平面上のベクトル_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "一直線上にある条件",
+      "youtube_id": "L3KTgggftt0",
+      "duration": "06:31",
+      "material_file_id": "平面上のベクトル_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "２直線の交点の位置ベクトル",
+      "youtube_id": "hycv6RJ2vKs",
+      "duration": "12:48",
+      "material_file_id": "平面上のベクトル_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "内心の位置ベクトル",
+      "youtube_id": "QytIRjeS2Sg",
+      "duration": "04:10",
+      "material_file_id": "平面上のベクトル_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "傍心の位置ベクトル",
+      "youtube_id": "acCv_tpwr8M",
+      "duration": "04:08",
+      "material_file_id": "平面上のベクトル_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "垂心の位置ベクトル",
+      "youtube_id": "ad6uCpaH8dE",
+      "duration": "06:51",
+      "material_file_id": "平面上のベクトル_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "外心の位置ベクトル",
+      "youtube_id": "xDsQoCZYD5k",
+      "duration": "18:58",
+      "material_file_id": "平面上のベクトル_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "直線のベクトル方程式①",
+      "youtube_id": "128IDRWr2GQ",
+      "duration": "13:02",
+      "material_file_id": "平面上のベクトル_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "直線のベクトル方程式②",
+      "youtube_id": "8QbCOvIQaRU",
+      "duration": "07:19",
+      "material_file_id": "平面上のベクトル_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "直線のベクトル方程式③",
+      "youtube_id": "ScwdhvJlbOc",
+      "duration": "11:05",
+      "material_file_id": "平面上のベクトル_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "円のベクトル方程式",
+      "youtube_id": "W-tmsaTxIwM",
+      "duration": "11:17",
+      "material_file_id": "平面上のベクトル_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "円の接線のベクトル方程式",
+      "youtube_id": "i5NRcopLUlo",
+      "duration": "10:08",
+      "material_file_id": "平面上のベクトル_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "点と直線の距離",
+      "youtube_id": "FMeMu6CviGI",
+      "duration": "04:52",
+      "material_file_id": "平面上のベクトル_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "点の存在範囲①",
+      "youtube_id": "xacYc0XfJkU",
+      "duration": "10:16",
+      "material_file_id": "平面上のベクトル_Part33.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 34,
+      "title": "点の存在範囲②",
+      "youtube_id": "zdWfjctaqSE",
+      "duration": "15:37",
+      "material_file_id": "平面上のベクトル_Part34.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 35,
+      "title": "点の存在範囲②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "平面上のベクトル_Part35.pdf",
+      "description": ""
+    }
+  ]
+}

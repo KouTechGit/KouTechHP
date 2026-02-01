@@ -1,0 +1,214 @@
+{
+  "subject_name": "数C",
+  "unit_name": "式と曲線",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "式と曲線の前に",
+      "youtube_id": "gEfX9QwcpRo",
+      "duration": "05:32",
+      "material_file_id": "式と曲線_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "曲線の平行移動",
+      "youtube_id": "kSGnUYZpQjk",
+      "duration": "04:02",
+      "material_file_id": "式と曲線_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "曲線の対称移動",
+      "youtube_id": "ZplK2xRUfD4",
+      "duration": "06:30",
+      "material_file_id": "式と曲線_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "曲線の拡大・縮小",
+      "youtube_id": "_ch4YPTJdks",
+      "duration": "03:22",
+      "material_file_id": "式と曲線_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "放物線の定義",
+      "youtube_id": "lXL57YlAEEE",
+      "duration": "05:38",
+      "material_file_id": "式と曲線_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "放物線の性質",
+      "youtube_id": "2VwNC_SJIUE",
+      "duration": "08:14",
+      "material_file_id": "式と曲線_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "楕円の定義",
+      "youtube_id": "seQ5BgrViq0",
+      "duration": "12:03",
+      "material_file_id": "式と曲線_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "楕円の性質",
+      "youtube_id": "2OlFDAcQrMk",
+      "duration": "16:10",
+      "material_file_id": "式と曲線_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "円と楕円",
+      "youtube_id": "RpIrRaHRI8M",
+      "duration": "07:07",
+      "material_file_id": "式と曲線_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "双曲線の定義",
+      "youtube_id": "mr1Q9-KQNrs",
+      "duration": "10:18",
+      "material_file_id": "式と曲線_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "双曲線の性質",
+      "youtube_id": "I3kn6NHVmgs",
+      "duration": "20:19",
+      "material_file_id": "式と曲線_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "双曲線と漸近線",
+      "youtube_id": "jd-4nm3ZUpM",
+      "duration": "11:22",
+      "material_file_id": "式と曲線_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "x，yについての２次方程式が表す図形",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "平行移動した２次曲線の方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "２次曲線と直線の共有点の座標",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "２次曲線と直線の共有点の個数と判別式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "２次曲線の弦の中点と長さ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "２次曲線と軌跡",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "放物線の接線",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "楕円の接線",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "双曲線の接線",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "極座標",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "直線の極方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "円の極方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "直線の極方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "極方程式の表す図形",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "式と曲線_Part26.pdf",
+      "description": ""
+    }
+  ]
+}

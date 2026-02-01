@@ -1,0 +1,430 @@
+{
+  "subject_name": "数Ⅰ",
+  "unit_name": "２次関数",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "２次関数の前に",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "関数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "関数のグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "点の移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "点の対称移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "１次関数y=ax+bのグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "１次関数の決定",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "２次関数y=ax^2のグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "２次関数y=a(x-p)^2+qのグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "平方完成",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "２次関数y=ax^2+bx+cのグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "放物線の平行移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "放物線の対称移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "放物線の移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "グラフの平行移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "グラフの対称移動",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "絶対値を含む１次関数のグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "２次関数の最大・最小①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "２次関数の最大・最小②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "２次関数の最大・最小③",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "２次関数の最大・最小④",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "２次関数の最大・最小⑤",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "２次関数の最大・最小⑥",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "２次関数の決定①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "２次関数の決定②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "２次関数の決定③",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "２次関数の決定④",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "２次方程式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "２次方程式の実数解の個数と判別式①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "２つの２次方程式の共通解",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "２次関数のグラフとx軸の共有点の座標",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "２次関数のグラフとx軸の共有点の個数①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "２次関数の決定⑤",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part33.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 34,
+      "title": "放物線と直線の共有点",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part34.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 35,
+      "title": "２つの放物線の共有点",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part35.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 36,
+      "title": "１次関数のグラフと１次不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part36.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 37,
+      "title": "２次関数のグラフと２次不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part37.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 38,
+      "title": "２次不等式ーx軸と異なる２点で交わる場合ー",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part38.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 39,
+      "title": "２次不等式ーx軸と接する場合ー",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part39.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 40,
+      "title": "２次不等式ーx軸と共有点をもたない場合ー",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part40.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 41,
+      "title": "連立不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part41.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 42,
+      "title": "２次方程式の実数解の個数と判別式②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part42.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 43,
+      "title": "２次関数のグラフとx軸の共有点の個数②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part43.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 44,
+      "title": "２次不等式の係数決定",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part44.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 45,
+      "title": "絶対不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part45.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 46,
+      "title": "ある区間で常に成り立つ不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part46.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 47,
+      "title": "解の配置①",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part47.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 48,
+      "title": "解の配置②",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part48.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 49,
+      "title": "解の配置③",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part49.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 50,
+      "title": "解の配置④",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part50.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 51,
+      "title": "解の配置⑤",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part51.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 52,
+      "title": "文字係数を含む２次方程式・２次不等式",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part52.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 53,
+      "title": "絶対値を含む２次関数のグラフ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "２次関数_Part53.pdf",
+      "description": ""
+    }
+  ]
+}

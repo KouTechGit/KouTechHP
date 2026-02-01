@@ -1,0 +1,182 @@
+{
+  "subject_name": "数C",
+  "unit_name": "複素数平面",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "複素数平面の前に",
+      "youtube_id": "C3ykxpdS5Sk",
+      "duration": "03:52",
+      "material_file_id": "複素数平面_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "複素数平面",
+      "youtube_id": "A4Z1zehZqoo",
+      "duration": "03:13",
+      "material_file_id": "複素数平面_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "複素数の実数倍",
+      "youtube_id": "0BNxCneaGZ4",
+      "duration": "04:56",
+      "material_file_id": "複素数平面_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "複素数の加法・減法",
+      "youtube_id": "7FBqkUfoG-M",
+      "duration": "08:10",
+      "material_file_id": "複素数平面_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "複素数とベクトル",
+      "youtube_id": "QNE86-Ov2S0",
+      "duration": "08:23",
+      "material_file_id": "複素数平面_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "共役な複素数",
+      "youtube_id": "1U9QGiESdys",
+      "duration": "18:46",
+      "material_file_id": "複素数平面_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "複素数の実数条件と純虚数条件",
+      "youtube_id": "ZevN_dGRP5I",
+      "duration": "09:30",
+      "material_file_id": "複素数平面_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "複素数の絶対値と２点間の距離",
+      "youtube_id": "2CB98XogOTE",
+      "duration": "09:56",
+      "material_file_id": "複素数平面_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "複素数の計算",
+      "youtube_id": "F1Ky7by6SLA",
+      "duration": "11:32",
+      "material_file_id": "複素数平面_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "極形式",
+      "youtube_id": "Qtvg7UXmAnk",
+      "duration": "07:02",
+      "material_file_id": "複素数平面_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "複素数の乗法・除法",
+      "youtube_id": "ZIJx1BBW_KM",
+      "duration": "12:04",
+      "material_file_id": "複素数平面_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "極形式の応用",
+      "youtube_id": "6Rc6xlRqWhQ",
+      "duration": "10:27",
+      "material_file_id": "複素数平面_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "複素数の積と商の図形的な意味",
+      "youtube_id": "dYutOjNjySI",
+      "duration": "12:20",
+      "material_file_id": "複素数平面_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "原点を中心とする回転",
+      "youtube_id": "2MVF_lrlMoQ",
+      "duration": "06:32",
+      "material_file_id": "複素数平面_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "ド・モアブルの定理",
+      "youtube_id": "uty4cIGbavA",
+      "duration": "08:58",
+      "material_file_id": "複素数平面_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "ド・モアブルの定理の証明",
+      "youtube_id": "l7IvThgePWU",
+      "duration": "10:05",
+      "material_file_id": "複素数平面_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "１のn乗根",
+      "youtube_id": "YGy4cFH7CmQ",
+      "duration": "10:26",
+      "material_file_id": "複素数平面_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "複素数のn乗根",
+      "youtube_id": "ZYL3JVzyq58",
+      "duration": "08:48",
+      "material_file_id": "複素数平面_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "内分点・外分点・重心を表す複素数",
+      "youtube_id": "jhYlargi71Q",
+      "duration": "05:13",
+      "material_file_id": "複素数平面_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "複素数平面上の円の方程式",
+      "youtube_id": "jEHumJJDUDs",
+      "duration": "12:34",
+      "material_file_id": "複素数平面_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "一般の点を中心とする回転",
+      "youtube_id": "2C9ZpZoa9nY",
+      "duration": "09:10",
+      "material_file_id": "複素数平面_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "半直線のなす角",
+      "youtube_id": "3MEB1oD53xc",
+      "duration": "12:34",
+      "material_file_id": "複素数平面_Part22.pdf",
+      "description": ""
+    }
+  ]
+}

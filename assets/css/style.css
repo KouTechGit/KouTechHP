@@ -450,6 +450,16 @@ footer {
     height: 80px;
   }
   
+  .portal-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .portal-card {
+    max-width: 400px;
+    width: 100%;
+  }
+  
   section.summary,
   section.key-points,
   section.board-content,

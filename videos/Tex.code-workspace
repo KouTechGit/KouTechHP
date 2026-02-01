@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../../LaTeX"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../Library/CloudStorage/GoogleDrive-koutech1216@gmail.com/マイドライブ/zotero"
+		},
+		{
+			"path": "../../../manimations"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "KouTechHP",
+		"cursorStats.showTotalRequests": false,
+		"cursorStats.showDailyRemaining": false,
+		"cursorStats.showProgressBars": false,
+		"latex-workshop.latex.autoBuild.run": "onSave"
+	}
+}

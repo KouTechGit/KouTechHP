@@ -1,0 +1,366 @@
+{
+  "subject_name": "数Ⅲ",
+  "unit_name": "微分法の応用",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "接線・法線の方程式",
+      "youtube_id": "aNuoTtfKZjU",
+      "duration": "08:52",
+      "material_file_id": "微分法の応用_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "陰関数表示された曲線の接線・法線の方程式",
+      "youtube_id": "ZWyyaTF-ixk",
+      "duration": "04:31",
+      "material_file_id": "微分法の応用_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "媒介変数表示された曲線の接線・法線の方程式",
+      "youtube_id": "rohnyUsKpdE",
+      "duration": "04:34",
+      "material_file_id": "微分法の応用_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "共通接線の方程式",
+      "youtube_id": "rN542a0IFE4",
+      "duration": "13:52",
+      "material_file_id": "微分法の応用_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "曲線に接線が引けるための条件",
+      "youtube_id": "cRgCUdaI89s",
+      "duration": "08:33",
+      "material_file_id": "微分法の応用_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "平均値の定理",
+      "youtube_id": "b4H7nh3-LH4",
+      "duration": "15:44",
+      "material_file_id": "微分法の応用_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "平均値の定理と不等式の証明",
+      "youtube_id": "oROrvo5FWcA",
+      "duration": "24:52",
+      "material_file_id": "微分法の応用_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "関数の増減",
+      "youtube_id": "mjYYJshF7qY",
+      "duration": "20:33",
+      "material_file_id": "微分法の応用_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "関数の極大・極小",
+      "youtube_id": "vbEmzjqcETg",
+      "duration": "24:31",
+      "material_file_id": "微分法の応用_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "関数が極値をもつ条件",
+      "youtube_id": "T9lbAXkBd5w",
+      "duration": "15:32",
+      "material_file_id": "微分法の応用_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "関数が極値をもたない条件",
+      "youtube_id": "5Q0BOxIHdVE",
+      "duration": "07:53",
+      "material_file_id": "微分法の応用_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "曲線の凹凸と変曲点",
+      "youtube_id": "7751c9WVWe0",
+      "duration": "19:12",
+      "material_file_id": "微分法の応用_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "第２次導関数と極値",
+      "youtube_id": "fVL2PjaQz9A",
+      "duration": "17:03",
+      "material_file_id": "微分法の応用_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "変曲点から関数の決定",
+      "youtube_id": "g-7L-HKiWNc",
+      "duration": "13:59",
+      "material_file_id": "微分法の応用_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "変曲点とグラフの対称性",
+      "youtube_id": "poLy2rSxt0o",
+      "duration": "11:38",
+      "material_file_id": "微分法の応用_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "極限と漸近線①",
+      "youtube_id": "UkMVihgATaE",
+      "duration": "11:47",
+      "material_file_id": "微分法の応用_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "極限と漸近線②",
+      "youtube_id": "eUcxiCkkutM",
+      "duration": "20:05",
+      "material_file_id": "微分法の応用_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "極限と漸近線③",
+      "youtube_id": "RNLAdz5mh0A",
+      "duration": "22:18",
+      "material_file_id": "微分法の応用_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "陽関数表示のグラフのかく手順",
+      "youtube_id": "VninGSoYVHc",
+      "duration": "09:58",
+      "material_file_id": "微分法の応用_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "分数関数のグラフ①",
+      "youtube_id": "otf7HWZuMv0",
+      "duration": "12:01",
+      "material_file_id": "微分法の応用_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "分数関数のグラフ②",
+      "youtube_id": "ZzgbTeTvD_s",
+      "duration": "17:31",
+      "material_file_id": "微分法の応用_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "無理関数のグラフ①",
+      "youtube_id": "m-xtPkTQajc",
+      "duration": "14:59",
+      "material_file_id": "微分法の応用_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "無理関数のグラフ②",
+      "youtube_id": "c-xSWnTWkoo",
+      "duration": "13:38",
+      "material_file_id": "微分法の応用_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "三角関数のグラフ",
+      "youtube_id": "Y1Zth4byc1o",
+      "duration": "19:40",
+      "material_file_id": "微分法の応用_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "指数関数のグラフ①",
+      "youtube_id": "_k2c7us_Y9g",
+      "duration": "11:30",
+      "material_file_id": "微分法の応用_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "指数関数のグラフ②",
+      "youtube_id": "W9HtXbhxDfM",
+      "duration": "12:44",
+      "material_file_id": "微分法の応用_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "対数関数のグラフ",
+      "youtube_id": "v94Oe1PnDIc",
+      "duration": "17:51",
+      "material_file_id": "微分法の応用_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "関数の最大・最小",
+      "youtube_id": "OvuLfr4_XtI",
+      "duration": "09:48",
+      "material_file_id": "微分法の応用_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "最大値・最小値から関数の決定",
+      "youtube_id": "-cf3sTFDlyE",
+      "duration": "17:48",
+      "material_file_id": "微分法の応用_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "陰関数表示のグラフのかく手順",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "陰関数表示のグラフ①〜リサージュ図形〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part31.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 32,
+      "title": "陰関数表示のグラフ②〜その他〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part32.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 33,
+      "title": "媒介変数表示のグラフのかく手順",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part33.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 34,
+      "title": "媒介変数表示のグラフ①〜サイクロイド〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part34.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 35,
+      "title": "媒介変数表示のグラフ②〜アステロイド〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part35.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 36,
+      "title": "媒介変数表示のグラフ③〜カージオイド〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part36.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 37,
+      "title": "媒介変数表示のグラフ④〜リサージュ〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part37.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 38,
+      "title": "媒介変数表示のグラフ⑤〜インボリュート〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part38.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 39,
+      "title": "関数の増減と不等式の証明",
+      "youtube_id": "P3lu9Jt9t9g",
+      "duration": "15:18",
+      "material_file_id": "微分法の応用_Part39.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 40,
+      "title": "関数の増減と２変数の不等式の証明",
+      "youtube_id": "JbAzjHxM0e4",
+      "duration": "19:30",
+      "material_file_id": "微分法の応用_Part40.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 41,
+      "title": "不等式が常に成り立つ条件",
+      "youtube_id": "j93O0v5Lkfc",
+      "duration": "05:44",
+      "material_file_id": "微分法の応用_Part41.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 42,
+      "title": "方程式の実数解の個数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part42.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 43,
+      "title": "接線の本数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part43.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 44,
+      "title": "ロルの定理",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part44.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 45,
+      "title": "平均値の定理の証明",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "微分法の応用_Part45.pdf",
+      "description": ""
+    }
+  ]
+}

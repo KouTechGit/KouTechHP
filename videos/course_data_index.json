@@ -1,0 +1,174 @@
+{
+  "subjects": [
+    {
+      "subject_name": "数Ⅰ",
+      "units": [
+        {
+          "unit_name": "数と式",
+          "file_path": "course_data/数Ⅰ/数と式.json",
+          "video_count": 32
+        },
+        {
+          "unit_name": "集合と命題",
+          "file_path": "course_data/数Ⅰ/集合と命題.json",
+          "video_count": 18
+        },
+        {
+          "unit_name": "２次関数",
+          "file_path": "course_data/数Ⅰ/２次関数.json",
+          "video_count": 53
+        },
+        {
+          "unit_name": "図形と計量",
+          "file_path": "course_data/数Ⅰ/図形と計量.json",
+          "video_count": 19
+        },
+        {
+          "unit_name": "データの分析",
+          "file_path": "course_data/数Ⅰ/データの分析.json",
+          "video_count": 10
+        }
+      ]
+    },
+    {
+      "subject_name": "数Ⅱ",
+      "units": [
+        {
+          "unit_name": "式と証明",
+          "file_path": "course_data/数Ⅱ/式と証明.json",
+          "video_count": 15
+        },
+        {
+          "unit_name": "複素数と方程式",
+          "file_path": "course_data/数Ⅱ/複素数と方程式.json",
+          "video_count": 18
+        },
+        {
+          "unit_name": "図形と方程式",
+          "file_path": "course_data/数Ⅱ/図形と方程式.json",
+          "video_count": 39
+        },
+        {
+          "unit_name": "三角関数",
+          "file_path": "course_data/数Ⅱ/三角関数.json",
+          "video_count": 33
+        },
+        {
+          "unit_name": "指数関数と対数関数",
+          "file_path": "course_data/数Ⅱ/指数関数と対数関数.json",
+          "video_count": 28
+        },
+        {
+          "unit_name": "微分法(数Ⅱ)",
+          "file_path": "course_data/数Ⅱ/微分法(数Ⅱ).json",
+          "video_count": 23
+        },
+        {
+          "unit_name": "積分法(数Ⅱ)",
+          "file_path": "course_data/数Ⅱ/積分法(数Ⅱ).json",
+          "video_count": 22
+        }
+      ]
+    },
+    {
+      "subject_name": "数Ⅲ",
+      "units": [
+        {
+          "unit_name": "関数",
+          "file_path": "course_data/数Ⅲ/関数.json",
+          "video_count": 18
+        },
+        {
+          "unit_name": "極限",
+          "file_path": "course_data/数Ⅲ/極限.json",
+          "video_count": 52
+        },
+        {
+          "unit_name": "微分法",
+          "file_path": "course_data/数Ⅲ/微分法.json",
+          "video_count": 24
+        },
+        {
+          "unit_name": "微分法の応用",
+          "file_path": "course_data/数Ⅲ/微分法の応用.json",
+          "video_count": 45
+        },
+        {
+          "unit_name": "積分法",
+          "file_path": "course_data/数Ⅲ/積分法.json",
+          "video_count": 37
+        },
+        {
+          "unit_name": "積分法の応用",
+          "file_path": "course_data/数Ⅲ/積分法の応用.json",
+          "video_count": 19
+        }
+      ]
+    },
+    {
+      "subject_name": "数A",
+      "units": [
+        {
+          "unit_name": "場合の数",
+          "file_path": "course_data/数A/場合の数.json",
+          "video_count": 31
+        },
+        {
+          "unit_name": "確率",
+          "file_path": "course_data/数A/確率.json",
+          "video_count": 32
+        },
+        {
+          "unit_name": "図形の性質",
+          "file_path": "course_data/数A/図形の性質.json",
+          "video_count": 26
+        },
+        {
+          "unit_name": "整数の性質",
+          "file_path": "course_data/数A/整数の性質.json",
+          "video_count": 20
+        }
+      ]
+    },
+    {
+      "subject_name": "数B",
+      "units": [
+        {
+          "unit_name": "数列",
+          "file_path": "course_data/数B/数列.json",
+          "video_count": 45
+        },
+        {
+          "unit_name": "統計的な推測",
+          "file_path": "course_data/数B/統計的な推測.json",
+          "video_count": 28
+        }
+      ]
+    },
+    {
+      "subject_name": "数C",
+      "units": [
+        {
+          "unit_name": "平面上のベクトル",
+          "file_path": "course_data/数C/平面上のベクトル.json",
+          "video_count": 35
+        },
+        {
+          "unit_name": "空間のベクトル",
+          "file_path": "course_data/数C/空間のベクトル.json",
+          "video_count": 24
+        },
+        {
+          "unit_name": "複素数平面",
+          "file_path": "course_data/数C/複素数平面.json",
+          "video_count": 22
+        },
+        {
+          "unit_name": "式と曲線",
+          "file_path": "course_data/数C/式と曲線.json",
+          "video_count": 26
+        }
+      ]
+    }
+  ]
+}

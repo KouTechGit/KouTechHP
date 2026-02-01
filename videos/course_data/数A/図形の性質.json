@@ -1,0 +1,214 @@
+{
+  "subject_name": "数A",
+  "unit_name": "図形の性質",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "中学の復習",
+      "youtube_id": "vZQmsTqfgN0",
+      "duration": "11:28",
+      "material_file_id": "図形の性質_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "内分・外分",
+      "youtube_id": "X5pmuolG0Gg",
+      "duration": "05:12",
+      "material_file_id": "図形の性質_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "角の二等分線と辺の比",
+      "youtube_id": "RneeklR4-AU",
+      "duration": "09:33",
+      "material_file_id": "図形の性質_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "三角形の３辺の大小関係",
+      "youtube_id": "axDE47-in-Y",
+      "duration": "06:13",
+      "material_file_id": "図形の性質_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "三角形の辺と角の大小関係",
+      "youtube_id": "-xDh_N1E8n0",
+      "duration": "07:39",
+      "material_file_id": "図形の性質_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "三角形の五心",
+      "youtube_id": "yx25x3xfxdw",
+      "duration": "20:34",
+      "material_file_id": "図形の性質_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "五心についての求値問題",
+      "youtube_id": "zxpJaW_WSJE",
+      "duration": "07:36",
+      "material_file_id": "図形の性質_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "チェバの定理",
+      "youtube_id": "YR6-s-qpr9k",
+      "duration": "11:26",
+      "material_file_id": "図形の性質_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "メネラウスの定理",
+      "youtube_id": "i7oJ_u6duwE",
+      "duration": "09:25",
+      "material_file_id": "図形の性質_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "接弦定理",
+      "youtube_id": "na01KgLkXAc",
+      "duration": "06:54",
+      "material_file_id": "図形の性質_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "円の接線",
+      "youtube_id": "NSp9n3y6GSA",
+      "duration": "03:02",
+      "material_file_id": "図形の性質_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "円に内接する四角形",
+      "youtube_id": "InCihZiwyHk",
+      "duration": "09:11",
+      "material_file_id": "図形の性質_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "四角形が円に内接するための条件",
+      "youtube_id": "3sgZWYCmRoA",
+      "duration": "07:45",
+      "material_file_id": "図形の性質_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "方べきの定理",
+      "youtube_id": "77Z6wDnKgN8",
+      "duration": "07:41",
+      "material_file_id": "図形の性質_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "方べきの定理の逆",
+      "youtube_id": "Fvw0T9L8W24",
+      "duration": "06:31",
+      "material_file_id": "図形の性質_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "円と直線の位置関係",
+      "youtube_id": "8kEla4zB4n0",
+      "duration": "03:05",
+      "material_file_id": "図形の性質_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "半径が異なる２つの円の位置関係",
+      "youtube_id": "TCsLA_gneio",
+      "duration": "05:47",
+      "material_file_id": "図形の性質_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "２つの円の共通接線",
+      "youtube_id": "kq_XTWl0izc",
+      "duration": "05:07",
+      "material_file_id": "図形の性質_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "平行な直線の作図",
+      "youtube_id": "Ojj5SNHomiU",
+      "duration": "04:22",
+      "material_file_id": "図形の性質_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "線分の内分点，外分点の作図",
+      "youtube_id": "foTcBWLx_Vo",
+      "duration": "04:53",
+      "material_file_id": "図形の性質_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "いろいろな長さの線分の作図",
+      "youtube_id": "DMmQSdGUa3w",
+      "duration": "06:15",
+      "material_file_id": "図形の性質_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "空間における位置関係",
+      "youtube_id": "Vi2Qu4HpdKU",
+      "duration": "07:22",
+      "material_file_id": "図形の性質_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "三垂線の定理",
+      "youtube_id": "GD34YlOkUxk",
+      "duration": "05:48",
+      "material_file_id": "図形の性質_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "正多面体",
+      "youtube_id": "0wePUvewOaE",
+      "duration": "14:47",
+      "material_file_id": "図形の性質_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "オイラーの多面体定理",
+      "youtube_id": "og20D6_Bbs8",
+      "duration": "17:55",
+      "material_file_id": "図形の性質_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "正多面体の体積",
+      "youtube_id": "7jJghDo2mDs",
+      "duration": "09:19",
+      "material_file_id": "図形の性質_Part26.pdf",
+      "description": ""
+    }
+  ]
+}

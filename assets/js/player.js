@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resourcesList: document.getElementById('resources-list')
   };
 
-  let allCourseData = null;
   let currentUnitData = null;
   let player = null;
   let youtubeAPIReady = false;
@@ -57,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize Data
-  fetch('course_data.json')
+  // まずインデックスファイルを読み込む
+  fetch('course_data_index.json')
     .then(response => {
       // HTTPエラーステータスをチェック
       if (!response.ok) {
@@ -65,35 +65,52 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return response.json();
     })
-    .then(data => {
-      // データの構造をチェック
-      if (!data || !data.subjects || !Array.isArray(data.subjects)) {
-        throw new Error('Invalid course data format');
+    .then(indexData => {
+      // インデックスデータの構造をチェック
+      if (!indexData || !indexData.subjects || !Array.isArray(indexData.subjects)) {
+        throw new Error('Invalid course data index format');
       }
       
-      allCourseData = data;
-      const subject = data.subjects.find(s => s.subject_name === subjectParam);
-      if (subject) {
-        const unit = subject.units.find(u => u.unit_name === unitParam);
-        if (unit) {
+      // 該当する科目と単元を検索
+      const subject = indexData.subjects.find(s => s.subject_name === subjectParam);
+      if (!subject) {
+        console.error('Subject not found:', subjectParam);
+        showError('指定された科目が見つかりません');
+        return;
+      }
+      
+      const unit = subject.units.find(u => u.unit_name === unitParam);
+      if (!unit) {
+        console.error('Unit not found:', unitParam);
+        showError('指定された単元が見つかりません');
+        return;
+      }
+      
+      // 単元ファイルを読み込む
+      return fetch(unit.file_path)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(unitData => {
+          // 単元データの構造をチェック
+          if (!unitData || !unitData.videos || !Array.isArray(unitData.videos)) {
+            throw new Error('Invalid unit data format');
+          }
+          
           currentUnitData = {
-            subject_name: subject.subject_name,
-            unit_name: unit.unit_name,
-            videos: unit.videos,
-            materials: unit.materials || null
+            subject_name: unitData.subject_name,
+            unit_name: unitData.unit_name,
+            videos: unitData.videos,
+            materials: unitData.materials || null
           };
           
           updateSidebarTitle();
           renderSidebar();
           loadVideo(currentVideoNumber);
-        } else {
-          console.error('Unit not found:', unitParam);
-          showError('指定された単元が見つかりません');
-        }
-      } else {
-        console.error('Subject not found:', subjectParam);
-        showError('指定された科目が見つかりません');
-      }
+        });
     })
     .catch(error => {
       console.error('Error loading course data:', error);

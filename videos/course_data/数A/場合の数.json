@@ -1,0 +1,254 @@
+{
+  "subject_name": "数A",
+  "unit_name": "場合の数",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "場合の数の前に",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "集合の要素の個数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "２つの集合の要素の個数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "３つの集合の要素の個数",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "集合の要素の個数の最大・最小",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "場合の数の考え方",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "和の法則",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "積の法則",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "正の約数の個数と総和",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "補集合の利用",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "順列",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "条件付きの順列〜人の並べ方〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "条件付きの順列〜整数の個数〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "辞書式配列",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "重複順列",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "条件付きの重複順列〜整数の個数〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "条件付きの重複順列〜組分け〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "組合せ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part18.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 19,
+      "title": "条件付きの組合せ〜人の選び方〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part19.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 20,
+      "title": "条件付きの組合せ〜組分け〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part20.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 21,
+      "title": "条件付きの組合せ〜三角形の個数〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part21.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 22,
+      "title": "円順列・じゅず順列",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part22.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 23,
+      "title": "条件付きの円順列〜人の並べ方〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part23.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 24,
+      "title": "条件付きの円順列〜色の塗り方〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part24.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 25,
+      "title": "同じものを含む順列〜文字列〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part25.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 26,
+      "title": "同じものを含む順列〜整数の個数〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part26.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 27,
+      "title": "同じものを含む順列〜最短経路〜",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part27.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 28,
+      "title": "同じものを含む円順列・じゅず順列",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part28.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 29,
+      "title": "重複組合せ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part29.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 30,
+      "title": "条件付きの重複組合せ",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part30.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 31,
+      "title": "Cの性質",
+      "youtube_id": null,
+      "duration": "00:00",
+      "material_file_id": "場合の数_Part31.pdf",
+      "description": ""
+    }
+  ]
+}

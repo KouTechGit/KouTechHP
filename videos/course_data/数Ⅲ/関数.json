@@ -1,0 +1,150 @@
+{
+  "subject_name": "数Ⅲ",
+  "unit_name": "関数",
+  "videos": [
+    {
+      "video_number": 1,
+      "title": "関数の前に",
+      "youtube_id": "Mq4JpZSoW_k",
+      "duration": "06:34",
+      "material_file_id": "関数_Part1.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 2,
+      "title": "分数関数",
+      "youtube_id": "wePXQfmriHA",
+      "duration": "14:21",
+      "material_file_id": "関数_Part2.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 3,
+      "title": "分数関数のグラフと直線の共有点",
+      "youtube_id": "LPUpk-EyH_o",
+      "duration": "14:52",
+      "material_file_id": "関数_Part3.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 4,
+      "title": "分数関数の平行移動・決定",
+      "youtube_id": "IUu5ekkGpN8",
+      "duration": "10:23",
+      "material_file_id": "関数_Part4.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 5,
+      "title": "分数方程式の実数解の個数",
+      "youtube_id": "O-Pi-l2MrSY",
+      "duration": "16:47",
+      "material_file_id": "関数_Part5.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 6,
+      "title": "無理関数",
+      "youtube_id": "B5zFYu0VJvY",
+      "duration": "12:24",
+      "material_file_id": "関数_Part6.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 7,
+      "title": "無理関数のグラフと直線の共有点",
+      "youtube_id": "5bcqwqG6VHc",
+      "duration": "12:01",
+      "material_file_id": "関数_Part7.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 8,
+      "title": "無理関数の決定",
+      "youtube_id": "w_s7w7izPz4",
+      "duration": "07:06",
+      "material_file_id": "関数_Part8.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 9,
+      "title": "無理方程式の実数解の個数",
+      "youtube_id": "8LfZcNdqGVQ",
+      "duration": "14:56",
+      "material_file_id": "関数_Part9.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 10,
+      "title": "同値変形と分数方程式・無理方程式",
+      "youtube_id": "HUlwSJMNnKY",
+      "duration": "04:38",
+      "material_file_id": "関数_Part10.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 11,
+      "title": "同値変形と分数不等式・無理不等式",
+      "youtube_id": "A11pPkhSQEA",
+      "duration": "10:47",
+      "material_file_id": "関数_Part11.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 12,
+      "title": "逆関数",
+      "youtube_id": "P4c-5TN6v_I",
+      "duration": "18:52",
+      "material_file_id": "関数_Part12.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 13,
+      "title": "逆関数の性質",
+      "youtube_id": "y5bIudAwnUw",
+      "duration": "15:00",
+      "material_file_id": "関数_Part13.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 14,
+      "title": "逆関数が一致する条件",
+      "youtube_id": "A-6vgFyvwI0",
+      "duration": "13:22",
+      "material_file_id": "関数_Part14.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 15,
+      "title": "関数とその逆関数のグラフの共有点",
+      "youtube_id": "KrZ2YhrsgI0",
+      "duration": "19:51",
+      "material_file_id": "関数_Part15.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 16,
+      "title": "合成関数",
+      "youtube_id": "8487MnpnVAI",
+      "duration": "21:09",
+      "material_file_id": "関数_Part16.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 17,
+      "title": "合成関数の性質",
+      "youtube_id": "K6N8o-gabkA",
+      "duration": "15:02",
+      "material_file_id": "関数_Part17.pdf",
+      "description": ""
+    },
+    {
+      "video_number": 18,
+      "title": "合成関数が一致する条件",
+      "youtube_id": "nAmOpMcmuX8",
+      "duration": "09:02",
+      "material_file_id": "関数_Part18.pdf",
+      "description": ""
+    }
+  ]
+}
