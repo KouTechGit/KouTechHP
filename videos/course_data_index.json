@@ -59,13 +59,13 @@
           "video_count": 28
         },
         {
-          "unit_name": "微分法(数Ⅱ)",
-          "file_path": "course_data/数Ⅱ/微分法(数Ⅱ).json",
+          "unit_name": "微分法",
+          "file_path": "course_data/数Ⅱ/微分法.json",
           "video_count": 23
         },
         {
-          "unit_name": "積分法(数Ⅱ)",
-          "file_path": "course_data/数Ⅱ/積分法(数Ⅱ).json",
+          "unit_name": "積分法",
+          "file_path": "course_data/数Ⅱ/積分法.json",
           "video_count": 22
         }
       ]
