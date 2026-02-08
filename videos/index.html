@@ -37,9 +37,13 @@
       <h1>授業動画</h1>
       <p>数学の単元ごとに動画で学習を進められます。</p>
 
-      <div id="subjects-container">
-        <!-- JavaScript will populate this -->
+      <div id="tabs-container">
+        <!-- JavaScript will populate tabs here -->
         <div style="padding:2rem; text-align:center; color:var(--text-sub);">Loading...</div>
+      </div>
+
+      <div id="tab-contents-container">
+        <!-- JavaScript will populate tab contents here -->
       </div>
     </section>
   </div>
@@ -105,27 +109,71 @@
           throw new Error('Invalid course data format');
         }
         
-        const container = document.getElementById('subjects-container');
-        if (!container) {
-          console.error('subjects-container element not found');
+        const tabsContainer = document.getElementById('tabs-container');
+        const tabContentsContainer = document.getElementById('tab-contents-container');
+        
+        if (!tabsContainer || !tabContentsContainer) {
+          console.error('Required containers not found');
           return;
         }
-        container.innerHTML = '';
+        
+        tabsContainer.innerHTML = '';
+        tabContentsContainer.innerHTML = '';
 
-        data.subjects.forEach(subject => {
+        // タブナビゲーションを作成
+        const tabsDiv = document.createElement('div');
+        tabsDiv.className = 'tabs';
+
+        // 各科目のタブとコンテンツを作成
+        data.subjects.forEach((subject, index) => {
           // 科目の色を取得
           const colors = getSubjectColors(subject.subject_name);
           
-          // Create subject section
-          const subjectSection = document.createElement('div');
-          subjectSection.style.marginBottom = '3rem';
+          // タブボタンを作成
+          const tabButton = document.createElement('button');
+          tabButton.className = 'tab';
+          tabButton.textContent = subject.subject_name;
+          tabButton.dataset.subject = subject.subject_name;
+          // 科目の色を下線に適用
+          tabButton.style.setProperty('--tab-color', colors.baseColor);
+          if (index === 0) {
+            tabButton.classList.add('active');
+            tabButton.style.borderBottomColor = colors.baseColor;
+          }
+          
+          // タブクリックイベント
+          tabButton.addEventListener('click', function() {
+            // すべてのタブからactiveクラスを削除し、下線の色をリセット
+            document.querySelectorAll('.tab').forEach(tab => {
+              tab.classList.remove('active');
+              tab.style.borderBottomColor = 'transparent';
+            });
+            // クリックされたタブにactiveクラスを追加し、科目の色を下線に適用
+            this.classList.add('active');
+            const clickedSubject = this.dataset.subject;
+            const clickedColors = getSubjectColors(clickedSubject);
+            this.style.borderBottomColor = clickedColors.baseColor;
+            
+            // すべてのタブコンテンツからactiveクラスを削除
+            document.querySelectorAll('.tab-content').forEach(content => {
+              content.classList.remove('active');
+            });
+            // 対応するタブコンテンツにactiveクラスを追加
+            const targetContent = document.querySelector(`.tab-content[data-subject="${clickedSubject}"]`);
+            if (targetContent) {
+              targetContent.classList.add('active');
+            }
+          });
+          
+          tabsDiv.appendChild(tabButton);
 
-          const subjectTitle = document.createElement('h2');
-          subjectTitle.textContent = subject.subject_name;
-          subjectTitle.style.borderLeft = `4px solid ${colors.baseColor}`;
-          subjectTitle.style.paddingLeft = '1rem';
-          subjectTitle.style.marginBottom = '1.5rem';
-          subjectSection.appendChild(subjectTitle);
+          // タブコンテンツを作成
+          const tabContent = document.createElement('div');
+          tabContent.className = 'tab-content';
+          tabContent.dataset.subject = subject.subject_name;
+          if (index === 0) {
+            tabContent.classList.add('active');
+          }
 
           const unitsList = document.createElement('div');
           unitsList.className = 'unit-cards-list';
@@ -181,9 +229,11 @@
             unitsList.appendChild(card);
           });
 
-          subjectSection.appendChild(unitsList);
-          container.appendChild(subjectSection);
+          tabContent.appendChild(unitsList);
+          tabContentsContainer.appendChild(tabContent);
         });
+
+        tabsContainer.appendChild(tabsDiv);
       })
       .catch(error => {
         console.error('Error loading course data:', error);
@@ -193,9 +243,9 @@
         }
         // エラーメッセージを表示しない（ユーザー体験を優先）
         // 代わりに、読み込み中の表示を維持する
-        const container = document.getElementById('subjects-container');
-        if (container) {
-          container.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>';
+        const tabsContainer = document.getElementById('tabs-container');
+        if (tabsContainer) {
+          tabsContainer.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>';
         }
       });
   </script>

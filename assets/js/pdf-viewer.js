@@ -134,7 +134,17 @@ class PdfViewer {
       this.showFirstTimeTooltip();
     }).catch(error => {
       console.error('PDF load error:', error);
-      this.showError(`PDFの読み込みに失敗しました<br><small>${this.pdfPath}</small>`);
+      // ファイルが存在しない場合（404エラーなど）は「PDFは準備中」と表示
+      const isFileNotFound = error.name === 'MissingPDFException' || 
+                             error.message?.includes('404') || 
+                             error.message?.includes('Not Found') ||
+                             error.status === 404 ||
+                             (error.message && error.message.toLowerCase().includes('missing'));
+      if (isFileNotFound) {
+        this.showError('PDFは準備中です。');
+      } else {
+        this.showError(`PDFの読み込みに失敗しました<br><small>${this.pdfPath}</small>`);
+      }
     });
   }
 
