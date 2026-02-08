@@ -929,6 +929,34 @@ footer {
   font-weight: 600;
 }
 
+.description-content ol {
+  margin-left: 3em;
+  padding-top: 0em;
+  padding-bottom: 1em;
+}
+
+.description-content ol li {
+  padding-left: 0.5em;
+  list-style-position: outside;
+}
+
+.description-content ul {
+  margin-left: 3em;
+  padding-left: 0;
+  padding-top: 0em;
+  padding-bottom: 1em;
+  list-style-type: disc;
+}
+
+.description-content ul li {
+  padding-left: 0.5em;
+  list-style-position: outside;
+}
+
+.description-content ul li::before {
+  content: none;
+}
+
 /* MathJaxの\mathbfを黄色にする */
 .description-content .MathJax mtext[mathvariant="bold"],
 .description-content .MathJax .MathJax-Bold {
