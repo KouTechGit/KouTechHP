@@ -562,27 +562,81 @@ footer {
 }
 
 /* --- Video Player Layout Styles --- */
+/* 動画:講義資料 = 3:2 の比率。--video-panel-ratio でドラッグ時に変更可能 */
 .player-layout {
+  --video-panel-ratio: 60%; /* 3/(3+2) = 60% */
   display: grid;
-  grid-template-columns: 280px minmax(500px, 2fr) minmax(500px, 2.5fr);
+  grid-template-columns: 280px 1fr;
   grid-template-rows: 1fr;
   gap: 0;
   height: calc(100vh - 80px);
   overflow: hidden;
-  transition: grid-template-columns 0s ease;
+  transition: grid-template-columns 0.3s ease;
 }
 
 /* Collapsed states */
-.player-layout.left-collapsed {
-  grid-template-columns: 0 minmax(500px, 2fr) minmax(500px, 2.5fr);
-}
-
-.player-layout.right-collapsed {
-  grid-template-columns: 280px minmax(500px, 2fr) 0;
-}
-
+.player-layout.left-collapsed,
 .player-layout.both-collapsed {
-  grid-template-columns: 0 minmax(500px, 2fr) 0;
+  grid-template-columns: 0 1fr;
+}
+
+/* 中央・右エリア: 動画 + リサイザー + 講義資料（flex で 3:2 比率） */
+.player-center-right {
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.player-center-right .player-main {
+  flex: 0 0 var(--video-panel-ratio);
+  min-width: 400px;
+}
+
+/* リサイザー: ドラッグで幅変更 */
+.player-resizer {
+  width: 6px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: col-resize;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.player-resizer:hover,
+.player-resizer.resizing {
+  background: var(--accent-primary);
+}
+
+/* ドラッグ可能なヒット領域を広げる（中央6pxのみ実際にドラッグ，端は補助） */
+.player-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -6px;
+  right: -6px;
+  bottom: 0;
+  cursor: col-resize;
+}
+
+.player-center-right .player-sidebar-right {
+  flex: 1 1 0;
+  min-width: 300px;
+}
+
+/* 講義資料を折りたたんだ時: リサイザー非表示，動画が全幅 */
+.player-layout.right-collapsed .player-resizer {
+  display: none;
+}
+
+.player-layout.right-collapsed .player-main {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.player-layout.right-collapsed .player-sidebar-right {
+  flex: 0 0 0;
+  min-width: 0;
 }
 
 /* Left Sidebar: Curriculum */
@@ -1373,7 +1427,7 @@ footer {
 /* Responsive Player */
 @media (max-width: 1024px) {
   .player-layout {
-    grid-template-columns: 280px 1fr 280px;
+    grid-template-columns: 280px 1fr;
   }
 }
 
@@ -1394,7 +1448,12 @@ footer {
     overflow: hidden;
     position: relative;
   }
-  
+
+  /* モバイル: 動画エリアを全幅に */
+  .player-center-right .player-main {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
   
   /* Hide sidebars by default on mobile */
   .player-sidebar-left,
@@ -1472,7 +1531,7 @@ footer {
   .mobile-actions {
     display: flex;
     gap: 0.75rem;
-    padding: 0.5rem 1.5rem 0.75rem 1.5rem; /* 上パディングを半分に（1rem → 0.5rem） */
+    padding: 0.5rem 1.5rem 2px 1.5rem; /* 上パディングを半分に（1rem → 0.5rem），下パディング 2px */
     background: var(--bg-deep);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }

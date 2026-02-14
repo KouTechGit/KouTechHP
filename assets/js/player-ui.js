@@ -103,7 +103,21 @@ class PlayerUI {
       sidebarRight: document.getElementById('sidebar-right'),
       header: document.querySelector('header'),
       videoContainer: document.querySelector('.video-container'),
-      root: document.documentElement
+      root: document.documentElement,
+      playerResizer: document.getElementById('player-resizer'),
+      centerRight: document.querySelector('.player-center-right')
+    };
+
+    /**
+     * 動画・講義資料パネルのリサイズ用の状態
+     */
+    this.resizeState = {
+      isResizing: false,
+      startX: 0,
+      startRatio: 0,
+      STORAGE_KEY: 'koutech-video-panel-ratio',
+      MIN_RATIO: 0.3,
+      MAX_RATIO: 0.85
     };
 
     // 初期セットアップを実行
@@ -118,6 +132,8 @@ class PlayerUI {
     this.setupEventListeners();
     this.setupTheme();
     this.setupObservers();
+    this.setupResizer();
+    this.restorePanelRatio();
   }
 
   // ============================================================================
@@ -260,6 +276,95 @@ class PlayerUI {
     document.querySelectorAll('.bottom-sheet-close').forEach(btn => {
       btn.addEventListener('click', () => this.closeBottomSheet());
     });
+  }
+
+  // ============================================================================
+  // 動画・講義資料パネルのリサイザー（デスクトップのみ）
+  // ============================================================================
+
+  /**
+   * パネル比率を localStorage から復元
+   */
+  restorePanelRatio() {
+    if (window.innerWidth <= this.CONSTANTS.MOBILE_BREAKPOINT) return;
+    try {
+      const saved = localStorage.getItem(this.resizeState.STORAGE_KEY);
+      if (saved !== null) {
+        const ratio = parseFloat(saved);
+        if (!isNaN(ratio) && ratio >= this.resizeState.MIN_RATIO && ratio <= this.resizeState.MAX_RATIO) {
+          this.elements.layout.style.setProperty('--video-panel-ratio', `${ratio * 100}%`);
+        }
+      }
+    } catch (_e) { /* localStorage 無効時は無視 */ }
+  }
+
+  /**
+   * パネル比率を localStorage に保存
+   */
+  savePanelRatio(ratio) {
+    try {
+      localStorage.setItem(this.resizeState.STORAGE_KEY, String(ratio));
+    } catch (_e) { /* localStorage 無効時は無視 */ }
+  }
+
+  /**
+   * リサイザーのドラッグイベントを設定
+   */
+  setupResizer() {
+    const resizer = this.elements.playerResizer;
+    const layout = this.elements.layout;
+    const centerRight = this.elements.centerRight;
+    if (!resizer || !layout || !centerRight) return;
+
+    resizer.addEventListener('mousedown', (e) => {
+      if (window.innerWidth <= this.CONSTANTS.MOBILE_BREAKPOINT) return;
+      if (this.elements.sidebarRight.classList.contains('collapsed')) return;
+      e.preventDefault();
+      this.resizeState.isResizing = true;
+      this.resizeState.startX = e.clientX;
+      const ratioStr = layout.style.getPropertyValue('--video-panel-ratio') || '60%';
+      this.resizeState.startRatio = parseFloat(ratioStr) / 100;
+      resizer.classList.add('resizing');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    });
+
+    const onMouseMove = (e) => {
+      if (!this.resizeState.isResizing) return;
+      /* 左ボタンが押されていなければリサイズ終了（mouseup 取りこぼし対策） */
+      if ((e.buttons & 1) === 0) {
+        endResize();
+        return;
+      }
+      const rect = centerRight.getBoundingClientRect();
+      const totalWidth = rect.width;
+      if (totalWidth <= 0) return;
+      const deltaX = e.clientX - this.resizeState.startX;
+      const deltaRatio = deltaX / totalWidth;
+      let newRatio = this.resizeState.startRatio + deltaRatio;
+      newRatio = Math.max(this.resizeState.MIN_RATIO, Math.min(this.resizeState.MAX_RATIO, newRatio));
+      layout.style.setProperty('--video-panel-ratio', `${newRatio * 100}%`);
+    };
+
+    const endResize = () => {
+      if (!this.resizeState.isResizing) return;
+      this.resizeState.isResizing = false;
+      resizer.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+      const ratioStr = layout.style.getPropertyValue('--video-panel-ratio') || '60%';
+      this.savePanelRatio(parseFloat(ratioStr) / 100);
+    };
+
+    const onMouseUp = (e) => {
+      /* 左ボタンのみ処理（右クリック等を無視） */
+      if (e.button !== 0) return;
+      endResize();
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('blur', endResize);
   }
 
   /**
