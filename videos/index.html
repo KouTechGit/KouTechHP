@@ -37,6 +37,13 @@
       <h1>授業動画</h1>
       <p>数学の単元ごとに動画で学習を進められます。</p>
 
+      <div class="course-toolbar">
+        <input type="search" id="global-search" class="global-search-input" placeholder="全科目から動画を検索（タイトルで検索）" aria-label="動画を検索">
+        <a href="progress-map.html" id="progress-map-top-link" class="btn btn-outline">📊 進捗マップを見る</a>
+      </div>
+
+      <div id="global-search-results" class="global-search-results" hidden></div>
+
       <div id="tabs-container">
         <!-- JavaScript will populate tabs here -->
         <div style="padding:2rem; text-align:center; color:var(--text-sub);">Loading...</div>
@@ -94,6 +101,10 @@
       return { baseColor, lightColor };
     }
 
+    // 全科目横断検索用: index データと，遅延取得した単元動画データのキャッシュ
+    let courseIndexData = null;
+    let allVideosCache = null; // 初回検索時に全 unit JSON を取得して構築
+
     // Load course data index and render subjects/units
     fetch('course_data_index.json')
       .then(response => {
@@ -104,6 +115,7 @@
         return response.json();
       })
       .then(data => {
+        courseIndexData = data;
         // データの構造をチェック
         if (!data || !data.subjects || !Array.isArray(data.subjects)) {
           throw new Error('Invalid course data format');
@@ -140,7 +152,7 @@
             tabButton.classList.add('active');
             tabButton.style.borderBottomColor = colors.baseColor;
           }
-          
+
           // タブクリックイベント
           tabButton.addEventListener('click', function() {
             // すべてのタブからactiveクラスを削除し、下線の色をリセット
@@ -153,7 +165,7 @@
             const clickedSubject = this.dataset.subject;
             const clickedColors = getSubjectColors(clickedSubject);
             this.style.borderBottomColor = clickedColors.baseColor;
-            
+
             // すべてのタブコンテンツからactiveクラスを削除
             document.querySelectorAll('.tab-content').forEach(content => {
               content.classList.remove('active');
@@ -162,6 +174,12 @@
             const targetContent = document.querySelector(`.tab-content[data-subject="${clickedSubject}"]`);
             if (targetContent) {
               targetContent.classList.add('active');
+            }
+
+            // 進捗マップリンクを現在の科目に合わせる
+            const progressMapTopLink = document.getElementById('progress-map-top-link');
+            if (progressMapTopLink) {
+              progressMapTopLink.href = `progress-map.html?subject=${encodeURIComponent(clickedSubject)}`;
             }
           });
           
@@ -234,6 +252,12 @@
         });
 
         tabsContainer.appendChild(tabsDiv);
+
+        // 進捗マップリンクの初期値（最初の科目）
+        const progressMapTopLink = document.getElementById('progress-map-top-link');
+        if (progressMapTopLink && data.subjects.length > 0) {
+          progressMapTopLink.href = `progress-map.html?subject=${encodeURIComponent(data.subjects[0].subject_name)}`;
+        }
       })
       .catch(error => {
         console.error('Error loading course data:', error);
@@ -248,6 +272,116 @@
           tabsContainer.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>';
         }
       });
+
+    // ========================================================================
+    // 全科目横断検索
+    // ========================================================================
+
+    /**
+     * course_data_index.json に列挙された全 unit の JSON を取得し，
+     * 科目・単元情報付きの動画フラットリストを構築します（初回検索時のみ実行してキャッシュ）。
+     */
+    function loadAllVideosForSearch() {
+      if (allVideosCache) return Promise.resolve(allVideosCache);
+      if (!courseIndexData) return Promise.resolve([]);
+
+      const fetches = [];
+      courseIndexData.subjects.forEach(subject => {
+        subject.units.forEach(unit => {
+          fetches.push(
+            fetch(unit.file_path)
+              .then(res => res.ok ? res.json() : null)
+              .then(unitData => {
+                if (!unitData || !Array.isArray(unitData.videos)) return [];
+                return unitData.videos.map(v => ({
+                  subject_name: subject.subject_name,
+                  unit_name: unit.unit_name,
+                  video_number: v.video_number,
+                  title: v.title,
+                  duration: v.duration,
+                  youtube_id: v.youtube_id
+                }));
+              })
+              .catch(() => [])
+          );
+        });
+      });
+
+      return Promise.all(fetches).then(lists => {
+        allVideosCache = lists.flat();
+        return allVideosCache;
+      });
+    }
+
+    function renderSearchResults(query, videos) {
+      const resultsContainer = document.getElementById('global-search-results');
+      const tabsContainer = document.getElementById('tabs-container');
+      const tabContentsContainer = document.getElementById('tab-contents-container');
+      if (!resultsContainer) return;
+
+      const matches = videos.filter(v => v.title.toLowerCase().includes(query));
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">該当する動画が見つかりません</div>';
+      } else {
+        resultsContainer.innerHTML = matches.slice(0, 100).map(v => {
+          const colors = getSubjectColors(v.subject_name);
+          const href = `player.html?subject=${encodeURIComponent(v.subject_name)}&unit=${encodeURIComponent(v.unit_name)}&video=${v.video_number}`;
+          return `
+            <a href="${href}" class="global-search-result-item">
+              <span class="global-search-result-badge" style="background:${colors.baseColor}">${v.subject_name} ${v.unit_name}</span>
+              <span class="global-search-result-title">${v.title}</span>
+              <span class="global-search-result-duration">${v.duration || ''}</span>
+            </a>
+          `;
+        }).join('');
+      }
+
+      resultsContainer.hidden = false;
+      if (tabsContainer) tabsContainer.style.display = 'none';
+      if (tabContentsContainer) tabContentsContainer.style.display = 'none';
+    }
+
+    function hideSearchResults() {
+      const resultsContainer = document.getElementById('global-search-results');
+      const tabsContainer = document.getElementById('tabs-container');
+      const tabContentsContainer = document.getElementById('tab-contents-container');
+      if (resultsContainer) resultsContainer.hidden = true;
+      if (tabsContainer) tabsContainer.style.display = '';
+      if (tabContentsContainer) tabContentsContainer.style.display = '';
+    }
+
+    const globalSearchInput = document.getElementById('global-search');
+    if (globalSearchInput) {
+      let debounceTimer = null;
+      let isComposing = false;
+
+      const runSearch = () => {
+        const query = globalSearchInput.value.trim().toLowerCase();
+        if (!query) {
+          hideSearchResults();
+          return;
+        }
+        const resultsContainer = document.getElementById('global-search-results');
+        if (resultsContainer) {
+          resultsContainer.hidden = false;
+          resultsContainer.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">検索中...</div>';
+        }
+        loadAllVideosForSearch().then(videos => renderSearchResults(query, videos));
+      };
+
+      globalSearchInput.addEventListener('compositionstart', () => { isComposing = true; });
+      globalSearchInput.addEventListener('compositionend', () => {
+        isComposing = false;
+        runSearch();
+      });
+
+      globalSearchInput.addEventListener('input', () => {
+        if (isComposing) return; // IME変換中は確定まで待つ
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(runSearch, 250);
+      });
+    }
   </script>
 </body>
 </html>

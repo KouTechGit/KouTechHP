@@ -26,9 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const elements = {
     videoContainer: document.querySelector('.video-container'),
     lessonList: document.getElementById('lesson-list'),
+    lessonSearch: document.getElementById('lesson-search'),
     sidebarTitle: document.getElementById('sidebar-title'),
     headerTitle: document.getElementById('header-title'),
-    resourcesList: document.getElementById('resources-list')
+    resourcesList: document.getElementById('resources-list'),
+    playbackSpeedSelect: document.getElementById('playback-speed'),
+    progressMapLink: document.getElementById('progress-map-link')
   };
 
   let currentUnitData = null;
@@ -36,6 +39,114 @@ document.addEventListener('DOMContentLoaded', () => {
   let youtubeAPIReady = false;
   let pendingVideoLoad = null; // YouTube APIが読み込まれる前に動画を読み込もうとした場合の待機キュー
   // let pdfViewer = null; // Store reference if needed
+
+  // 再生中の動画メタ情報（進捗保存・続きから再生に使用）
+  let activeVideoMeta = null;
+  let progressInterval = null;
+  // 動画切り替え直後，再生速度の適用と続きから再生の処理をまだ行っていないことを示すフラグ
+  let setupPending = false;
+
+  const PROGRESS_SAVE_INTERVAL_MS = 5000;
+  const PLAYBACK_RATE_STORAGE_KEY = 'koutech-playback-rate';
+
+  function getSavedPlaybackRate() {
+    try {
+      const saved = parseFloat(localStorage.getItem(PLAYBACK_RATE_STORAGE_KEY));
+      return isNaN(saved) ? 1 : saved;
+    } catch (_e) {
+      return 1;
+    }
+  }
+
+  function savePlaybackRate(rate) {
+    try {
+      localStorage.setItem(PLAYBACK_RATE_STORAGE_KEY, String(rate));
+    } catch (_e) { /* localStorage 無効時は無視 */ }
+  }
+
+  if (elements.playbackSpeedSelect) {
+    elements.playbackSpeedSelect.value = String(getSavedPlaybackRate());
+    elements.playbackSpeedSelect.addEventListener('change', (e) => {
+      const rate = parseFloat(e.target.value);
+      savePlaybackRate(rate);
+      if (player && typeof player.setPlaybackRate === 'function') {
+        player.setPlaybackRate(rate);
+      }
+    });
+  }
+
+  if (elements.lessonSearch) {
+    elements.lessonSearch.addEventListener('input', () => {
+      renderSidebar(elements.lessonSearch.value);
+    });
+  }
+
+  function saveProgress(playerObj, ended) {
+    if (!activeVideoMeta || !playerObj) return;
+    try {
+      const duration = playerObj.getDuration();
+      if (!duration) return;
+      const position = ended ? duration : playerObj.getCurrentTime();
+      window.KouTech.ProgressStore.save(
+        activeVideoMeta.subject, activeVideoMeta.unit, activeVideoMeta.videoNumber,
+        { position, duration }
+      );
+      updateLessonItemProgress(activeVideoMeta.videoNumber);
+    } catch (_e) { /* プレーヤーが破棄済みの場合など */ }
+  }
+
+  function startProgressTracking(playerObj) {
+    stopProgressTracking(playerObj);
+    progressInterval = setInterval(() => saveProgress(playerObj, false), PROGRESS_SAVE_INTERVAL_MS);
+  }
+
+  function stopProgressTracking(playerObj) {
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      progressInterval = null;
+    }
+    if (playerObj) saveProgress(playerObj, false);
+  }
+
+  function updateLessonItemProgress(videoNumber) {
+    if (!elements.lessonList) return;
+    const item = elements.lessonList.querySelector(`.lesson-item[data-number="${videoNumber}"]`);
+    if (!item) return;
+    const thumbnail = item.querySelector('.lesson-thumbnail');
+    if (!thumbnail) return;
+    const entry = window.KouTech.ProgressStore.get(currentUnitData.subject_name, currentUnitData.unit_name, videoNumber);
+    if (!entry) return;
+
+    let badge = thumbnail.querySelector('.lesson-completed-badge');
+    let bar = thumbnail.querySelector('.lesson-progress-bar');
+
+    if (entry.completed) {
+      if (bar) bar.remove();
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.className = 'lesson-completed-badge';
+        badge.title = '視聴済み';
+        badge.textContent = '✓';
+        thumbnail.appendChild(badge);
+      }
+    } else {
+      const ratio = entry.duration ? Math.min(1, entry.position / entry.duration) : 0;
+      if (ratio > 0) {
+        if (!bar) {
+          bar = document.createElement('div');
+          bar.className = 'lesson-progress-bar';
+          bar.innerHTML = '<div class="lesson-progress-fill"></div>';
+          thumbnail.appendChild(bar);
+        }
+        bar.querySelector('.lesson-progress-fill').style.width = `${Math.round(ratio * 100)}%`;
+      }
+    }
+  }
+
+  // 離脱時に最新の再生位置を保存
+  window.addEventListener('beforeunload', () => {
+    if (player && activeVideoMeta) saveProgress(player, false);
+  });
 
   // Attach event listeners for mobile action buttons manually here if not done in UI class
   // Ideally PlayerUI handles generic toggles, but specific buttons like "Lesson List" might need binding here
@@ -110,6 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
           updateSidebarTitle();
           renderSidebar();
           loadVideo(currentVideoNumber);
+
+          if (elements.progressMapLink) {
+            elements.progressMapLink.href = `progress-map.html?subject=${encodeURIComponent(currentUnitData.subject_name)}`;
+          }
         });
     })
     .catch(error => {
@@ -154,8 +269,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const video = findVideoByNumber(videoNumber);
     if (!video) return;
 
+    // 前の動画の再生位置を保存してから切り替える
+    if (player) stopProgressTracking(player);
+    activeVideoMeta = {
+      subject: currentUnitData.subject_name,
+      unit: currentUnitData.unit_name,
+      videoNumber: video.video_number
+    };
+    setupPending = true;
+
     currentVideoNumber = videoNumber;
-    
+
     // Update URL
     const newUrl = `${window.location.pathname}?subject=${encodeURIComponent(currentUnitData.subject_name)}&unit=${encodeURIComponent(currentUnitData.unit_name)}&video=${videoNumber}`;
     window.history.pushState({path: newUrl}, '', newUrl);
@@ -230,12 +354,42 @@ document.addEventListener('DOMContentLoaded', () => {
               // 動画の読み込みが完了したことを確認
               // 「読み込み中...」は既に削除されているはず
             },
-            onStateChange: function(event) {
-              // 動画の状態が変化したときの処理（必要に応じて）
-            }
+            onStateChange: handlePlayerStateChange
           }
         });
       }
+    }
+  }
+
+  function handlePlayerStateChange(event) {
+    // 動画切り替え直後: 再生速度の適用と「続きから再生」を一度だけ行う
+    if (setupPending &&
+        (event.data === YT.PlayerState.PLAYING ||
+         event.data === YT.PlayerState.BUFFERING ||
+         event.data === YT.PlayerState.CUED)) {
+      setupPending = false;
+
+      const rate = getSavedPlaybackRate();
+      try { event.target.setPlaybackRate(rate); } catch (_e) { /* noop */ }
+      if (elements.playbackSpeedSelect) elements.playbackSpeedSelect.value = String(rate);
+
+      if (activeVideoMeta) {
+        const entry = window.KouTech.ProgressStore.get(
+          activeVideoMeta.subject, activeVideoMeta.unit, activeVideoMeta.videoNumber
+        );
+        if (window.KouTech.ProgressStore.shouldResume(entry)) {
+          try { event.target.seekTo(entry.position, true); } catch (_e) { /* noop */ }
+        }
+      }
+    }
+
+    if (event.data === YT.PlayerState.PLAYING) {
+      startProgressTracking(event.target);
+    } else if (event.data === YT.PlayerState.ENDED) {
+      stopProgressTracking(null);
+      saveProgress(event.target, true);
+    } else {
+      stopProgressTracking(event.target);
     }
   }
 
@@ -245,31 +399,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function renderSidebar() {
+  function renderSidebar(filterText) {
     // 「読み込み中...」を削除
     if (elements.lessonList) {
       elements.lessonList.innerHTML = '';
     }
 
-    currentUnitData.videos.forEach(video => {
+    const query = (filterText || '').trim().toLowerCase();
+    const videos = query
+      ? currentUnitData.videos.filter(v => v.title.toLowerCase().includes(query))
+      : currentUnitData.videos;
+
+    if (videos.length === 0) {
+      elements.lessonList.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-sub);">該当する動画が見つかりません</div>';
+      return;
+    }
+
+    videos.forEach(video => {
       const isNotReady = !video.youtube_id;
       const item = document.createElement('div');
       item.className = `lesson-item ${isNotReady ? 'not-ready' : ''}`;
       item.dataset.number = video.video_number;
-      
+
       if (!isNotReady) {
         item.addEventListener('click', () => loadVideo(video.video_number));
       }
-      
-      const thumbnailUrl = video.youtube_id 
+
+      const thumbnailUrl = video.youtube_id
         ? `https://img.youtube.com/vi/${video.youtube_id}/mqdefault.jpg`
         : '';
-      
+
+      const progressEntry = window.KouTech.ProgressStore.get(
+        currentUnitData.subject_name, currentUnitData.unit_name, video.video_number
+      );
+      const isCompleted = !!(progressEntry && progressEntry.completed);
+      const progressRatio = (progressEntry && progressEntry.duration)
+        ? Math.min(1, progressEntry.position / progressEntry.duration)
+        : 0;
+
       item.innerHTML = `
         <div class="lesson-number">${video.video_number}</div>
         <div class="lesson-thumbnail">
           ${thumbnailUrl ? `<img src="${thumbnailUrl}" alt="${video.title}" loading="lazy">` : '<div class="thumbnail-placeholder">準備中</div>'}
           ${!isNotReady ? '<div class="play-overlay">▶</div>' : ''}
+          ${isCompleted ? '<div class="lesson-completed-badge" title="視聴済み">✓</div>' : ''}
+          ${!isCompleted && progressRatio > 0 ? `<div class="lesson-progress-bar"><div class="lesson-progress-fill" style="width:${Math.round(progressRatio * 100)}%"></div></div>` : ''}
         </div>
         <div class="lesson-info">
           <span class="lesson-title">${video.title}${isNotReady ? ' <span style="color:var(--text-sub); font-size:0.8rem;">(準備中)</span>' : ''}</span>

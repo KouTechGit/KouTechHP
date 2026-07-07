@@ -91,6 +91,11 @@
         <!-- JavaScript で動的に生成される -->
       </div>
       
+      <!-- 進捗マップへのリンク -->
+      <a href="progress-map.html" id="progress-map-link" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+        📊 進捗マップ
+      </a>
+
       <!-- 一覧ページへの戻るボタン -->
       <a href="index.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
         一覧に戻る
@@ -146,6 +151,14 @@
         動的に生成されます。各動画アイテムにはサムネイル，タイトル，再生時間が表示されます。
         動画をクリックすると，その動画が再生されます。
       -->
+      <!--
+        動画検索ボックス
+        タイトルを入力すると，動画一覧をリアルタイムで絞り込みます。
+      -->
+      <div class="lesson-search-wrapper">
+        <input type="search" id="lesson-search" class="lesson-search-input" placeholder="動画を検索" aria-label="動画を検索">
+      </div>
+
       <div id="lesson-list" class="lesson-list">
         <!-- JavaScript で動的に生成される -->
         <!-- 初期状態: 読み込み中の表示 -->
@@ -171,7 +184,24 @@
         <!-- YouTubeプレーヤーがここに動的に生成されます -->
         <div id="player"></div>
       </div>
-      
+
+      <!--
+        再生速度コントロール
+        選択した速度は localStorage に保存され，次に再生する動画にも引き継がれます。
+      -->
+      <div class="playback-controls">
+        <label for="playback-speed" class="playback-speed-label">再生速度</label>
+        <select id="playback-speed" class="playback-speed-select" aria-label="再生速度">
+          <option value="0.5">0.5x</option>
+          <option value="0.75">0.75x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.25">1.25x</option>
+          <option value="1.5">1.5x</option>
+          <option value="1.75">1.75x</option>
+          <option value="2">2x</option>
+        </select>
+      </div>
+
       <!--
         モバイル版アクションボタン（モバイル版のみ表示）
         動画の下に表示される2つのボタンで，ボトムシートを開くことができます。
@@ -268,12 +298,14 @@
     
     読み込み順序が重要です:
     1. pdf-viewer.js: PDFビューアコンポーネント（PdfViewer クラス）
-    2. player-ui.js: UI制御コンポーネント（PlayerUI クラス）
-    3. player.js: メインロジック（動画データ取得，動画再生制御など）
-    
+    2. progress-store.js: 視聴進捗ストア（ProgressStore クラス）
+    3. player-ui.js: UI制御コンポーネント（PlayerUI クラス）
+    4. player.js: メインロジック（動画データ取得，動画再生制御など）
+
     各スクリプトは依存関係があるため，この順序で読み込む必要があります。
   -->
   <script src="../assets/js/pdf-viewer.js"></script>
+  <script src="../assets/js/progress-store.js"></script>
   <script src="../assets/js/player-ui.js"></script>
   <script src="../assets/js/player.js"></script>
 </body>

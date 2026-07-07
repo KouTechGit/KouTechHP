@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>進捗マップ | KouTech</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../assets/img/logo.png" alt="KouTech">
+      </a>
+      <a href="index.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+        動画一覧に戻る
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a> &gt; <a href="index.html">授業動画</a> &gt; 進捗マップ
+    </div>
+
+    <section>
+      <h1>進捗マップ</h1>
+      <p>科目ごとの動画のつながりと，これまでの学習の進み具合を確認できます。</p>
+
+      <div id="subject-tabs"></div>
+
+      <div id="progress-summary" class="progress-map-summary"></div>
+
+      <div id="progress-map-container" class="progress-map-container">
+        <div style="padding:2rem; text-align:center; color:var(--text-sub);">読み込み中...</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 KouTech</p>
+  </footer>
+
+  <script src="../assets/js/progress-store.js"></script>
+  <script src="../assets/js/progress-map.js"></script>
+</body>
+</html>
